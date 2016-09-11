@@ -31,7 +31,7 @@ module lab1_top_tb();
 		#5;
 
 		// FIRST TEST: AND
-		sim_left_button = 1'b1;
+		sim_LEFT_button = 1'b1;
 		sim_A = 4'b1101;
 		sim_B = 4'b1010;
 		
@@ -42,6 +42,6 @@ module lab1_top_tb();
 		$display("output: %b\nexpected: %b", sim_result, (4'b1100 & 4'b1010));
 		
 		// stops the sim
-		$stop
+		$stop;
 	end
 endmodule
