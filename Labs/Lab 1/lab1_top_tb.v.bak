@@ -52,7 +52,7 @@ module lab1_top_tb();
 
 		// LAST TEST: Both push buttons on
 		sim_RIGHT_button = 1'b1;
-		sim_LEFT_button = 1'b1;
+		sim_LEFT_button = 1'b0;
 		sim_A = 4'b0110;
 		sim_B = 4'b1111;
 
