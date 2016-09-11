@@ -24,6 +24,9 @@ module lab1_top (
 			2'b01: result = ADDed_result;
 			2'b10: result = ANDed_result;
 			2'b11: result = ADDed_result;
+
+			// avoid inferred latch by adding else/default statement
+			default: result = 4'b0;
 		endcase
 	end
 
