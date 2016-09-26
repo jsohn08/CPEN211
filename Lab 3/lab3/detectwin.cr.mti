@@ -1,0 +1,14 @@
+{F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/tictactoe.v} {1 {vlog -work work -stats=none {F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/tictactoe.v}
+Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module RArb
+-- Compiling module TicTacToe
+-- Compiling module TwoInArray
+-- Compiling module TwoInRow
+-- Compiling module Empty
+-- Compiling module Select3
+-- Compiling module TestTic
+
+Top level modules:
+	TestTic
+
+} {} {}}

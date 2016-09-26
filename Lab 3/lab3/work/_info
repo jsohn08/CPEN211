@@ -1,0 +1,198 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/altera/15.0
+vDetectWinner
+Z0 !s110 1474852321
+!i10b 1
+!s100 `BCL7<7@Kmm8ne[kgEn3m0
+I3d70jzCn57Rz?=>L@oTh`1
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+Z2 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3
+Z3 w1474852290
+Z4 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/detectwin.v
+Z5 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/detectwin.v
+L0 16
+Z6 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z7 !s108 1474852320.997000
+Z8 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/detectwin.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/detectwin.v|
+!i113 1
+Z10 o-work work
+n@detect@winner
+vdetectwinner_tb
+R0
+!i10b 1
+!s100 z<QW>B^?Lfi53nTzlXQo^0
+IM9AM;ePDJci2odTDWU_PH1
+R1
+R2
+R3
+R4
+R5
+L0 55
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vEmpty
+R0
+!i10b 1
+!s100 fL_<O3naoVU:ZOY?Y=_[J0
+In:@kUl3L4DeRWd;N=<0<d2
+R1
+R2
+Z11 w1474167514
+Z12 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/tictactoe.v
+Z13 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/tictactoe.v
+L0 145
+R6
+r1
+!s85 0
+31
+Z14 !s108 1474852321.051000
+Z15 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/tictactoe.v|
+Z16 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3/tictactoe.v|
+!i113 1
+R10
+n@empty
+vRArb
+R0
+!i10b 1
+!s100 hJUM9E38fC0H]hRc`hMZM2
+IjIbHPhao9l52@[L_3n[bF2
+R1
+R2
+R11
+R12
+R13
+L0 80
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R10
+n@r@arb
+vSelect3
+R0
+!i10b 1
+!s100 Sl0kR5PiA^e[Xz^Wz:Do91
+ICXXQ7J]@RdGL]=D;Pa75c2
+R1
+R2
+R11
+R12
+R13
+L0 154
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R10
+n@select3
+vTestTic
+R0
+!i10b 1
+!s100 :Q::<GWgQZJ3PE6>X]lNn3
+I@QH7hc6B0m4o3[879c^Fz1
+R1
+R2
+R11
+R12
+R13
+L0 165
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R10
+n@test@tic
+vTicTacToe
+R0
+!i10b 1
+!s100 c9FhoYn?=a=HY1H0cYhb61
+I]lJLX9bdcMgTI[4lkoV[G2
+R1
+R2
+R11
+R12
+R13
+L0 89
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R10
+n@tic@tac@toe
+vTwoInArray
+R0
+!i10b 1
+!s100 ^[4C:=o@WU@MEb2h=Y_oh0
+Iz3l[_k3Id_]fK`QzWan<[2
+R1
+R2
+R11
+R12
+R13
+L0 101
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R10
+n@two@in@array
+vTwoInRow
+R0
+!i10b 1
+!s100 CK2BP<L;JFI1gb6UnSc7_3
+ImIfQjHT>QMJ^@5LCK<_QJ2
+R1
+R2
+R11
+R12
+R13
+L0 135
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R10
+n@two@in@row
