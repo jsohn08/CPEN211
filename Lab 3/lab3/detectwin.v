@@ -16,20 +16,10 @@
 module DetectWinner(
 		input [8:0] ain, bin, 
 		output reg [7:0] win_line );
-	reg [1:0] winners;
-	reg [7:0] win_line_a, win_line_b;
+reg [1:0] winners;
+reg [7:0] win_line_a, win_line_b;
 
 // CPEN 211 LAB 3, PART 1: your implementation goes here
-//  always @* begin
-//    case (ain)
-//      9'b111000000: win_line = 8'b1;
-//      9'b111000: win_line = 8'b10;
-//      9'b111: win_line = 8'b100;
-//      9'b100100100: win_line = 8'b1000;
-//      9'b010010010: win_line = 8'b10000;
-//      9'b001001001: win_line = 8'b100000;
-//      9'b100010001: win_line = 8'b1000000;
-//      9'b1010100: win_line = 8'b10000000
 
 // *********** NEW IMPLEMENTATIONS **********
 assign win_line_a[0] = &ain[8:6];
@@ -40,33 +30,26 @@ assign win_line_a[4] = ain[7] & ain[4] & ain[1];
 assign win_line_a[5] = ain[6] & ain[3] & ain[0];
 assign win_line_a[6] = ain[8] & ain[4] & ain[0];
 assign win_line_a[7] = ain[6] & ain[4] & ain[2];
-// default to none
-//      default: win_line = 8'b0;
-//    endcase
 
-// test for if b wins
-case (bin)
-	9'b111000000: win_line = 8'b1;
-	9'b111000: win_line = 8'b10;
-	9'b111: win_line = 8'b100;
-	9'b100100100: win_line = 8'b1000;
-	9'b010010010: win_line = 8'b10000;
-	9'b001001001: win_line = 8'b100000;
-	9'b100010001: win_line = 8'b1000000;
-	9'b1010100: win_line = 8'b10000000;
+assign win_line_b[0] = &bin[8:6];
+assign win_line_b[1] = &bin[5:3];
+assign win_line_b[2] = &bin[2:0];
+assign win_line_b[3] = bin[8] & bin[5] & bin[2];
+assign win_line_b[4] = bin[7] & bin[4] & bin[1];
+assign win_line_b[5] = bin[6] & bin[3] & bin[0];
+assign win_line_b[6] = bin[8] & bin[4] & bin[0];
+assign win_line_b[7] = bin[6] & bin[4] & bin[2]; 
 
-	// default to none
-	// *************TODO: CURRENTLY THIS CASE RIGHT HERE IS OVERRIDING WHATEVER CASE IS BEFORE - USE COMB LOGIC TO FIX!!!!
-	default: win_line = 8'b0;
-	endcase
-	end
-	endmodule
+assign winners = {|win_line_b, |win_line_a};
+assign win_line = win_line_b | win_line_a;
 
-	// test bench
-	module detectwinner_tb();
-	reg [8:0] sim_ain;
-	reg [8:0] sim_bin;
-	wire [7:0] sim_win_line;
+endmodule
+
+// test bench
+module detectwinner_tb();
+reg [8:0] sim_ain;
+reg [8:0] sim_bin;
+wire [7:0] sim_win_line;
 
 	DetectWinner DUT (
 			.ain(sim_ain),
