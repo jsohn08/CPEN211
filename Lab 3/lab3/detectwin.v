@@ -28,7 +28,15 @@ module DetectWinner(
       9'b010010010: win_line = 8'b10000;
       9'b001001001: win_line = 8'b100000;
       9'b100010001: win_line = 8'b1000000;
-      9'b1010100: win_line = 8'b10000000;
+      9'b1010100: win_line = 8'b10000000
+
+      // *********** NEW IMPLEMENTATIONS **********
+      assign win_line[0] = &ain[8:6];
+      assign win_line[1] = &ain[5:3];
+      assign win_line[2] = &ain[2:0];
+      assign win_line[3] = ain[8] & ain[5] & ain[2];
+      assign win_line[4] = ain[7] & ain[4] & ain[1];
+      assign win_line[4] = ain[6] & ain[3] & ain[0];
 
       // default to none
       default: win_line = 8'b0;
