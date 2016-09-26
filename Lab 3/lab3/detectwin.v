@@ -15,9 +15,9 @@
 
 module DetectWinner(
 		input [8:0] ain, bin, 
-		output reg [7:0] win_line );
-reg [1:0] winners;
-reg [7:0] win_line_a, win_line_b;
+		output [7:0] win_line );
+wire [1:0] winners;
+wire [7:0] win_line_a, win_line_b;
 
 // CPEN 211 LAB 3, PART 1: your implementation goes here
 
@@ -40,13 +40,14 @@ assign win_line_b[5] = bin[6] & bin[3] & bin[0];
 assign win_line_b[6] = bin[8] & bin[4] & bin[0];
 assign win_line_b[7] = bin[6] & bin[4] & bin[2]; 
 
+// TODO: worry about this later ************
 assign winners = {|win_line_b, |win_line_a};
 assign win_line = win_line_b | win_line_a;
 
 endmodule
 
 // test bench
-module detectwinner_tb();
+module DetectWinner_tb();
 reg [8:0] sim_ain;
 reg [8:0] sim_bin;
 wire [7:0] sim_win_line;
