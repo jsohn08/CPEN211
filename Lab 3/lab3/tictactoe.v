@@ -89,12 +89,17 @@ endmodule // RArb
 module TicTacToe(xin, oin, xout) ;
 input [8:0] xin, oin ;
 output [8:0] xout ;
-wire [8:0] win, block, empty ;
+//wire [8:0] win, block, empty ;
+wire [8:0] win, block, empty, adjacent;
 
-TwoInArray winx(xin, oin, win) ;           // win if we can
-TwoInArray blockx(oin, xin, block) ;       // try to block o from winning
-Empty      emptyx(~(oin | xin), empty) ;   // otherwise pick empty space
-Select3    comb(win, block, empty, xout) ; // pick highest priority
+TwoInArray       winx(xin, oin, win) ;           // win if we can
+TwoInArray       blockx(oin, xin, block) ;       // try to block o from winning
+Empty            emptyx(~(oin | xin), empty) ;   // otherwise pick empty space
+PlayAdjacentEdge adjacentx(oin, xin, adjacent);  // play adjacent if there is X on either corners	
+
+//Select3    comb(win, block, empty, xout) ; // pick highest priority
+Select4 comb(win, block, adjacent, empty, xout); // pick the highest priority to play
+
 endmodule // TicTacToe
 
 //Figure 9.13
@@ -150,6 +155,25 @@ RArb #(9) ra({in[4],in[0],in[2],in[6],in[8],in[1],in[3],in[5],in[7]},
 		{out[4],out[0],out[2],out[6],out[8],out[1],out[3],out[5],out[7]}) ;
 endmodule // Empty
 
+//ADDED FOURTH MODULE TO IMPROVE GAME LOGIC //////////////////////////
+module PlayAdjacentEdge(ain, bin, cout);
+input [8:0] ain, bin;
+output reg [8:0] cout;
+
+wire [8:0] playadjacent;
+assign playadjacent = 9'b000_100_000;
+
+//assign cout = {000, (bin[0] & bin[8]) | (bin[2] & bin[6]) & ain[4], 00000};
+always @* begin
+case ({ain, bin}) 
+18'b100_000_001__000_010_000: cout = playadjacent;
+18'b001_000_100__000_010_000: cout = playadjacent;
+default: cout = 9'b0;
+endcase
+end
+endmodule
+
+
 //Figure 9.16
 module Select3(a, b, c, out) ;
 input [8:0] a, b, c;
@@ -160,6 +184,17 @@ RArb #(27) ra({a,b,c},x) ;
 
 assign out = x[26:18] | x[17:9] | x[8:0] ;
 endmodule // Select3
+
+// CUSTOM SELECT 4 MODULE //////////////////////////////
+module Select4(a, b, c, d, out);
+input [8:0] a, b, c, d;
+output [8:0] out;
+wire [35:0] x;
+
+RArb #(36) ra({a, b, c, d}, x);
+
+assign out = x[35:27] | x[27:18] | x[17:9] | x[8:0];
+endmodule
 
 //Figure 9.18
 module TestTic ;
