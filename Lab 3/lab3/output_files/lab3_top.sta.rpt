@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for lab3_top
-Sun Sep 25 16:30:57 2016
+Mon Sep 26 17:59:15 2016
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -114,12 +114,12 @@ agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.20        ;
+; Average used               ; 1.00        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  20.0%      ;
+;     Processor 2            ; < 0.1%      ;
 ;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
@@ -135,14 +135,14 @@ agreement for further details.
 +---------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+-------------------------------------------------------------+------------------------------------------------------------------+-------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Fmax Summary                                                                  ;
-+------------+-----------------+---------------------------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                                    ; Note ;
-+------------+-----------------+---------------------------------------------------------------+------+
-; 95.81 MHz  ; 95.81 MHz       ; CLOCK_50                                                      ;      ;
-; 128.07 MHz ; 128.07 MHz      ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-+------------+-----------------+---------------------------------------------------------------+------+
++----------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                                                                 ;
++-----------+-----------------+---------------------------------------------------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name                                                    ; Note ;
++-----------+-----------------+---------------------------------------------------------------+------+
+; 90.63 MHz ; 90.63 MHz       ; CLOCK_50                                                      ;      ;
+; 137.7 MHz ; 137.7 MHz       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
++-----------+-----------------+---------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -157,8 +157,8 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                      ; 9.563  ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 16.096 ; 0.000         ;
+; CLOCK_50                                                      ; 8.966  ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 16.369 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -167,8 +167,8 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
-; CLOCK_50                                                      ; 0.313 ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.320 ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.242 ; 0.000         ;
+; CLOCK_50                                                      ; 0.365 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
@@ -190,8 +190,8 @@ No paths to report.
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
 ; GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
-; CLOCK_50                                                      ; 8.865  ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.778 ; 0.000         ;
+; CLOCK_50                                                      ; 8.867  ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.760 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -200,39 +200,39 @@ No paths to report.
 +-----------+------------+--------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+-------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 1.568  ; 1.961 ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 1.568  ; 1.961 ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 1.163  ; 1.817 ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; -0.208 ; 0.046 ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.436  ; 0.790 ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.795  ; 1.366 ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 0.131  ; 0.476 ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 0.046  ; 0.235 ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; -0.130 ; 0.176 ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 1.163  ; 1.817 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; -0.024 ; 0.215 ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.373  ; 0.815 ; Rise       ; CLOCK_50        ;
+; KEY[*]    ; CLOCK_50   ; 1.399  ; 1.766 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 1.399  ; 1.766 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.475  ; 2.316 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.586  ; 1.075 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.517  ; 0.804 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.918  ; 1.466 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; 1.475  ; 2.316 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 1.049  ; 1.666 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; -0.024 ; 0.301 ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 1.168  ; 1.823 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; 1.286  ; 1.955 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 1.105  ; 1.765 ; Rise       ; CLOCK_50        ;
 +-----------+------------+--------+-------+------------+-----------------+
 
 
-+------------------------------------------------------------------------+
-; Hold Times                                                             ;
-+-----------+------------+-------+--------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall   ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+--------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 0.832 ; 0.453  ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 0.832 ; 0.453  ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 1.187 ; 0.983  ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; 1.187 ; 0.983  ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.628 ; 0.367  ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.345 ; -0.051 ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 0.892 ; 0.639  ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 0.945 ; 0.784  ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; 1.121 ; 0.880  ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 0.022 ; -0.411 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 1.007 ; 0.814  ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.700 ; 0.399  ; Rise       ; CLOCK_50        ;
-+-----------+------------+-------+--------+------------+-----------------+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 0.593  ; 0.473  ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 0.593  ; 0.473  ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.053  ; 0.814  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.531  ; 0.191  ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.528  ; 0.287  ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.232  ; -0.140 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; -0.211 ; -0.762 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 0.123  ; -0.291 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; 1.053  ; 0.814  ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 0.024  ; -0.410 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; -0.096 ; -0.538 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 0.097  ; -0.336 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
@@ -240,48 +240,48 @@ No paths to report.
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 12.070 ; 12.146 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 12.070 ; 11.455 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 11.028 ; 11.092 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 11.182 ; 11.024 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 10.504 ; 10.735 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 11.886 ; 12.146 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 10.525 ; 10.606 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 12.016 ; 12.095 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 10.175 ; 10.581 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 10.652 ; 10.972 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 7.114  ;        ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 8.337  ; 8.696  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 8.079  ; 8.288  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 7.803  ; 7.977  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 7.922  ; 8.158  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 8.218  ; 8.554  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 7.777  ; 7.932  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 8.337  ; 8.696  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 7.892  ; 8.095  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 7.622  ; 7.764  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 8.591  ; 8.963  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;        ; 6.993  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 8.419  ; 8.804  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 8.303  ; 8.471  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 8.212  ; 8.361  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 7.969  ; 8.231  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 8.419  ; 8.600  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 8.404  ; 8.804  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 8.114  ; 8.293  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 7.941  ; 8.102  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 8.055  ; 8.240  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 7.842  ; 7.921  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 8.520  ; 8.974  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 8.436  ; 8.808  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 7.947  ; 8.170  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 7.558  ; 7.664  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 7.927  ; 8.094  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 8.520  ; 8.974  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 7.815  ; 8.024  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 7.799  ; 7.992  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 7.608  ; 7.758  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 7.779  ; 7.985  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 11.713 ; 11.808 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 11.305 ; 10.802 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 10.985 ; 11.114 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 11.441 ; 11.756 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 11.394 ; 11.256 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 11.054 ; 11.402 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 10.468 ; 10.869 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 11.713 ; 11.808 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 10.467 ; 10.722 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 10.563 ; 10.831 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 7.149  ;        ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 8.208  ; 8.528  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 8.076  ; 8.153  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 7.626  ; 7.751  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 7.835  ; 8.011  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 8.095  ; 8.235  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 7.679  ; 7.828  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 8.141  ; 8.438  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 8.208  ; 8.528  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 7.934  ; 8.140  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 8.086  ; 8.157  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;        ; 7.010  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 8.268  ; 8.488  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 8.268  ; 8.488  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 8.260  ; 8.319  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 7.693  ; 7.819  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 8.077  ; 8.242  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 8.134  ; 8.306  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 7.985  ; 8.127  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 7.753  ; 7.901  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 7.923  ; 8.161  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 7.931  ; 8.119  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 8.314  ; 8.619  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 8.314  ; 8.619  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 8.261  ; 8.490  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 7.435  ; 7.485  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 8.050  ; 8.127  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 8.254  ; 8.528  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 7.603  ; 7.671  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 7.653  ; 7.711  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 7.431  ; 7.470  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 7.503  ; 7.537  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
 
 
@@ -290,48 +290,48 @@ No paths to report.
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 8.558 ; 8.607 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 9.357 ; 8.944 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 8.558 ; 8.607 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 8.907 ; 8.932 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 8.706 ; 8.995 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 9.148 ; 9.380 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 8.994 ; 9.185 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 9.646 ; 9.762 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 9.026 ; 9.384 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 9.442 ; 9.579 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 4.947 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 5.213 ; 5.343 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 5.636 ; 5.804 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 5.382 ; 5.534 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 5.466 ; 5.649 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 5.726 ; 5.964 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 5.344 ; 5.471 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 5.830 ; 6.097 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 5.459 ; 5.618 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 5.213 ; 5.343 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 6.068 ; 6.333 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;       ; 4.840 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 5.507 ; 5.653 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 5.833 ; 5.971 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 5.759 ; 5.887 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 5.507 ; 5.701 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 5.941 ; 6.077 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 5.864 ; 6.141 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 5.655 ; 5.793 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 5.514 ; 5.653 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 5.608 ; 5.755 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 5.431 ; 5.500 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 5.171 ; 5.273 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 5.922 ; 6.178 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 5.510 ; 5.686 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 5.171 ; 5.273 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 5.491 ; 5.623 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 6.017 ; 6.354 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 5.389 ; 5.558 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 5.378 ; 5.544 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 5.201 ; 5.338 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 5.353 ; 5.523 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 8.217 ; 8.386 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 8.935 ; 8.724 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 8.217 ; 8.386 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 9.316 ; 9.519 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 9.172 ; 9.420 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 8.808 ; 9.136 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 9.277 ; 9.604 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 9.450 ; 9.515 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 8.860 ; 9.079 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 8.931 ; 9.224 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 4.981 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 5.214 ; 5.311 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 5.637 ; 5.698 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 5.214 ; 5.311 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 5.400 ; 5.525 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 5.624 ; 5.726 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 5.261 ; 5.382 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 5.657 ; 5.860 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 5.702 ; 5.907 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 5.483 ; 5.623 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 5.637 ; 5.690 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;       ; 4.857 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 5.272 ; 5.363 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 5.782 ; 5.933 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 5.790 ; 5.832 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 5.272 ; 5.363 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 5.618 ; 5.737 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 5.670 ; 5.784 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 5.545 ; 5.663 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 5.327 ; 5.435 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 5.466 ; 5.635 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 5.504 ; 5.642 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 5.053 ; 5.097 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 5.804 ; 5.999 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 5.773 ; 5.933 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 5.053 ; 5.102 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 5.600 ; 5.653 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 5.766 ; 5.949 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 5.205 ; 5.257 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 5.242 ; 5.289 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 5.057 ; 5.097 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 5.126 ; 5.162 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 
 
@@ -346,8 +346,8 @@ No synchronizer chains to report.
 +------------+-----------------+---------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                    ; Note ;
 +------------+-----------------+---------------------------------------------------------------+------+
-; 98.79 MHz  ; 98.79 MHz       ; CLOCK_50                                                      ;      ;
-; 125.47 MHz ; 125.47 MHz      ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 93.17 MHz  ; 93.17 MHz       ; CLOCK_50                                                      ;      ;
+; 134.37 MHz ; 134.37 MHz      ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
 +------------+-----------------+---------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -357,8 +357,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                      ; 9.878  ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 16.015 ; 0.000         ;
+; CLOCK_50                                                      ; 9.267  ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 16.279 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -367,8 +367,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
-; CLOCK_50                                                      ; 0.288 ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.297 ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.223 ; 0.000         ;
+; CLOCK_50                                                      ; 0.339 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
@@ -391,48 +391,48 @@ No paths to report.
 +---------------------------------------------------------------+--------+---------------+
 ; GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
 ; CLOCK_50                                                      ; 8.822  ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.754 ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.751 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
++------------------------------------------------------------------------+
+; Setup Times                                                            ;
++-----------+------------+--------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+-------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 1.085  ; 1.572 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 1.085  ; 1.572 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.277  ; 2.086 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.420  ; 0.901 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.381  ; 0.676 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.739  ; 1.279 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; 1.277  ; 2.086 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 0.876  ; 1.470 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; -0.177 ; 0.143 ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 0.977  ; 1.616 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; 1.096  ; 1.745 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 0.914  ; 1.560 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+-------+------------+-----------------+
+
+
 +-------------------------------------------------------------------------+
-; Setup Times                                                             ;
+; Hold Times                                                              ;
 +-----------+------------+--------+--------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+--------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 1.247  ; 1.759  ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 1.247  ; 1.759  ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 0.965  ; 1.616  ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; -0.344 ; -0.094 ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.314  ; 0.666  ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.625  ; 1.180  ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; -0.018 ; 0.317  ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; -0.076 ; 0.123  ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; -0.254 ; 0.039  ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 0.965  ; 1.616  ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; -0.153 ; 0.079  ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.202  ; 0.633  ; Rise       ; CLOCK_50        ;
+; KEY[*]    ; CLOCK_50   ; 0.782  ; 0.574  ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 0.782  ; 0.574  ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.198  ; 0.959  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.685  ; 0.341  ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.654  ; 0.412  ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.395  ; 0.017  ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; -0.031 ; -0.580 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 0.281  ; -0.138 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; 1.198  ; 0.959  ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 0.200  ; -0.239 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; 0.078  ; -0.382 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 0.272  ; -0.168 ; Rise       ; CLOCK_50        ;
 +-----------+------------+--------+--------+------------+-----------------+
-
-
-+------------------------------------------------------------------------+
-; Hold Times                                                             ;
-+-----------+------------+-------+--------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall   ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+--------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 0.957 ; 0.597  ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 0.957 ; 0.597  ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 1.313 ; 1.108  ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; 1.313 ; 1.108  ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.739 ; 0.475  ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.502 ; 0.104  ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 1.032 ; 0.781  ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 1.057 ; 0.889  ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; 1.236 ; 1.004  ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 0.203 ; -0.256 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 1.127 ; 0.939  ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.859 ; 0.556  ; Rise       ; CLOCK_50        ;
-+-----------+------------+-------+--------+------------+-----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
@@ -440,48 +440,48 @@ No paths to report.
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 11.828 ; 11.884 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 11.828 ; 11.231 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 10.781 ; 10.860 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 10.899 ; 10.781 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 10.250 ; 10.504 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 11.606 ; 11.884 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 10.253 ; 10.410 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 11.727 ; 11.841 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 9.865  ; 10.316 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 10.354 ; 10.720 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 6.930  ;        ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 8.026  ; 8.384  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 7.769  ; 7.999  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 7.520  ; 7.702  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 7.621  ; 7.860  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 7.913  ; 8.242  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 7.487  ; 7.654  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 8.026  ; 8.384  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 7.602  ; 7.805  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 7.348  ; 7.493  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 8.235  ; 8.629  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;        ; 6.820  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 8.070  ; 8.478  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 7.970  ; 8.173  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 7.888  ; 8.064  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 7.649  ; 7.928  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 8.067  ; 8.293  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 8.070  ; 8.478  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 7.790  ; 7.993  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 7.644  ; 7.821  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 7.736  ; 7.954  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 7.550  ; 7.665  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 8.189  ; 8.665  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 8.100  ; 8.493  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 7.660  ; 7.875  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 7.283  ; 7.401  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 7.644  ; 7.811  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 8.189  ; 8.665  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 7.521  ; 7.748  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 7.515  ; 7.712  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 7.337  ; 7.491  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 7.505  ; 7.708  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 11.377 ; 11.550 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 11.045 ; 10.551 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 10.761 ; 10.902 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 11.136 ; 11.505 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 11.064 ; 10.978 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 10.765 ; 11.086 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 10.157 ; 10.586 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 11.377 ; 11.550 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 10.187 ; 10.481 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 10.267 ; 10.595 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 6.965  ;        ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 7.905  ; 8.220  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 7.759  ; 7.889  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 7.344  ; 7.487  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 7.537  ; 7.728  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 7.799  ; 7.969  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 7.414  ; 7.560  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 7.843  ; 8.132  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 7.905  ; 8.220  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 7.641  ; 7.853  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 7.759  ; 7.877  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;        ; 6.848  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 7.949  ; 8.180  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 7.939  ; 8.180  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 7.949  ; 8.042  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 7.396  ; 7.546  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 7.768  ; 7.950  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 7.805  ; 8.009  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 7.682  ; 7.852  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 7.465  ; 7.624  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 7.636  ; 7.887  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 7.610  ; 7.836  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 7.983  ; 8.321  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 7.983  ; 8.321  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 7.968  ; 8.204  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 7.165  ; 7.235  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 7.748  ; 7.854  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 7.927  ; 8.235  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 7.321  ; 7.404  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 7.387  ; 7.456  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 7.169  ; 7.220  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 7.243  ; 7.292  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
 
 
@@ -490,48 +490,48 @@ No paths to report.
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 8.360 ; 8.413 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 9.161 ; 8.739 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 8.360 ; 8.413 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 8.714 ; 8.762 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 8.460 ; 8.811 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 8.896 ; 9.168 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 8.711 ; 9.009 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 9.370 ; 9.551 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 8.755 ; 9.199 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 9.150 ; 9.341 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 4.828 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 5.052 ; 5.185 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 5.438 ; 5.641 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 5.209 ; 5.375 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 5.281 ; 5.481 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 5.533 ; 5.793 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 5.167 ; 5.312 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 5.634 ; 5.920 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 5.279 ; 5.453 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 5.052 ; 5.185 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 5.830 ; 6.148 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;       ; 4.727 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 5.303 ; 5.487 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 5.614 ; 5.792 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 5.548 ; 5.707 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 5.303 ; 5.534 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 5.704 ; 5.893 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 5.650 ; 5.951 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 5.446 ; 5.618 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 5.327 ; 5.487 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 5.402 ; 5.587 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 5.248 ; 5.359 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 5.004 ; 5.117 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 5.699 ; 5.998 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 5.334 ; 5.518 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 5.004 ; 5.117 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 5.319 ; 5.465 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 5.798 ; 6.179 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 5.207 ; 5.401 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 5.205 ; 5.380 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 5.042 ; 5.183 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 5.191 ; 5.369 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 8.015 ; 8.217 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 8.797 ; 8.585 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 8.015 ; 8.217 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 9.103 ; 9.298 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 8.952 ; 9.233 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 8.603 ; 8.969 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 9.027 ; 9.401 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 9.196 ; 9.308 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 8.595 ; 8.860 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 8.669 ; 9.042 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 4.861 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 5.043 ; 5.168 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 5.429 ; 5.547 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 5.043 ; 5.168 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 5.214 ; 5.372 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 5.441 ; 5.578 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 5.107 ; 5.234 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 5.473 ; 5.694 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 5.514 ; 5.737 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 5.301 ; 5.464 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 5.423 ; 5.528 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;       ; 4.754 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 5.088 ; 5.214 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 5.569 ; 5.765 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 5.592 ; 5.669 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 5.088 ; 5.214 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 5.424 ; 5.575 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 5.455 ; 5.621 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 5.355 ; 5.504 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 5.151 ; 5.285 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 5.291 ; 5.480 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 5.295 ; 5.489 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 4.893 ; 4.954 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 5.589 ; 5.837 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 5.594 ; 5.778 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 4.893 ; 4.961 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 5.409 ; 5.496 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 5.554 ; 5.797 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 5.032 ; 5.107 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 5.087 ; 5.150 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 4.902 ; 4.954 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 4.974 ; 5.024 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 
 
@@ -546,8 +546,8 @@ No synchronizer chains to report.
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                      ; 13.527 ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.606 ; 0.000         ;
+; CLOCK_50                                                      ; 13.247 ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.859 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -556,8 +556,8 @@ No synchronizer chains to report.
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.142 ; 0.000         ;
 ; CLOCK_50                                                      ; 0.181 ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.181 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
@@ -580,28 +580,28 @@ No paths to report.
 +---------------------------------------------------------------+--------+---------------+
 ; GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
 ; CLOCK_50                                                      ; 8.793  ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.889 ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.878 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
-+------------------------------------------------------------------------+
-; Setup Times                                                            ;
-+-----------+------------+--------+-------+------------+-----------------+
-; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference ;
-+-----------+------------+--------+-------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 0.855  ; 1.599 ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 0.855  ; 1.599 ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 0.776  ; 1.651 ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; -0.085 ; 0.439 ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.284  ; 0.900 ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.566  ; 1.350 ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 0.138  ; 0.743 ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 0.023  ; 0.494 ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; -0.040 ; 0.527 ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 0.776  ; 1.651 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 0.031  ; 0.545 ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.330  ; 1.026 ; Rise       ; CLOCK_50        ;
-+-----------+------------+--------+-------+------------+-----------------+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 0.768 ; 1.530 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 0.768 ; 1.530 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.051 ; 2.079 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.441 ; 1.164 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.281 ; 0.847 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.656 ; 1.433 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; 1.051 ; 2.079 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 0.738 ; 1.568 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; 0.031 ; 0.620 ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 0.816 ; 1.690 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; 0.892 ; 1.771 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 0.796 ; 1.675 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
 
 
 +-------------------------------------------------------------------------+
@@ -609,18 +609,18 @@ No paths to report.
 +-----------+------------+--------+--------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+--------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 0.455  ; -0.156 ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 0.455  ; -0.156 ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 0.642  ; 0.161  ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; 0.642  ; 0.161  ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.284  ; -0.252 ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.051  ; -0.593 ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 0.448  ; -0.080 ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 0.499  ; 0.055  ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; 0.603  ; 0.091  ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; -0.131 ; -0.828 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 0.527  ; 0.055  ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.290  ; -0.289 ; Rise       ; CLOCK_50        ;
+; KEY[*]    ; CLOCK_50   ; 0.311  ; -0.164 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 0.311  ; -0.164 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 0.556  ; 0.037  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.167  ; -0.433 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.268  ; -0.257 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; -0.029 ; -0.662 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; -0.348 ; -1.141 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; -0.098 ; -0.766 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; 0.556  ; 0.037  ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; -0.160 ; -0.854 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; -0.242 ; -0.941 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; -0.134 ; -0.828 ; Rise       ; CLOCK_50        ;
 +-----------+------------+--------+--------+------------+-----------------+
 
 
@@ -629,48 +629,48 @@ No paths to report.
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 7.375 ; 7.369 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 7.375 ; 6.699 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 6.579 ; 6.630 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 6.690 ; 6.636 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 6.298 ; 6.574 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 7.107 ; 7.369 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 6.301 ; 6.450 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 7.117 ; 7.311 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 6.117 ; 6.613 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 6.403 ; 6.820 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 4.123 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 4.870 ; 5.274 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 4.670 ; 4.928 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 4.525 ; 4.742 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 4.558 ; 4.851 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 4.809 ; 5.166 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 4.479 ; 4.704 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 4.870 ; 5.274 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 4.564 ; 4.808 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 4.394 ; 4.573 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 4.998 ; 5.416 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;       ; 4.117 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 4.907 ; 5.326 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 4.785 ; 5.039 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 4.743 ; 5.000 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 4.596 ; 4.892 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 4.847 ; 5.144 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 4.907 ; 5.326 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 4.653 ; 4.919 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 4.580 ; 4.820 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 4.650 ; 4.897 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 4.500 ; 4.638 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 4.977 ; 5.438 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 4.958 ; 5.355 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 4.604 ; 4.884 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 4.356 ; 4.510 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 4.601 ; 4.815 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 4.977 ; 5.438 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 4.510 ; 4.754 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 4.495 ; 4.744 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 4.370 ; 4.576 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 4.503 ; 4.761 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 7.112 ; 7.156 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 6.947 ; 6.378 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 6.456 ; 6.630 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 6.835 ; 7.120 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 7.112 ; 7.072 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 6.630 ; 6.978 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 6.456 ; 6.841 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 6.929 ; 7.156 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 6.328 ; 6.669 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 6.372 ; 6.743 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 4.144 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 4.795 ; 5.137 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 4.636 ; 4.799 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 4.387 ; 4.559 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 4.482 ; 4.728 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 4.702 ; 4.896 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 4.406 ; 4.613 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 4.725 ; 5.070 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 4.795 ; 5.137 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 4.599 ; 4.843 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 4.644 ; 4.821 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;       ; 4.127 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 4.791 ; 5.070 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 4.791 ; 5.070 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 4.756 ; 4.937 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 4.417 ; 4.598 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 4.655 ; 4.901 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 4.679 ; 4.925 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 4.565 ; 4.796 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 4.458 ; 4.674 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 4.586 ; 4.857 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 4.576 ; 4.812 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 4.857 ; 5.199 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 4.857 ; 5.199 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 4.813 ; 5.111 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 4.260 ; 4.364 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 4.684 ; 4.834 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 4.791 ; 5.108 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 4.363 ; 4.488 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 4.381 ; 4.519 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 4.243 ; 4.359 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 4.294 ; 4.406 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 
 
@@ -679,48 +679,48 @@ No paths to report.
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 5.191 ; 5.265 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 5.861 ; 5.362 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 5.191 ; 5.265 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 5.329 ; 5.435 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 5.282 ; 5.620 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 5.593 ; 5.844 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 5.409 ; 5.653 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 5.825 ; 6.030 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 5.431 ; 5.909 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 5.783 ; 6.051 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 3.078 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 3.252 ; 3.419 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 3.507 ; 3.731 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 3.373 ; 3.571 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 3.387 ; 3.635 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 3.609 ; 3.888 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 3.320 ; 3.519 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 3.662 ; 3.990 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 3.408 ; 3.616 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 3.252 ; 3.419 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 3.789 ; 4.121 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;       ; 3.070 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 3.423 ; 3.647 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 3.611 ; 3.836 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 3.577 ; 3.811 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 3.423 ; 3.664 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 3.669 ; 3.926 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 3.680 ; 3.997 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 3.484 ; 3.716 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 3.427 ; 3.647 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 3.488 ; 3.702 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 3.360 ; 3.490 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 3.227 ; 3.375 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 3.742 ; 4.046 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 3.444 ; 3.686 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 3.227 ; 3.375 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 3.444 ; 3.629 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 3.774 ; 4.141 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 3.358 ; 3.570 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 3.345 ; 3.572 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 3.227 ; 3.422 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 3.347 ; 3.575 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 4.948 ; 5.158 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 5.501 ; 5.182 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 4.948 ; 5.158 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 5.602 ; 5.902 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 5.583 ; 5.879 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 5.315 ; 5.667 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 5.695 ; 6.058 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 5.726 ; 5.899 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 5.428 ; 5.740 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 5.412 ; 5.801 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 3.099 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 3.243 ; 3.390 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 3.476 ; 3.623 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 3.243 ; 3.390 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 3.327 ; 3.532 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 3.518 ; 3.678 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 3.258 ; 3.441 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 3.533 ; 3.801 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 3.589 ; 3.837 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 3.429 ; 3.620 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 3.482 ; 3.639 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;       ; 3.079 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 3.269 ; 3.420 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 3.603 ; 3.825 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 3.580 ; 3.741 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 3.269 ; 3.420 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 3.485 ; 3.691 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 3.508 ; 3.705 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 3.410 ; 3.619 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 3.306 ; 3.489 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 3.413 ; 3.626 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 3.423 ; 3.618 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 3.123 ; 3.235 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 3.648 ; 3.899 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 3.621 ; 3.860 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 3.135 ; 3.235 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 3.514 ; 3.640 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 3.597 ; 3.840 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 3.229 ; 3.341 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 3.240 ; 3.367 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 3.123 ; 3.238 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 3.173 ; 3.284 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 
 
@@ -735,8 +735,8 @@ No synchronizer chains to report.
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                      ; 14.194 ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.707 ; 0.000         ;
+; CLOCK_50                                                      ; 13.926 ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.918 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -745,8 +745,8 @@ No synchronizer chains to report.
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
-; CLOCK_50                                                      ; 0.165 ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.168 ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.129 ; 0.000         ;
+; CLOCK_50                                                      ; 0.171 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
@@ -768,8 +768,8 @@ No paths to report.
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
 ; GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
-; CLOCK_50                                                      ; 8.785  ; 0.000         ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.891 ; 0.000         ;
+; CLOCK_50                                                      ; 8.784  ; 0.000         ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.883 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -778,18 +778,18 @@ No paths to report.
 +-----------+------------+--------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+-------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 0.669  ; 1.441 ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 0.669  ; 1.441 ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 0.690  ; 1.476 ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; -0.110 ; 0.401 ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.244  ; 0.822 ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.507  ; 1.226 ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 0.111  ; 0.681 ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 0.005  ; 0.474 ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; -0.065 ; 0.476 ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 0.690  ; 1.476 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 0.012  ; 0.514 ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.265  ; 0.902 ; Rise       ; CLOCK_50        ;
+; KEY[*]    ; CLOCK_50   ; 0.630  ; 1.379 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 0.630  ; 1.379 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 0.932  ; 1.839 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.365  ; 1.030 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.224  ; 0.780 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.586  ; 1.296 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; 0.932  ; 1.839 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 0.643  ; 1.396 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; -0.009 ; 0.551 ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 0.729  ; 1.512 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; 0.783  ; 1.576 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 0.684  ; 1.472 ; Rise       ; CLOCK_50        ;
 +-----------+------------+--------+-------+------------+-----------------+
 
 
@@ -798,18 +798,18 @@ No paths to report.
 +-----------+------------+--------+--------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+--------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 0.489  ; -0.108 ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 0.489  ; -0.108 ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 0.654  ; 0.181  ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; 0.654  ; 0.181  ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.309  ; -0.207 ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.089  ; -0.519 ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 0.460  ; -0.049 ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 0.505  ; 0.058  ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; 0.615  ; 0.121  ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; -0.068 ; -0.724 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 0.534  ; 0.067  ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.337  ; -0.209 ; Rise       ; CLOCK_50        ;
+; KEY[*]    ; CLOCK_50   ; 0.361  ; -0.135 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 0.361  ; -0.135 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 0.581  ; 0.078  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.224  ; -0.345 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.310  ; -0.208 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.018  ; -0.578 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; -0.259 ; -0.983 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; -0.027 ; -0.656 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; 0.581  ; 0.078  ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; -0.097 ; -0.740 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; -0.157 ; -0.817 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; -0.047 ; -0.691 ; Rise       ; CLOCK_50        ;
 +-----------+------------+--------+--------+------------+-----------------+
 
 
@@ -818,48 +818,48 @@ No paths to report.
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 6.885 ; 6.886 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 6.885 ; 6.337 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 6.200 ; 6.245 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 6.272 ; 6.252 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 5.851 ; 6.103 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 6.670 ; 6.886 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 5.841 ; 6.011 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 6.660 ; 6.843 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 5.661 ; 6.100 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 5.932 ; 6.296 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 3.967 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 4.564 ; 4.883 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 4.425 ; 4.598 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 4.257 ; 4.419 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 4.277 ; 4.512 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 4.514 ; 4.782 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 4.209 ; 4.390 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 4.564 ; 4.883 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 4.294 ; 4.476 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 4.145 ; 4.280 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 4.667 ; 5.002 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;       ; 3.914 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 4.593 ; 4.922 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 4.473 ; 4.688 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 4.433 ; 4.652 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 4.315 ; 4.547 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 4.516 ; 4.780 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 4.593 ; 4.922 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 4.353 ; 4.581 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 4.297 ; 4.498 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 4.360 ; 4.561 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 4.264 ; 4.348 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 4.700 ; 5.037 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 4.663 ; 4.952 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 4.327 ; 4.547 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 4.107 ; 4.221 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 4.336 ; 4.493 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 4.700 ; 5.037 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 4.245 ; 4.435 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 4.229 ; 4.431 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 4.118 ; 4.285 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 4.240 ; 4.445 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 6.538 ; 6.698 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 6.491 ; 6.032 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 6.107 ; 6.240 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 6.410 ; 6.660 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 6.538 ; 6.544 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 6.243 ; 6.508 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 5.975 ; 6.316 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 6.482 ; 6.698 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 5.861 ; 6.167 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 5.899 ; 6.234 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 3.986 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 4.499 ; 4.762 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 4.379 ; 4.495 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 4.130 ; 4.260 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 4.204 ; 4.408 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 4.408 ; 4.567 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 4.148 ; 4.313 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 4.430 ; 4.701 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 4.499 ; 4.762 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 4.324 ; 4.508 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 4.345 ; 4.499 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;       ; 3.925 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 4.482 ; 4.707 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 4.482 ; 4.707 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 4.444 ; 4.608 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 4.153 ; 4.294 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 4.357 ; 4.565 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 4.379 ; 4.582 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 4.280 ; 4.478 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 4.189 ; 4.366 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 4.312 ; 4.522 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 4.323 ; 4.488 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 4.574 ; 4.822 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 4.574 ; 4.822 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 4.510 ; 4.757 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 4.018 ; 4.096 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 4.393 ; 4.515 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 4.529 ; 4.754 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 4.111 ; 4.205 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 4.128 ; 4.239 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 3.998 ; 4.095 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 4.053 ; 4.147 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 
 
@@ -868,48 +868,48 @@ No paths to report.
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 4.871 ; 4.926 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 5.447 ; 5.037 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 4.871 ; 4.926 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 4.998 ; 5.098 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 4.911 ; 5.228 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 5.226 ; 5.438 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 5.015 ; 5.266 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 5.412 ; 5.614 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 5.027 ; 5.460 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 5.346 ; 5.585 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 2.948 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 3.050 ; 3.174 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 3.309 ; 3.462 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 3.153 ; 3.301 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 3.159 ; 3.364 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 3.366 ; 3.583 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 3.099 ; 3.262 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 3.410 ; 3.677 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 3.185 ; 3.345 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 3.050 ; 3.174 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 3.513 ; 3.793 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;       ; 2.890 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 3.192 ; 3.378 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 3.352 ; 3.545 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 3.317 ; 3.519 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 3.192 ; 3.390 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 3.389 ; 3.624 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 3.425 ; 3.676 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 3.235 ; 3.439 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 3.192 ; 3.378 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 3.247 ; 3.424 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 3.170 ; 3.250 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 3.022 ; 3.130 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 3.502 ; 3.721 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 3.215 ; 3.411 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 3.022 ; 3.130 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 3.226 ; 3.365 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 3.549 ; 3.821 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 3.141 ; 3.307 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 3.127 ; 3.311 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 3.023 ; 3.179 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 3.132 ; 3.317 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 4.659 ; 4.827 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 5.150 ; 4.888 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 4.659 ; 4.827 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 5.244 ; 5.502 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 5.189 ; 5.457 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 4.998 ; 5.290 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 5.280 ; 5.602 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 5.326 ; 5.496 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 5.026 ; 5.307 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 5.024 ; 5.378 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 2.966 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 3.033 ; 3.147 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 3.268 ; 3.370 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 3.033 ; 3.147 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 3.097 ; 3.276 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 3.275 ; 3.406 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 3.049 ; 3.198 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 3.291 ; 3.512 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 3.348 ; 3.543 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 3.204 ; 3.352 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 3.233 ; 3.372 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;       ; 2.901 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 3.053 ; 3.175 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 3.347 ; 3.538 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 3.319 ; 3.466 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 3.053 ; 3.175 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 3.237 ; 3.420 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 3.258 ; 3.431 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 3.174 ; 3.354 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 3.085 ; 3.242 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 3.189 ; 3.353 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 3.217 ; 3.358 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 2.922 ; 3.013 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 3.418 ; 3.600 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 3.370 ; 3.576 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 2.937 ; 3.013 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 3.273 ; 3.376 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 3.388 ; 3.564 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 3.022 ; 3.108 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 3.034 ; 3.139 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 2.922 ; 3.017 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 2.974 ; 3.067 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 
 
@@ -924,10 +924,10 @@ No synchronizer chains to report.
 +----------------------------------------------------------------+--------+-------+----------+---------+---------------------+
 ; Clock                                                          ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +----------------------------------------------------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack                                               ; 9.563  ; 0.165 ; N/A      ; N/A     ; 1.666               ;
-;  CLOCK_50                                                      ; 9.563  ; 0.165 ; N/A      ; N/A     ; 8.785               ;
+; Worst-case Slack                                               ; 8.966  ; 0.129 ; N/A      ; N/A     ; 1.666               ;
+;  CLOCK_50                                                      ; 8.966  ; 0.171 ; N/A      ; N/A     ; 8.784               ;
 ;  GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 1.666               ;
-;  GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 16.015 ; 0.168 ; N/A      ; N/A     ; 18.754              ;
+;  GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 16.279 ; 0.129 ; N/A      ; N/A     ; 18.751              ;
 ; Design-wide TNS                                                ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
 ;  CLOCK_50                                                      ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
 ;  GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
@@ -935,44 +935,44 @@ No synchronizer chains to report.
 +----------------------------------------------------------------+--------+-------+----------+---------+---------------------+
 
 
-+------------------------------------------------------------------------+
-; Setup Times                                                            ;
-+-----------+------------+--------+-------+------------+-----------------+
-; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference ;
-+-----------+------------+--------+-------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 1.568  ; 1.961 ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 1.568  ; 1.961 ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 1.163  ; 1.817 ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; -0.085 ; 0.439 ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.436  ; 0.900 ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.795  ; 1.366 ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 0.138  ; 0.743 ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 0.046  ; 0.494 ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; -0.040 ; 0.527 ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 1.163  ; 1.817 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 0.031  ; 0.545 ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.373  ; 1.026 ; Rise       ; CLOCK_50        ;
-+-----------+------------+--------+-------+------------+-----------------+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 1.399 ; 1.766 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 1.399 ; 1.766 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.475 ; 2.316 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.586 ; 1.164 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.517 ; 0.847 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.918 ; 1.466 ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; 1.475 ; 2.316 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 1.049 ; 1.666 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; 0.031 ; 0.620 ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 1.168 ; 1.823 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; 1.286 ; 1.955 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 1.105 ; 1.765 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
 
 
-+------------------------------------------------------------------------+
-; Hold Times                                                             ;
-+-----------+------------+-------+--------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall   ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+--------+------------+-----------------+
-; KEY[*]    ; CLOCK_50   ; 0.957 ; 0.597  ; Rise       ; CLOCK_50        ;
-;  KEY[0]   ; CLOCK_50   ; 0.957 ; 0.597  ; Rise       ; CLOCK_50        ;
-; SW[*]     ; CLOCK_50   ; 1.313 ; 1.108  ; Rise       ; CLOCK_50        ;
-;  SW[0]    ; CLOCK_50   ; 1.313 ; 1.108  ; Rise       ; CLOCK_50        ;
-;  SW[1]    ; CLOCK_50   ; 0.739 ; 0.475  ; Rise       ; CLOCK_50        ;
-;  SW[2]    ; CLOCK_50   ; 0.502 ; 0.104  ; Rise       ; CLOCK_50        ;
-;  SW[3]    ; CLOCK_50   ; 1.032 ; 0.781  ; Rise       ; CLOCK_50        ;
-;  SW[4]    ; CLOCK_50   ; 1.057 ; 0.889  ; Rise       ; CLOCK_50        ;
-;  SW[5]    ; CLOCK_50   ; 1.236 ; 1.004  ; Rise       ; CLOCK_50        ;
-;  SW[6]    ; CLOCK_50   ; 0.203 ; -0.256 ; Rise       ; CLOCK_50        ;
-;  SW[7]    ; CLOCK_50   ; 1.127 ; 0.939  ; Rise       ; CLOCK_50        ;
-;  SW[8]    ; CLOCK_50   ; 0.859 ; 0.556  ; Rise       ; CLOCK_50        ;
-+-----------+------------+-------+--------+------------+-----------------+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 0.782  ; 0.574  ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 0.782  ; 0.574  ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.198  ; 0.959  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.685  ; 0.341  ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.654  ; 0.412  ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.395  ; 0.017  ; Rise       ; CLOCK_50        ;
+;  SW[3]    ; CLOCK_50   ; -0.031 ; -0.580 ; Rise       ; CLOCK_50        ;
+;  SW[4]    ; CLOCK_50   ; 0.281  ; -0.138 ; Rise       ; CLOCK_50        ;
+;  SW[5]    ; CLOCK_50   ; 1.198  ; 0.959  ; Rise       ; CLOCK_50        ;
+;  SW[6]    ; CLOCK_50   ; 0.200  ; -0.239 ; Rise       ; CLOCK_50        ;
+;  SW[7]    ; CLOCK_50   ; 0.078  ; -0.382 ; Rise       ; CLOCK_50        ;
+;  SW[8]    ; CLOCK_50   ; 0.272  ; -0.168 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
@@ -980,48 +980,48 @@ No synchronizer chains to report.
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 12.070 ; 12.146 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 12.070 ; 11.455 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 11.028 ; 11.092 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 11.182 ; 11.024 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 10.504 ; 10.735 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 11.886 ; 12.146 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 10.525 ; 10.606 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 12.016 ; 12.095 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 10.175 ; 10.581 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 10.652 ; 10.972 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 7.114  ;        ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 8.337  ; 8.696  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 8.079  ; 8.288  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 7.803  ; 7.977  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 7.922  ; 8.158  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 8.218  ; 8.554  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 7.777  ; 7.932  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 8.337  ; 8.696  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 7.892  ; 8.095  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 7.622  ; 7.764  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 8.591  ; 8.963  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;        ; 6.993  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 8.419  ; 8.804  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 8.303  ; 8.471  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 8.212  ; 8.361  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 7.969  ; 8.231  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 8.419  ; 8.600  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 8.404  ; 8.804  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 8.114  ; 8.293  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 7.941  ; 8.102  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 8.055  ; 8.240  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 7.842  ; 7.921  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 8.520  ; 8.974  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 8.436  ; 8.808  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 7.947  ; 8.170  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 7.558  ; 7.664  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 7.927  ; 8.094  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 8.520  ; 8.974  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 7.815  ; 8.024  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 7.799  ; 7.992  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 7.608  ; 7.758  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 7.779  ; 7.985  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 11.713 ; 11.808 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 11.305 ; 10.802 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 10.985 ; 11.114 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 11.441 ; 11.756 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 11.394 ; 11.256 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 11.054 ; 11.402 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 10.468 ; 10.869 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 11.713 ; 11.808 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 10.467 ; 10.722 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 10.563 ; 10.831 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 7.149  ;        ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 8.208  ; 8.528  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 8.076  ; 8.153  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 7.626  ; 7.751  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 7.835  ; 8.011  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 8.095  ; 8.235  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 7.679  ; 7.828  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 8.141  ; 8.438  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 8.208  ; 8.528  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 7.934  ; 8.140  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 8.086  ; 8.157  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;        ; 7.010  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 8.268  ; 8.488  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 8.268  ; 8.488  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 8.260  ; 8.319  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 7.693  ; 7.819  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 8.077  ; 8.242  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 8.134  ; 8.306  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 7.985  ; 8.127  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 7.753  ; 7.901  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 7.923  ; 8.161  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 7.931  ; 8.119  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 8.314  ; 8.619  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 8.314  ; 8.619  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 8.261  ; 8.490  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 7.435  ; 7.485  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 8.050  ; 8.127  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 8.254  ; 8.528  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 7.603  ; 7.671  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 7.653  ; 7.711  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 7.431  ; 7.470  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 7.503  ; 7.537  ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+--------+--------+------------+---------------------------------------------------------------+
 
 
@@ -1030,48 +1030,48 @@ No synchronizer chains to report.
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                               ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
-; LEDR[*]     ; CLOCK_50   ; 4.871 ; 4.926 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[0]    ; CLOCK_50   ; 5.447 ; 5.037 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[1]    ; CLOCK_50   ; 4.871 ; 4.926 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[2]    ; CLOCK_50   ; 4.998 ; 5.098 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[3]    ; CLOCK_50   ; 4.911 ; 5.228 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[4]    ; CLOCK_50   ; 5.226 ; 5.438 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[5]    ; CLOCK_50   ; 5.015 ; 5.266 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[6]    ; CLOCK_50   ; 5.412 ; 5.614 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[7]    ; CLOCK_50   ; 5.027 ; 5.460 ; Rise       ; CLOCK_50                                                      ;
-;  LEDR[8]    ; CLOCK_50   ; 5.346 ; 5.585 ; Rise       ; CLOCK_50                                                      ;
-; VGA_CLK     ; CLOCK_50   ; 2.948 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_B[*]    ; CLOCK_50   ; 3.050 ; 3.174 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[0]   ; CLOCK_50   ; 3.309 ; 3.462 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[1]   ; CLOCK_50   ; 3.153 ; 3.301 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[2]   ; CLOCK_50   ; 3.159 ; 3.364 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[3]   ; CLOCK_50   ; 3.366 ; 3.583 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[4]   ; CLOCK_50   ; 3.099 ; 3.262 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[5]   ; CLOCK_50   ; 3.410 ; 3.677 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[6]   ; CLOCK_50   ; 3.185 ; 3.345 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_B[7]   ; CLOCK_50   ; 3.050 ; 3.174 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_BLANK_N ; CLOCK_50   ; 3.513 ; 3.793 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_CLK     ; CLOCK_50   ;       ; 2.890 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_G[*]    ; CLOCK_50   ; 3.192 ; 3.378 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[0]   ; CLOCK_50   ; 3.352 ; 3.545 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[1]   ; CLOCK_50   ; 3.317 ; 3.519 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[2]   ; CLOCK_50   ; 3.192 ; 3.390 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[3]   ; CLOCK_50   ; 3.389 ; 3.624 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[4]   ; CLOCK_50   ; 3.425 ; 3.676 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[5]   ; CLOCK_50   ; 3.235 ; 3.439 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[6]   ; CLOCK_50   ; 3.192 ; 3.378 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_G[7]   ; CLOCK_50   ; 3.247 ; 3.424 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_HS      ; CLOCK_50   ; 3.170 ; 3.250 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_R[*]    ; CLOCK_50   ; 3.022 ; 3.130 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[0]   ; CLOCK_50   ; 3.502 ; 3.721 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[1]   ; CLOCK_50   ; 3.215 ; 3.411 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[2]   ; CLOCK_50   ; 3.022 ; 3.130 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[3]   ; CLOCK_50   ; 3.226 ; 3.365 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[4]   ; CLOCK_50   ; 3.549 ; 3.821 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[5]   ; CLOCK_50   ; 3.141 ; 3.307 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[6]   ; CLOCK_50   ; 3.127 ; 3.311 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-;  VGA_R[7]   ; CLOCK_50   ; 3.023 ; 3.179 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
-; VGA_VS      ; CLOCK_50   ; 3.132 ; 3.317 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]     ; CLOCK_50   ; 4.659 ; 4.827 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[0]    ; CLOCK_50   ; 5.150 ; 4.888 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[1]    ; CLOCK_50   ; 4.659 ; 4.827 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[2]    ; CLOCK_50   ; 5.244 ; 5.502 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[3]    ; CLOCK_50   ; 5.189 ; 5.457 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[4]    ; CLOCK_50   ; 4.998 ; 5.290 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[5]    ; CLOCK_50   ; 5.280 ; 5.602 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[6]    ; CLOCK_50   ; 5.326 ; 5.496 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[7]    ; CLOCK_50   ; 5.026 ; 5.307 ; Rise       ; CLOCK_50                                                      ;
+;  LEDR[8]    ; CLOCK_50   ; 5.024 ; 5.378 ; Rise       ; CLOCK_50                                                      ;
+; VGA_CLK     ; CLOCK_50   ; 2.966 ;       ; Rise       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_B[*]    ; CLOCK_50   ; 3.033 ; 3.147 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[0]   ; CLOCK_50   ; 3.268 ; 3.370 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[1]   ; CLOCK_50   ; 3.033 ; 3.147 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[2]   ; CLOCK_50   ; 3.097 ; 3.276 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[3]   ; CLOCK_50   ; 3.275 ; 3.406 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[4]   ; CLOCK_50   ; 3.049 ; 3.198 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[5]   ; CLOCK_50   ; 3.291 ; 3.512 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[6]   ; CLOCK_50   ; 3.348 ; 3.543 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_B[7]   ; CLOCK_50   ; 3.204 ; 3.352 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_BLANK_N ; CLOCK_50   ; 3.233 ; 3.372 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_CLK     ; CLOCK_50   ;       ; 2.901 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_G[*]    ; CLOCK_50   ; 3.053 ; 3.175 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[0]   ; CLOCK_50   ; 3.347 ; 3.538 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[1]   ; CLOCK_50   ; 3.319 ; 3.466 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[2]   ; CLOCK_50   ; 3.053 ; 3.175 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[3]   ; CLOCK_50   ; 3.237 ; 3.420 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[4]   ; CLOCK_50   ; 3.258 ; 3.431 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[5]   ; CLOCK_50   ; 3.174 ; 3.354 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[6]   ; CLOCK_50   ; 3.085 ; 3.242 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_G[7]   ; CLOCK_50   ; 3.189 ; 3.353 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_HS      ; CLOCK_50   ; 3.217 ; 3.358 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_R[*]    ; CLOCK_50   ; 2.922 ; 3.013 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[0]   ; CLOCK_50   ; 3.418 ; 3.600 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[1]   ; CLOCK_50   ; 3.370 ; 3.576 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[2]   ; CLOCK_50   ; 2.937 ; 3.013 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[3]   ; CLOCK_50   ; 3.273 ; 3.376 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[4]   ; CLOCK_50   ; 3.388 ; 3.564 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[5]   ; CLOCK_50   ; 3.022 ; 3.108 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[6]   ; CLOCK_50   ; 3.034 ; 3.139 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  VGA_R[7]   ; CLOCK_50   ; 2.922 ; 3.017 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; VGA_VS      ; CLOCK_50   ; 2.974 ; 3.067 ; Fall       ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
 +-------------+------------+-------+-------+------------+---------------------------------------------------------------+
 
 
@@ -1134,14 +1134,14 @@ No synchronizer chains to report.
 ; CLOCK_50 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; KEY[0]   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[0]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[5]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[6]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[7]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[8]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[1]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[2]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[3]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[4]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[5]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[6]    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 +----------+--------------+-----------------+-----------------+
 
 
@@ -1338,10 +1338,10 @@ No synchronizer chains to report.
 +---------------------------------------------------------------+---------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                    ; To Clock                                                      ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------------------------+---------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                                      ; CLOCK_50                                                      ; 121962   ; 0        ; 0        ; 0        ;
+; CLOCK_50                                                      ; CLOCK_50                                                      ; 131964   ; 0        ; 0        ; 0        ;
 ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; CLOCK_50                                                      ; 8        ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                                      ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8        ; 0        ; 0        ; 0        ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 870      ; 0        ; 51       ; 0        ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 867      ; 0        ; 51       ; 0        ;
 +---------------------------------------------------------------+---------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1351,10 +1351,10 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +---------------------------------------------------------------+---------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                    ; To Clock                                                      ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------------------------+---------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                                      ; CLOCK_50                                                      ; 121962   ; 0        ; 0        ; 0        ;
+; CLOCK_50                                                      ; CLOCK_50                                                      ; 131964   ; 0        ; 0        ; 0        ;
 ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; CLOCK_50                                                      ; 8        ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                                      ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8        ; 0        ; 0        ; 0        ;
-; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 870      ; 0        ; 51       ; 0        ;
+; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 867      ; 0        ; 51       ; 0        ;
 +---------------------------------------------------------------+---------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1391,7 +1391,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Sun Sep 25 16:30:44 2016
+    Info: Processing started: Mon Sep 26 17:59:04 2016
 Info: Command: quartus_sta lab3 -c lab3_top
 Info: qsta_default_script.tcl version: #11
 Warning (20013): Ignored assignments for entity "DE1_SoC" -- entity does not exist in design
@@ -1989,24 +1989,24 @@ Info (332143): No user constrained clock uncertainty found in the design. Callin
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
-Info (332146): Worst-case setup slack is 9.563
+Info (332146): Worst-case setup slack is 8.966
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.563               0.000 CLOCK_50 
-    Info (332119):    16.096               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.313
+    Info (332119):     8.966               0.000 CLOCK_50 
+    Info (332119):    16.369               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.242
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.313               0.000 CLOCK_50 
-    Info (332119):     0.320               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.242               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.365               0.000 CLOCK_50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is 1.666
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.666               0.000 GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.865               0.000 CLOCK_50 
-    Info (332119):    18.778               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.867               0.000 CLOCK_50 
+    Info (332119):    18.760               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
@@ -2015,16 +2015,16 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
     Info (332098): Cell: GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
     Info (332098): Cell: GFX|FB|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 9.878
+Info (332146): Worst-case setup slack is 9.267
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.878               0.000 CLOCK_50 
-    Info (332119):    16.015               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.288
+    Info (332119):     9.267               0.000 CLOCK_50 
+    Info (332119):    16.279               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.223
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.288               0.000 CLOCK_50 
-    Info (332119):     0.297               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.223               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.339               0.000 CLOCK_50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is 1.666
@@ -2032,7 +2032,7 @@ Info (332146): Worst-case minimum pulse width slack is 1.666
     Info (332119): ========= =================== =====================
     Info (332119):     1.666               0.000 GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     8.822               0.000 CLOCK_50 
-    Info (332119):    18.754               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    18.751               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
@@ -2041,16 +2041,16 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
     Info (332098): Cell: GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
     Info (332098): Cell: GFX|FB|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 13.527
+Info (332146): Worst-case setup slack is 13.247
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    13.527               0.000 CLOCK_50 
-    Info (332119):    17.606               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.181
+    Info (332119):    13.247               0.000 CLOCK_50 
+    Info (332119):    17.859               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.142
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
+    Info (332119):     0.142               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
     Info (332119):     0.181               0.000 CLOCK_50 
-    Info (332119):     0.181               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is 1.666
@@ -2058,37 +2058,37 @@ Info (332146): Worst-case minimum pulse width slack is 1.666
     Info (332119): ========= =================== =====================
     Info (332119):     1.666               0.000 GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     8.793               0.000 CLOCK_50 
-    Info (332119):    18.889               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    18.878               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
     Info (332098): Cell: GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
     Info (332098): Cell: GFX|FB|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 14.194
+Info (332146): Worst-case setup slack is 13.926
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    14.194               0.000 CLOCK_50 
-    Info (332119):    17.707               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.165
+    Info (332119):    13.926               0.000 CLOCK_50 
+    Info (332119):    17.918               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.129
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.165               0.000 CLOCK_50 
-    Info (332119):     0.168               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.129               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.171               0.000 CLOCK_50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is 1.666
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.666               0.000 GFX|FB|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.785               0.000 CLOCK_50 
-    Info (332119):    18.891               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.784               0.000 CLOCK_50 
+    Info (332119):    18.883               0.000 GFX|FB|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 573 warnings
-    Info: Peak virtual memory: 1138 megabytes
-    Info: Processing ended: Sun Sep 25 16:30:57 2016
-    Info: Elapsed time: 00:00:13
+    Info: Peak virtual memory: 1140 megabytes
+    Info: Processing ended: Mon Sep 26 17:59:15 2016
+    Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:12
 
 
