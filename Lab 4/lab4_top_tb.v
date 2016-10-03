@@ -39,6 +39,11 @@ initial begin
     #2;
     sim_key[1] = 1'b1;
     #2;
+    sim_key[1] = 1'b0;
+    #1;
+
+    // stop sim
+    $stop;
 end
 endmodule
 
