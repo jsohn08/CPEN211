@@ -18,9 +18,9 @@ initial begin
 
     // generate infinite clock
     forever begin
-        sim_key = 4'b1110;
+        sim_key[0] = 0;
         #5;
-        sim_key = 4'b1111;
+        sim_key[0] = 1;
         #5;
     end
 end
@@ -33,18 +33,18 @@ initial begin
     // go in th other direction for 8 cycles
     sim_switch = 9'b1;
     #80;
+    sim_switch = 9'b0;
 
-    // reset
-    sim_key[1] = 1'b1;
+    // reset button test (forward)
+    sim_key[1] = 0;
     #30;
-    sim_key[1] = 1'b0;
+    
+    // reset button test (backward)
+    sim_switch = 9'b1;
+    #30;
+    sim_key[1] = 1;
 
-    // reset out of phase
-    #3;
-    sim_key[1] = 1'b1;
-    #5;
-    sim_key[1] = 1'b0;
-    #2;
+    // reset switch out of sync
 
     // stop sim
     $stop;
