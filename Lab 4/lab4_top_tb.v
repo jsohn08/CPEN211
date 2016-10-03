@@ -45,7 +45,11 @@ initial begin
     sim_key[1] = 1;
 
     // reset switch out of sync
-
+    #2;
+    sim_key[1] = 0;
+    #2;
+    sim_key[1] = 1;
+    #6;
     // stop sim
     $stop;
 end
