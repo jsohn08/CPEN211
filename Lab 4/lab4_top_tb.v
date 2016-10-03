@@ -48,6 +48,7 @@ initial begin
     #2;
     sim_key[1] = 0;
     #2;
+
     sim_key[1] = 1;
     #6;
     // stop sim

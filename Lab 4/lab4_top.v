@@ -1,10 +1,10 @@
 module lab4_top(SW,KEY,HEX0);
 input [9:0] SW;
 input [3:0] KEY;
-output reg [7:0] HEX0;
+output reg [6:0] HEX0;
 
-// start from first digit (one hot code)
-reg [4:0] state = 5'b00001;
+// one hot code for current state machine
+reg [4:0] state;
 
 // KEY[0] is CLK (reversed)
 `define CLK KEY[0]
@@ -23,15 +23,21 @@ reg [4:0] state = 5'b00001;
 `define STATE_5 5'b10000
 
 // numbers
-`define ONE   8'b0000110
-`define TWO   8'b1011011
-`define THREE 8'b1001111
-`define FOUR  8'b1100110
-`define FIVE  8'b1101101
-`define SIX   8'b1111101
-`define SEVEN 8'b0000111
-`define EIGHT 8'b1111111
-`define NINE  8'b1101111
+`define ONE   7'b1111001
+`define TWO   7'b0100100
+`define THREE 7'b0110000
+`define FOUR  7'b0011001
+`define FIVE  7'b0010010
+`define SIX   7'b0000010
+`define SEVEN 7'b1111000
+`define EIGHT 7'b0000000
+`define NINE  7'b0010000
+
+// begin: exceute once
+initial begin
+    state = `STATE_1;
+    HEX0 = `THREE;
+end
 
 // continue to the next state
 always @(posedge `CLK) begin
@@ -44,13 +50,13 @@ always @(posedge `CLK) begin
             if (state[4] == 1) begin
                 state = `STATE_1;
             end else begin
-                state = state >> 1;
+                state = state << 1;
             end
         end else begin
             if (state[0] == 1) begin
                 state = `STATE_5;
             end else begin
-                state = state << 1;
+                state = state >> 1;
             end
         end
     end
@@ -63,9 +69,7 @@ always @(posedge `CLK) begin
         `STATE_3: HEX0 = `FOUR;
         `STATE_4: HEX0 = `FIVE;
         `STATE_5: HEX0 = `EIGHT;
-        default: HEX0 = `THREE;
+        dfault: HEX0 = `THREE;
     endcase
-
 end
-
 endmodule
