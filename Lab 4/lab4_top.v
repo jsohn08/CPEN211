@@ -1,7 +1,7 @@
 module lab4_top(SW,KEY,HEX0);
 input [9:0] SW;
 input [3:0] KEY;
-output [6:0] HEX0;
+output reg [6:0] HEX0;
 
 // start from first digit (one hot code)
 reg [4:0] state = 5'b00001;
