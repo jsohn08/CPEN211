@@ -7,10 +7,10 @@ output reg [6:0] HEX0;
 reg [4:0] state = 5'b00001;
 
 // KEY[0] is CLK (reversed)
-`define CLK ~KEY[0]
+`define CLK KEY[0]
 
 // KEY[1] is reset button (reversed)
-`define RST ~KEY[1]
+`define RST KEY[1]
 
 // SW[0] is direction (0 is forward, 1 is backward)
 `define FORWARD SW[0]
@@ -45,13 +45,13 @@ always @(posedge `CLK) begin
         if (|`STATE_5) begin
             state = `STATE_1;
         end else begin
-            state = state << 1;
+            state = state >> 1;
         end
     end else begin
         if (|`STATE_1) begin
             state = `STATE_5;
         end else begin
-            state = state >> 1;
+            state = state << 1;
         end
     end
 end
@@ -64,6 +64,7 @@ always @(*) begin
         `STATE_3: HEX0 = `FOUR;
         `STATE_4: HEX0 = `FIVE;
         `STATE_5: HEX0 = `EIGHT;
+        default: HEX0 = `THREE;
     endcase
 end
 endmodule

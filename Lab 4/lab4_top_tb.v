@@ -12,10 +12,14 @@ lab4_top dut(sim_switch, sim_key, sim_hex);
 
 // start simulating clock
 initial begin
-    // generate infinite clock
+    // setup initial condition
     sim_key = 4'b1111;
+    sim_switch = 9'b0;
+
+    // generate infinite clock
     forever begin
         sim_key = 4'b1110;
+        #5;
         sim_key = 4'b1111;
         #5;
     end
@@ -24,23 +28,23 @@ end
 // simulating the module
 initial begin
     // continue as normal for the first 7 cycles
-    #35;
+    #70
 
     // go in th other direction for 8 cycles
     sim_switch = 9'b1;
-    #40;
+    #80;
 
     // reset
     sim_key[1] = 1'b1;
-    #15;
+    #30;
     sim_key[1] = 1'b0;
 
     // reset out of phase
-    #2;
+    #3;
     sim_key[1] = 1'b1;
-    #2;
+    #5;
     sim_key[1] = 1'b0;
-    #1;
+    #2;
 
     // stop sim
     $stop;

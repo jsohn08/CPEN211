@@ -9,42 +9,62 @@ z2
 cModel Technology
 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3
 vlab4_top
-!s110 1475456432
+Z0 !s110 1475459558
 !i10b 1
-!s100 MDUb6[dUzhLCF<M;k7UAa1
-I86`JH0aU3kHh8OnMi7A2_2
-Z0 V`JN@9S9cnhjKRR_L]QIcM3
-Z1 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4
-w1475456410
-8F:\OneDrive\Documents\2017 UBC\CPEN 211\Projects\Lab 4\lab4_top.v
-FF:\OneDrive\Documents\2017 UBC\CPEN 211\Projects\Lab 4\lab4_top.v
+!s100 WVDd;cibjoeKBg5;]>WVX3
+IfD0`E;T@7dbMAGnT[jPS91
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+Z2 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4
+Z3 w1475450133
+Z4 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_winnie.v
+Z5 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_winnie.v
 L0 1
-Z2 OV;L;10.3d;59
+Z6 OV;L;10.3d;59
 r1
 !s85 0
 31
-!s108 1475456431.932000
-!s107 F:\OneDrive\Documents\2017 UBC\CPEN 211\Projects\Lab 4\lab4_top.v|
-!s90 -reportprogress|300|-work|work|-stats=none|F:\OneDrive\Documents\2017 UBC\CPEN 211\Projects\Lab 4\lab4_top.v|
+Z7 !s108 1475459558.066000
+Z8 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_winnie.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_winnie.v|
 !i113 1
-Z3 o-work work
+Z10 o-work work
 vlab4_top_tb
-!s110 1475456431
+!s110 1475459557
 !i10b 1
-!s100 kIhDRFQbW6`=6XXzX<^ei3
-IF_RRb4a@=1EJ7]OOJJ_be2
-R0
+!s100 4E^BOenbT1@DejT]67oTd0
+IWR5lMojV=CiAn^O[KffOM3
 R1
-w1475455365
+R2
+w1475457376
 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v
 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v
 L0 3
-R2
+R6
 r1
 !s85 0
 31
-!s108 1475456431.880000
+!s108 1475459557.832000
 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v|
 !i113 1
+R10
+vtestbench
+R0
+!i10b 1
+!s100 TOBLP1aF9f0a>:Z>?@1`40
+I3lf3NMaUikScj@?KD25542
+R1
+R2
 R3
+R4
+R5
+L0 67
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
