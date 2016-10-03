@@ -1,7 +1,7 @@
 module lab4_top(SW,KEY,HEX0);
 input [9:0] SW;
 input [3:0] KEY;
-output reg [6:0] HEX0;
+output reg [7:0] HEX0;
 
 // start from first digit (one hot code)
 reg [4:0] state = 5'b00001;
@@ -23,35 +23,35 @@ reg [4:0] state = 5'b00001;
 `define STATE_5 5'b10000
 
 // numbers
-`define ONE   7'b0000110
-`define TWO   7'b1011011
-`define THREE 7'b1001111
-`define FOUR  7'b1100110
-`define FIVE  7'b1101101
-`define SIX   7'b1111101
-`define SEVEN 7'b0000111
-`define EIGHT 7'b1111111
-`define NINE  7'b1101111
+`define ONE   8'b0000110
+`define TWO   8'b1011011
+`define THREE 8'b1001111
+`define FOUR  8'b1100110
+`define FIVE  8'b1101101
+`define SIX   8'b1111101
+`define SEVEN 8'b0000111
+`define EIGHT 8'b1111111
+`define NINE  8'b1101111
 
 // continue to the next state
 always @(posedge `CLK) begin
     // reset when rising clock of CLK is pressed
-    if (`RST) begin
+    if (`RST == 1) begin
         state = 5'b00001;
-    end
-
-    // shift forward
-    if (`FORWARD) begin
-        if (|`STATE_5) begin
-            state = `STATE_1;
-        end else begin
-            state = state >> 1;
-        end
     end else begin
-        if (|`STATE_1) begin
-            state = `STATE_5;
+        // shift forward
+        if (`FORWARD == 1) begin
+            if (state[4] == 1) begin
+                state = `STATE_1;
+            end else begin
+                state = state >> 1;
+            end
         end else begin
-            state = state << 1;
+            if (state[0] == 1) begin
+                state = `STATE_5;
+            end else begin
+                state = state << 1;
+            end
         end
     end
 end
