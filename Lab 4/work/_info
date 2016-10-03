@@ -9,7 +9,7 @@ z2
 cModel Technology
 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 3/lab3
 vlab4_top
-Z0 !s110 1475472984
+Z0 !s110 1475527000
 !i10b 1
 !s100 3of1SbZXiD@EGnf?ZjCo:2
 IIT?_0:K^YMUZFEj9[QmV`3
@@ -23,19 +23,19 @@ Z6 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z7 !s108 1475472984.192000
+Z7 !s108 1475527000.160000
 Z8 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_winnie.v|
 Z9 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_winnie.v|
 !i113 1
 Z10 o-work work
 vlab4_top_tb
-R0
+!s110 1475526999
 !i10b 1
-!s100 =DQMPA5cK`g<GS:M]BJm83
-IFcA215j1Mlh@H:oc[S2XU2
+!s100 BcPUTK4`]^J]?fk0g_IhZ3
+I^4GD]`V[j0BCR63oeJLh53
 R1
 R2
-w1475460769
+w1475523594
 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v
 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v
 L0 3
@@ -43,7 +43,7 @@ R6
 r1
 !s85 0
 31
-!s108 1475472984.026000
+!s108 1475526999.907000
 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4/lab4_top_tb.v|
 !i113 1
