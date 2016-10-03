@@ -16,22 +16,22 @@ reg [4:0] state = 5'b00001;
 `define FORWARD SW[0];
 
 // states
-`define STATE_1 5'b00001;
-`define STATE_2 5'b00010;
-`define STATE_3 5'b00100;
-`define STATE_4 5'b01000;
-`define STATE_5 5'b10000;
+`define STATE_1 5'b00001
+`define STATE_2 5'b00010
+`define STATE_3 5'b00100
+`define STATE_4 5'b01000
+`define STATE_5 5'b10000
 
 // numbers
-`define ONE   7'b0000110;
-`define TWO   7'b1011011;
-`define THREE 7'b1001111;
-`define FOUR  7'b1100110;
-`define FIVE  7'b1101101;
-`define SIX   7'b1111101;
-`define SEVEN 7'b0000111;
-`define EIGHT 7'b1111111;
-`define NINE  7'b1101111;
+`define ONE   7'b0000110
+`define TWO   7'b1011011
+`define THREE 7'b1001111
+`define FOUR  7'b1100110
+`define FIVE  7'b1101101
+`define SIX   7'b1111101
+`define SEVEN 7'b0000111
+`define EIGHT 7'b1111111
+`define NINE  7'b1101111
 
 // continue to the next state
 always @(posedge `CLK) begin
