@@ -69,7 +69,7 @@ always @(posedge `CLK) begin
         `STATE_3: HEX0 = `FOUR;
         `STATE_4: HEX0 = `FIVE;
         `STATE_5: HEX0 = `EIGHT;
-        dfault: HEX0 = `THREE;
+        default: HEX0 = `THREE;
     endcase
 end
 endmodule
