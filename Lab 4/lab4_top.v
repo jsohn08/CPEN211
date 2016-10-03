@@ -36,7 +36,7 @@ reg [4:0] state = 5'b00001;
 // continue to the next state
 always @(posedge `CLK) begin
     // reset when rising clock of CLK is pressed
-    if (`RST == 1) begin
+    if (`RST == 0) begin
         state = 5'b00001;
     end else begin
         // shift forward
@@ -54,10 +54,9 @@ always @(posedge `CLK) begin
             end
         end
     end
-end
+    
 
-// "draw" digits onto the screen, currently assigned as 3-1-4-5-8
-always @(*) begin
+    // "draw" digits onto the screen, currently assigned as 3-1-4-5-8
     case (state)
         `STATE_1: HEX0 = `THREE;
         `STATE_2: HEX0 = `ONE;
@@ -66,5 +65,7 @@ always @(*) begin
         `STATE_5: HEX0 = `EIGHT;
         default: HEX0 = `THREE;
     endcase
+
 end
+
 endmodule

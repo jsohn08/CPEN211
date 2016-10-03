@@ -11,7 +11,7 @@ begin
     //if key1 (the reset button) is pressed, return to first digit
         if (KEY[1]==0)
         begin
-            states=00001;
+            states=5'b00001;
         end
         else
         begin
@@ -20,7 +20,7 @@ begin
                 begin
                     if(states[4]==1)
                     begin
-                        states=00001;
+                        states=5'b00001;
                     end
                     else
                     begin
@@ -31,7 +31,7 @@ begin
                 begin
                     if(states[0]==1)
                     begin
-                        states=10000;
+                        states=5'b10000;
                     end
                     else
                     begin
@@ -44,15 +44,15 @@ begin
             always @ *
                 case (states)
                     5'b00001:
-                        HEX0=7'b1001111;
+                        HEX0=7'b0110000;
                     5'b00010:
-                        HEX0=7'b0000110;
+                        HEX0=7'b1111001;
                     5'b00100:
-                        HEX0=7'b1100110;
+                        HEX0=7'b0011001;
                     5'b01000:
-                        HEX0=7'b1101101;
+                        HEX0=7'b0010010;
                     5'b10000:
-                        HEX0=7'b1111111;
+                        HEX0=7'b0000000;
                 endcase
 
 
