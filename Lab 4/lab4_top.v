@@ -13,31 +13,31 @@ reg [4:0] state = 5'b00001;
 `define RST ~KEY[1]
 
 // SW[0] is direction (0 is forward, 1 is backward)
-`define FORWARD SW[0];
+`define FORWARD SW[0]
 
 // states
-`define STATE_1 = 5'b00001;
-`define STATE_2 = 5'b00010;
-`define STATE_3 = 5'b00100;
-`define STATE_4 = 5'b01000;
-`define STATE_5 = 5'b10000;
+`define STATE_1 5'b00001
+`define STATE_2 5'b00010
+`define STATE_3 5'b00100
+`define STATE_4 5'b01000
+`define STATE_5 5'b10000
 
 // numbers
-`define ONE =   7'b0000110;
-`define TWO =   7'b1011011;
-`define THREE = 7'b1001111;
-`define FOUR =  7'b1100110;
-`define FIVE =  7'b1101101;
-`define SIX =   7'b1111101;
-`define SEVEN = 7'b0000111;
-`define EIGHT = 7'b1111111;
-`define NINE =  7'b1101111;
+`define ONE   7'b0000110
+`define TWO   7'b1011011
+`define THREE 7'b1001111
+`define FOUR  7'b1100110
+`define FIVE  7'b1101101
+`define SIX   7'b1111101
+`define SEVEN 7'b0000111
+`define EIGHT 7'b1111111
+`define NINE  7'b1101111
 
 // continue to the next state
 always @(posedge `CLK) begin
     // reset when rising clock of CLK is pressed
-    if (`RST == 1) begin
-        state = `STATE_1;
+    if (`RST) begin
+        state = 5'b00001;
     end
 
     // shift forward
@@ -58,7 +58,7 @@ end
 
 // "draw" digits onto the screen, currently assigned as 3-1-4-5-8
 always @(*) begin
-    case (states)
+    case (state)
         `STATE_1: HEX0 = `THREE;
         `STATE_2: HEX0 = `ONE;
         `STATE_3: HEX0 = `FOUR;
