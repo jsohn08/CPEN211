@@ -60,7 +60,6 @@ always @(posedge `CLK) begin
             end
         end
     end
-    
 
     // "draw" digits onto the screen, currently assigned as 3-1-4-5-8
     case (state)
