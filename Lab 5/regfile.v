@@ -6,13 +6,30 @@ module Regfile(data_in, writenum, readnum, write, clk, data_out);
   input clk;
   output [15:0] data_out;
 
+  wire [7:0] preload, load;
+
+  // modules
+  Decoder #(3, 8) U1(writenum, preload);
+  // TODO: CONTINUE FROM HERE
+  // PDF 4/12
+
+  assign load = preload & {8{write}};
+
 endmodule
 
+// n - bit width of data/I/O
 module Register(in, load, clk, out);
-  input [15:0] in;
+  parameter n = 8;
+
+  input [n - 1:0] in;
   input load;
   input clk;
-  input out;
+  output [n - 1:0] out;
+
+  wire [n - 1:0] D, Q;
+
+  Mux2 #(1) U1(in, out, load, D);
+  DFF #(16) U2(D, out, clk);
 endmodule
 
 // d flip flop
