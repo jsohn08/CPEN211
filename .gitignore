@@ -11,6 +11,9 @@
 *.bin
 *.csv
 *.bak
+*.do
+*.qws
+*.vstf
 db/
 incremental_db/
 output_files/
