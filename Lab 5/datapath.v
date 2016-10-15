@@ -56,11 +56,10 @@ module datapath (
               RA_out, RB_out,
               shifter_out,
               A_in, B_in,
-              ALU_out, ALU_status,
-              rc_out;
+              ALU_out, ALU_status;
 
   // modules
-  MUX2 #(16) M0(loadc_out, datapath_in, vsel, data_in);
+  MUX2 #(16) M0(datapath_out, datapath_in, vsel, data_in);
 
   regfile #(16) RF(data_in, data_out, readnum, writenum, write, clk);
 
@@ -70,7 +69,7 @@ module datapath (
   shifter #(16) S0(RB_out, shifter_out, shift);
 
   MUX2 #(16) MA(RA_out, 16'b0, asel, A_in);
-  MUX2 #(16) MA(shifter_out, {11'b0, datapath_in[4:0]}, bsel, B_in);
+  MUX2 #(16) MB(shifter_out, {11'b0, datapath_in[4:0]}, bsel, B_in);
 
   alu #(16) ALU(A_in, B_in, ALUop, ALU_out, ALU_status);
 

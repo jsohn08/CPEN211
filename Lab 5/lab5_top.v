@@ -24,8 +24,8 @@
 //
 // HEX3, HEX2, HEX1, HEX0 are wired to datapath_out.
 //
-// When SW[9] is set to 1, SW[7:0] changes the lower 8 bits of datpath_in.
-// (The upper 8-bits are hardwired to zero.) The LEDR[8:0] will show the
+// When SW[9] is set to 1, SW[7:0] changes the lower 8 bits of datapath_in.
+// (The upper 8-bits are hardwired to zero.) The LEDR[7:0] will show the
 // current control inputs (LED "on" means input has logic value of 1).
 //
 // When SW[9] is set to 0, SW[8:0] changes the control inputs to the datapath
