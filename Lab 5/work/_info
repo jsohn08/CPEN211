@@ -8,81 +8,123 @@ z2
 !i10f 100
 cModel Technology
 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4
-vDecoder
-Z0 !s110 1476512576
+vALU
+Z0 !s110 1476554378
 !i10b 1
-!s100 Mf]LdT;^MMGifjG]DJm660
-IMAU903]6ScEj=R^T6[X];3
+!s100 ?@d9R8]<LWSn^:3NQ0kRO1
+Im<U?Q^CzDYeS3bOMDf1SI3
 Z1 V`JN@9S9cnhjKRR_L]QIcM3
 Z2 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5
-Z3 w1476512478
-Z4 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
-Z5 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
-L0 57
-Z6 OV;L;10.3d;59
+w1476553727
+8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v
+FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v
+L0 1
+Z3 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z7 !s108 1476512576.306000
-Z8 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
-Z9 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
+!s108 1476554378.736000
+!s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v|
 !i113 1
-Z10 o-work work
+Z4 o-work work
+n@a@l@u
+vALU_tb
+R0
+!i10b 1
+!s100 MBfkm@?>_R053>a^2C1H[3
+ImkiFZ?VHJ6WT>bb8:JIlB1
+R1
+R2
+w1476554375
+8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v
+FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1476554378.813000
+!s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v|
+!i113 1
+R4
+n@a@l@u_tb
+vDecoder
+R0
+!i10b 1
+!s100 XW]g]^YMVO5`HbPePen2E2
+IJnF9Gb4iBo5Di>P28heHH0
+R1
+R2
+Z5 w1476553317
+Z6 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v
+Z7 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v
+L0 59
+R3
+r1
+!s85 0
+31
+Z8 !s108 1476554378.564000
+Z9 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v|
+Z10 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v|
+!i113 1
+R4
 n@decoder
 vDecoder_tb
 R0
 !i10b 1
 !s100 0DAT=?=RNbzO8G=`OQ3VX3
-IcCG@4bc2hff]IVLgbEYem0
+IjPH8l1jl4YC[cD70FHVn]0
 R1
 R2
-Z11 w1476512571
-Z12 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v
-Z13 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v
+Z11 w1476553208
+Z12 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v
+Z13 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v
 L0 60
-R6
+R3
 r1
 !s85 0
 31
-Z14 !s108 1476512576.421000
-Z15 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v|
-Z16 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v|
+Z14 !s108 1476554378.625000
+Z15 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v|
+Z16 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v|
 !i113 1
-R10
+R4
 n@decoder_tb
 vDFF
 R0
 !i10b 1
-!s100 lCJA1;niFz][NNMaF:^j[2
-IFEJdhzWUEH[N`lk6n]lMk0
+!s100 FkFN4@86Y^BXR2F0a@Tc@3
+IgQYCMK>nz;X6m>JlGb8a_2
 R1
 R2
-R3
-R4
 R5
-L0 44
 R6
+R7
+L0 46
+R3
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R4
 n@d@f@f
 vDFF_tb
 R0
 !i10b 1
 !s100 gn4jnG8;QfKFQ=:0m929K2
-IPEYn_njKh:h[A4Ha<aY`82
+IbU??dUdOSioobJiA;aA7Z0
 R1
 R2
 R11
 R12
 R13
 L0 81
-R6
+R3
 r1
 !s85 0
 31
@@ -90,41 +132,41 @@ R14
 R15
 R16
 !i113 1
-R10
+R4
 n@d@f@f_tb
 vMux2
 R0
 !i10b 1
-!s100 kj6cToCF92P;TEFS;[^GX1
-IP9gmI=9^N5UC]:>jaY;bI1
+!s100 zP=Q<5D<;Re>bIeBH47HM1
+IVY36;cmDSGG0]I>D4@f^82
 R1
 R2
-R3
-R4
 R5
-L0 82
 R6
+R7
+L0 84
+R3
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R4
 n@mux2
 vMux2_tb
 R0
 !i10b 1
 !s100 zC58^hB4;IIY9=h>9aPTm0
-I<G?<k_fL2LGO?JGf2FM2i2
+IVXXJaVjZ<=]dFDz8Pm?be1
 R1
 R2
 R11
 R12
 R13
 L0 2
-R6
+R3
 r1
 !s85 0
 31
@@ -132,62 +174,62 @@ R14
 R15
 R16
 !i113 1
-R10
+R4
 n@mux2_tb
 vMux2OH
 R0
 !i10b 1
-!s100 Cd5N2d8KW8:<U@dgAiR`g1
-Ij@;=ZKFacERF3ocTPKiRY1
+!s100 8]mU0IMPG:kGWA:aHI`=?2
+I4_BBC4b5n@>SUNbSiAXO`3
 R1
 R2
-R3
-R4
 R5
-L0 70
 R6
+R7
+L0 72
+R3
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R4
 n@mux2@o@h
 vMux8
 R0
 !i10b 1
-!s100 4hKoK2U>_hgK9gMRjYNff2
-IkTam53n_dYmKge35R2LSW2
+!s100 9V2_FH@YVe>eDc^MjXoej1
+I^^E:Hg<3KT6[gh4L0?z4Y2
 R1
 R2
-R3
-R4
 R5
-L0 94
 R6
+R7
+L0 96
+R3
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R4
 n@mux8
 vMux8_tb
 R0
 !i10b 1
 !s100 Qko]9SnlR^`7CXZ63CVFZ2
-IQ7iLTjADA]HFj2Ncl^oP;0
+I8nLVOUU2WXR`Jc`SB`FCP3
 R1
 R2
 R11
 R12
 R13
-L0 30
-R6
+Z17 L0 30
+R3
 r1
 !s85 0
 31
@@ -195,41 +237,41 @@ R14
 R15
 R16
 !i113 1
-R10
+R4
 n@mux8_tb
 vRegfile
 R0
 !i10b 1
-!s100 ?c;no<zdUNB3::`2G3W>O3
-I9G2Nd:SJE]in2O8h[FN[e3
+!s100 hOQE>MA:@LiJbz`L9k2Jb0
+IcLPB6GKATKSA?PE8mTbD]2
 R1
 R2
-R3
-R4
 R5
-L0 1
 R6
+R7
+L0 1
+R3
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R4
 n@regfile
 vRegfile_tb
 R0
 !i10b 1
-!s100 CC]KL?if2ZKaf>OFM0g0;0
-I[BILbDM<@UVHdP4Vf0aEN2
+!s100 ^I8ff6EW5hhGn:_?@<6oG0
+IbnefW7QFf1KNldR=5d0=L1
 R1
 R2
 R11
 R12
 R13
 L0 158
-R6
+R3
 r1
 !s85 0
 31
@@ -237,41 +279,41 @@ R14
 R15
 R16
 !i113 1
-R10
+R4
 n@regfile_tb
 vRegister
 R0
 !i10b 1
-!s100 lfnS^;FMgDVQ54UH>4>;K2
-I^aFV5B9h4k^hcFX_BhezB1
+!s100 5n3jH5je_cL8g2A9=2SPd0
+IR``]=<f4P9C72G`H`3<_C2
 R1
 R2
-R3
-R4
 R5
-L0 28
 R6
+R7
+R17
+R3
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R4
 n@register
 vRegister_tb
 R0
 !i10b 1
 !s100 7OdalM^XXPCREVlOi^e6B1
-IE7YK1N:GUSaXOPW@N<TQn2
+ICoLV]7UElJc5V679C_7]P3
 R1
 R2
 R11
 R12
 R13
 L0 114
-R6
+R3
 r1
 !s85 0
 31
@@ -279,5 +321,5 @@ R14
 R15
 R16
 !i113 1
-R10
+R4
 n@register_tb
