@@ -1,11 +1,11 @@
 // ================= MUX2 TEST ================= //
-module Mux2_tb();
+module MUX2_tb();
   reg [1:0] sim_a0, sim_a1;
   reg select;
   wire [1:0] sim_b;
 
   // device under test
-  Mux2 #(2) DUT(sim_a0, sim_a1, select, sim_b);
+  MUX2 #(2) DUT(sim_a0, sim_a1, select, sim_b);
 
   // test
   initial begin
@@ -27,13 +27,13 @@ module Mux2_tb();
 endmodule
 
 // ================= MUX 8 TEST ================= //
-module Mux8_tb();
+module MUX8_tb();
   reg [2:0] sim_a0, sim_a1, sim_a2, sim_a3, sim_a4, sim_a5, sim_a6, sim_a7;
   reg [7:0] sim_select;
   wire [2:0] sim_b;
 
   // device under test
-  Mux8 #(3) DUT(sim_a0, sim_a1, sim_a2, sim_a3, sim_a4, sim_a5, sim_a6, sim_a7,
+  MUX8 #(3) DUT(sim_a0, sim_a1, sim_a2, sim_a3, sim_a4, sim_a5, sim_a6, sim_a7,
     sim_select, sim_b);
 
   // test
@@ -56,13 +56,13 @@ module Mux8_tb();
   end
 endmodule
 
-// ================= DECODER TEST ================= //
-module Decoder_tb();
+// ================= decoder TEST ================= //
+module decoder_tb();
   reg [2:0] sim_in;
   wire [7:0] sim_out;
 
   // 3:8 decoder module
-  Decoder #(3, 8) DUT(sim_in, sim_out);
+  decoder #(3, 8) DUT(sim_in, sim_out);
 
   initial begin
     sim_in = 3'b000;
@@ -110,14 +110,14 @@ module DFF_tb();
 endmodule
 
 
-// ================= Register TEST ================= //
-module Register_tb();
+// ================= register TEST ================= //
+module register_tb();
   reg [3:0] sim_in;
   reg sim_clk, sim_load;
   wire [3:0] sim_out;
 
   // register that holds 4 bits
-  Register #(4) DUT(sim_in, sim_out, sim_load, sim_clk);
+  register #(4) DUT(sim_in, sim_out, sim_load, sim_clk);
 
   // clock
   initial begin
@@ -154,15 +154,15 @@ module Register_tb();
   end
 endmodule
 
-// ================= Register File TEST ================= //
-module Regfile_tb();
+// ================= register File TEST ================= //
+module regfile_tb();
   reg [15:0] sim_data_in;
   reg [2:0] sim_writenum, sim_readnum;
   reg sim_write, sim_clk;
   wire [15:0] sim_data_out;
 
   // module
-  Regfile #(16) DUT(sim_data_in, sim_data_out, sim_readnum, sim_writenum, sim_write, sim_clk);
+  regfile #(16) DUT(sim_data_in, sim_data_out, sim_readnum, sim_writenum, sim_write, sim_clk);
 
   // clock
   initial begin

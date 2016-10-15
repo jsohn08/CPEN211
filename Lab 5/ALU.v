@@ -1,4 +1,4 @@
-module ALU(ain, bin, op, out, status);
+module alu(ain, bin, op, out, status);
   parameter k = 16;
 
   input [k - 1:0] ain, bin;

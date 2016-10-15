@@ -1,10 +1,10 @@
-module ALU_tb();
+module alu_tb();
   reg [3:0] sim_ain, sim_bin;
   reg [1:0] sim_op;
   wire [3:0] sim_out;
   wire sim_status;
 
-  ALU #(4) DUT(sim_ain, sim_bin, sim_op, sim_out, sim_status);
+  alu #(4) DUT(sim_ain, sim_bin, sim_op, sim_out, sim_status);
 
   initial begin
     // adding: expecting 0010, 0

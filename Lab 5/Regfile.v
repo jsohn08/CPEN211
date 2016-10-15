@@ -1,4 +1,4 @@
-module Regfile(data_in, data_out, readnum, writenum, write, clk);
+module regfile(data_in, data_out, readnum, writenum, write, clk);
   parameter k = 16;
 
   input [k - 1:0] data_in;
@@ -11,23 +11,23 @@ module Regfile(data_in, data_out, readnum, writenum, write, clk);
   wire [k - 1:0] rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7;
 
   // modules
-  Decoder  #(3, 8) DEC0(writenum, preload);
-  Decoder  #(3, 8) DEC1(readnum, read_select);
-  Mux8     #(k)   M0(rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7, read_select, data_out);
-  Register #(k)   R0(data_in, rout0, load[0], clk);
-  Register #(k)   R1(data_in, rout1, load[1], clk);
-  Register #(k)   R2(data_in, rout2, load[2], clk);
-  Register #(k)   R3(data_in, rout3, load[3], clk);
-  Register #(k)   R4(data_in, rout4, load[4], clk);
-  Register #(k)   R5(data_in, rout5, load[5], clk);
-  Register #(k)   R6(data_in, rout6, load[6], clk);
-  Register #(k)   R7(data_in, rout7, load[7], clk);
+  decoder  #(3, 8) DEC0(writenum, preload);
+  decoder  #(3, 8) DEC1(readnum, read_select);
+  MUX8     #(k)   M0(rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7, read_select, data_out);
+  register #(k)   R0(data_in, rout0, load[0], clk);
+  register #(k)   R1(data_in, rout1, load[1], clk);
+  register #(k)   R2(data_in, rout2, load[2], clk);
+  register #(k)   R3(data_in, rout3, load[3], clk);
+  register #(k)   R4(data_in, rout4, load[4], clk);
+  register #(k)   R5(data_in, rout5, load[5], clk);
+  register #(k)   R6(data_in, rout6, load[6], clk);
+  register #(k)   R7(data_in, rout7, load[7], clk);
 
   assign load = preload & {8{write}};
 endmodule
 
 // n - bit width of data/I/O
-module Register(in, out, load, clk);
+module register(in, out, load, clk);
   parameter k = 8;
 
   input [k - 1:0] in;
@@ -37,7 +37,7 @@ module Register(in, out, load, clk);
 
   wire [k - 1:0] D, Q;
 
-  Mux2 #(k) U0(out, in, load, D);
+  MUX2 #(k) U0(out, in, load, D);
   DFF #(k) U1(D, out, clk);
 endmodule
 
@@ -57,7 +57,7 @@ endmodule
 // based on lecture slides 7
 // a - n wide binary input
 // b - m wide one hot output
-module Decoder(a, b);
+module decoder(a, b);
   parameter n = 3;
   parameter m = 8;
 
@@ -70,7 +70,7 @@ endmodule
 
 // using one-hot for select
 // k - width of IO
-module Mux2OH(a0, a1, select, b);
+module MUX2OH(a0, a1, select, b);
 parameter k = 1;
 
 input [k - 1:0] a0, a1;
@@ -82,7 +82,7 @@ endmodule
 
 // binary select
 // k - width of IO
-module Mux2(a0, a1, select, b);
+module MUX2(a0, a1, select, b);
   parameter k = 1;
 
   input [k - 1:0] a0, a1;
@@ -94,7 +94,7 @@ module Mux2(a0, a1, select, b);
 endmodule
 
 // k - width of IO
-module Mux8(
+module MUX8(
   a0, a1, a2, a3, a4, a5, a6, a7,
   select, b
   );

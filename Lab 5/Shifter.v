@@ -1,4 +1,4 @@
-module Shifter(in, out, shift);
+module shifter(in, out, shift);
   parameter k = 16;
 
   input [k - 1:0] in;
