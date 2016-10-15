@@ -11,4 +11,5 @@ module ALU(ain, bin, op, out, status);
   ({k{~op[1] & op[0]}} & (ain - bin)) |
   ({k{op[1] & ~op[0]}} & (ain & bin)) |
   ({k{&op}} & ain);
+  assign status = !out;
 endmodule

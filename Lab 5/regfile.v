@@ -43,14 +43,15 @@ endmodule
 
 // d flip flop
 // n - bit width of the IO
-module DFF(in, out, clk);
+module DFF(D, Q, clk);
   parameter k = 4;
 
-  input [k - 1:0] in;
+  input [k - 1:0] D;
   input clk;
-  output reg [k - 1:0] out;
+  output reg [k - 1:0] Q;
 
-  always @(posedge clk) out = in;
+  always @(posedge clk)
+    Q <= D;
 endmodule
 
 // based on lecture slides 7
