@@ -111,3 +111,21 @@ module Mux8(
   ({k{select[6]}} & a6) |
   ({k{select[7]}} & a7);
 endmodule
+
+//<--EVERYTHING BELOW ARE TEST BENCHES-->
+module Mux2_tb();
+  reg [1:0] sim_a0, sim_a1;
+  reg select;
+  wire [1:0] sim_b;
+
+  // device under test
+  Mux2 #(2) DUT(sim_a0, sim_a1, select, sim_b);
+
+  // test
+  initial begin
+    // initial state
+    sim_a0 = 2'b11;
+    sim_a1 = 2'b01;
+    select = 0;
+  end
+endmodule
