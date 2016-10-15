@@ -1,1 +1,15 @@
+{F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v} {1 {vlog -work work -stats=none {F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v}
+Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module Regfile
+-- Compiling module Register
+-- Compiling module DFF
+-- Compiling module Decoder
+-- Compiling module Mux2OH
+-- Compiling module Mux2
+-- Compiling module Mux8
 
+Top level modules:
+	Regfile
+	Mux2OH
+
+} {} {}}

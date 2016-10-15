@@ -9,26 +9,47 @@ z2
 cModel Technology
 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4
 vDecoder
-Z0 !s110 1476508050
+Z0 !s110 1476509200
 !i10b 1
 !s100 <8JBf8R4eDUFJ5[EjA7e91
 I>kkf1`ei98gR14cIm^>T[0
 Z1 V`JN@9S9cnhjKRR_L]QIcM3
 Z2 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5
-Z3 w1476508044
+Z3 w1476508652
 Z4 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
 Z5 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
-L0 58
-Z6 OV;L;10.3d;59
+Z6 L0 58
+Z7 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z7 !s108 1476508050.529000
-Z8 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
-Z9 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
+Z8 !s108 1476509200.852000
+Z9 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
+Z10 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
 !i113 1
-Z10 o-work work
+Z11 o-work work
 n@decoder
+vDecoder_tb
+R0
+!i10b 1
+!s100 B=F_bQG3<EIRYojL>jW;Z0
+I]^9F0jS?=cCkMa@K0dF]Q2
+R1
+R2
+Z12 w1476509195
+Z13 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v
+Z14 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v
+R6
+R7
+r1
+!s85 0
+31
+Z15 !s108 1476509200.933000
+Z16 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v|
+Z17 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile_tb.v|
+!i113 1
+R11
+n@decoder_tb
 vDFF
 R0
 !i10b 1
@@ -40,15 +61,15 @@ R3
 R4
 R5
 L0 45
-R6
+R7
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R11
 n@d@f@f
 vMux2
 R0
@@ -61,36 +82,36 @@ R3
 R4
 R5
 L0 83
-R6
+R7
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R11
 n@mux2
 vMux2_tb
 R0
 !i10b 1
-!s100 9hZIJZo6mAF2WnP=F8iOZ2
-IZlgaQfK3m:7<z4YWBV0F`3
+!s100 zC58^hB4;IIY9=h>9aPTm0
+I<G?<k_fL2LGO?JGf2FM2i2
 R1
 R2
-R3
-R4
-R5
-L0 117
-R6
+R12
+R13
+R14
+L0 2
+R7
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 1
-R10
+R11
 n@mux2_tb
 vMux2OH
 R0
@@ -103,15 +124,15 @@ R3
 R4
 R5
 L0 71
-R6
+R7
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R11
 n@mux2@o@h
 vMux8
 R0
@@ -124,36 +145,36 @@ R3
 R4
 R5
 L0 95
-R6
+R7
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R11
 n@mux8
 vMux8_tb
 R0
 !i10b 1
-!s100 WK_PJAIzYe4cZH48SZJFO1
-IRIUz=a[`5e44BQ^WjB9jU2
+!s100 h[0mL@=KbSUQVQ^ELmWi@3
+Id@BiOO8FBbQOj7ToUmi^N3
 R1
 R2
-R3
-R4
-R5
-L0 144
-R6
+R12
+R13
+R14
+Z18 L0 29
+R7
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 1
-R10
+R11
 n@mux8_tb
 vRegfile
 R0
@@ -166,15 +187,15 @@ R3
 R4
 R5
 L0 1
-R6
+R7
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R11
 n@regfile
 vRegister
 R0
@@ -186,14 +207,14 @@ R2
 R3
 R4
 R5
-L0 29
-R6
+R18
+R7
 r1
 !s85 0
 31
-R7
 R8
 R9
-!i113 1
 R10
+!i113 1
+R11
 n@register
