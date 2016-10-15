@@ -108,3 +108,48 @@ module DFF_tb();
     $stop;
   end
 endmodule
+
+
+// ================= Register TEST ================= //
+module Register_tb();
+  reg [3:0] sim_in;
+  reg sim_clk, sim_load;
+  wire [3:0] sim_out;
+
+  // register that holds 4 bits
+  Register #(4) DUT(sim_in, sim_out, sim_load, sim_clk);
+
+  // clock
+  initial begin
+    sim_clk = 0;
+    forever begin
+      #5; sim_clk = 1;
+      #5; sim_clk = 0;
+    end
+  end
+
+  // rest of simulation
+  initial begin
+    // allow register to store 0
+    sim_in = 4'b0000;
+    sim_load = 1;
+    #10; sim_load = 0;
+
+    // register holds its value when load is 0
+    sim_in = 4'b0001;
+    #10; sim_in = 4'b0010;
+    #10; sim_in = 4'b1111;
+
+    // register changes to new value when load is on
+    sim_load = 1;
+    #10;
+
+    // register copies input when load is on
+    sim_in = 4'b1000;
+    #10; sim_in = 4'b0110;
+    #10; sim_load = 0;
+
+    // stop sim
+    $stop;
+  end
+endmodule

@@ -36,7 +36,7 @@ module Register(in, out, load, clk);
 
   wire [n - 1:0] D, Q;
 
-  Mux2 #(16) U0(in, out, load, D);
+  Mux2 #(16) U0(out, in, load, D);
   DFF #(16) U1(D, out, clk);
 endmodule
 
