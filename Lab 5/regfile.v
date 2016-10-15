@@ -1,4 +1,4 @@
-module Regfile(data_in, writenum, readnum, write, clk, data_out);
+module Regfile(data_in, data_out, readnum, writenum, write, clk);
   input [15:0] data_in;
   input [2:0] writenum, readnum;
   input write;
@@ -6,7 +6,7 @@ module Regfile(data_in, writenum, readnum, write, clk, data_out);
   output [15:0] data_out;
 
   wire [7:0] preload, load, read_select;
-  wire [15:0] rout0, rout1, route2, rout3, rout4, rout5, rout6, rout7;
+  wire [15:0] rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7;
 
   // modules
   Decoder  #(3, 8) DEC0(writenum, preload);
@@ -22,7 +22,6 @@ module Regfile(data_in, writenum, readnum, write, clk, data_out);
   Register #(16)   R7(data_in, rout7, load[7], clk);
 
   assign load = preload & {8{write}};
-
 endmodule
 
 // n - bit width of data/I/O
