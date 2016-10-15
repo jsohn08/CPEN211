@@ -1,4 +1,4 @@
-//<--EVERYTHING BELOW ARE TEST BENCHES-->
+// ================= MUX2 TEST ================= //
 module Mux2_tb();
   reg [1:0] sim_a0, sim_a1;
   reg select;
@@ -26,6 +26,7 @@ module Mux2_tb();
   end
 endmodule
 
+// ================= MUX 8 TEST ================= //
 module Mux8_tb();
   reg [2:0] sim_a0, sim_a1, sim_a2, sim_a3, sim_a4, sim_a5, sim_a6, sim_a7;
   reg [7:0] sim_select;
@@ -55,11 +56,12 @@ module Mux8_tb();
   end
 endmodule
 
+// ================= DECODER TEST ================= //
 module Decoder_tb();
   reg [2:0] sim_in;
   wire [7:0] sim_out;
 
-  // module
+  // 3:8 decoder module
   Decoder #(3, 8) DUT(sim_in, sim_out);
 
   initial begin
@@ -72,5 +74,37 @@ module Decoder_tb();
     #5; sim_in = 3'b110;
     #5; sim_in = 3'b111;
     #5;
+  end
+endmodule
+
+// ================= DFF TEST ================= //
+module DFF_tb();
+  reg [3:0] sim_in;
+  reg sim_clk;
+  wire [3:0] sim_out;
+
+  // module with 4 bit wide input and output
+  DFF #(4) DUT(sim_in, sim_out, sim_clk);
+
+  // clock
+  initial begin
+    sim_clk = 0;
+    forever begin
+      #5; sim_clk = 1;
+      #5; sim_clk = 0;
+    end
+  end
+
+  // rest of simulation
+  initial begin
+    sim_in = 4'b0000;
+    #20; sim_in = 4'b1111;
+    #15; sim_in = 4'b1001;
+    #5; sim_in = 4'b1100;
+    #10; sim_in = 4'b0011;
+    #10;
+
+    // stop sim
+    $stop;
   end
 endmodule
