@@ -1,7 +1,23 @@
 # ignore
-*
+*.mpf
+*.qpf
+*.qsf
+*.mti
+*.wlf
+*.qdb
+*.qpg
+*.qtl
+*.pdf
+*.bin
+*.csv
+*.bak
+db/
+incremental_db/
+output_files/
+simulation/
+work/
 
 # don't ignore
 !*.v
-!.gitignore
 !*.sv
+!.gitignore
