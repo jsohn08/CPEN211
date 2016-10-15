@@ -1,3 +1,4 @@
+// k - bit width of the data to store
 module regfile(data_in, data_out, readnum, writenum, write, clk);
   parameter k = 16;
 
@@ -68,19 +69,7 @@ module decoder(a, b);
   wire [m - 1:0] b = 1 << a;
 endmodule
 
-// using one-hot for select
-// k - width of IO
-module MUX2OH(a0, a1, select, b);
-parameter k = 1;
-
-input [k - 1:0] a0, a1;
-input [1:0] select;
-output [k - 1:0] b;
-
-assign b = ({k{select[0]}} & a0) | ({k{select[1]}} & a1);
-endmodule
-
-// binary select
+// binary select - select a0 when select is 0
 // k - width of IO
 module MUX2(a0, a1, select, b);
   parameter k = 1;
