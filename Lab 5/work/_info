@@ -9,13 +9,13 @@ z2
 cModel Technology
 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4
 vDecoder
-Z0 !s110 1476507406
+Z0 !s110 1476508050
 !i10b 1
 !s100 <8JBf8R4eDUFJ5[EjA7e91
 I>kkf1`ei98gR14cIm^>T[0
 Z1 V`JN@9S9cnhjKRR_L]QIcM3
 Z2 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5
-Z3 w1476507402
+Z3 w1476508044
 Z4 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
 Z5 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
 L0 58
@@ -23,7 +23,7 @@ Z6 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z7 !s108 1476507406.099000
+Z7 !s108 1476508050.529000
 Z8 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
 Z9 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
 !i113 1
@@ -134,6 +134,27 @@ R9
 !i113 1
 R10
 n@mux8
+vMux8_tb
+R0
+!i10b 1
+!s100 WK_PJAIzYe4cZH48SZJFO1
+IRIUz=a[`5e44BQ^WjB9jU2
+R1
+R2
+R3
+R4
+R5
+L0 144
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@mux8_tb
 vRegfile
 R0
 !i10b 1
