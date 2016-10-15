@@ -1,52 +1,54 @@
 module Regfile(data_in, data_out, readnum, writenum, write, clk);
-  input [15:0] data_in;
+  parameter k = 16;
+
+  input [k - 1:0] data_in;
   input [2:0] writenum, readnum;
   input write;
   input clk;
-  output [15:0] data_out;
+  output [k - 1:0] data_out;
 
   wire [7:0] preload, load, read_select;
-  wire [15:0] rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7;
+  wire [k - 1:0] rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7;
 
   // modules
   Decoder  #(3, 8) DEC0(writenum, preload);
   Decoder  #(3, 8) DEC1(readnum, read_select);
-  Mux8     #(16)   M0(rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7, read_select, data_out);
-  Register #(16)   R0(data_in, rout0, load[0], clk);
-  Register #(16)   R1(data_in, rout1, load[1], clk);
-  Register #(16)   R2(data_in, rout2, load[2], clk);
-  Register #(16)   R3(data_in, rout3, load[3], clk);
-  Register #(16)   R4(data_in, rout4, load[4], clk);
-  Register #(16)   R5(data_in, rout5, load[5], clk);
-  Register #(16)   R6(data_in, rout6, load[6], clk);
-  Register #(16)   R7(data_in, rout7, load[7], clk);
+  Mux8     #(k)   M0(rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7, read_select, data_out);
+  Register #(k)   R0(data_in, rout0, load[0], clk);
+  Register #(k)   R1(data_in, rout1, load[1], clk);
+  Register #(k)   R2(data_in, rout2, load[2], clk);
+  Register #(k)   R3(data_in, rout3, load[3], clk);
+  Register #(k)   R4(data_in, rout4, load[4], clk);
+  Register #(k)   R5(data_in, rout5, load[5], clk);
+  Register #(k)   R6(data_in, rout6, load[6], clk);
+  Register #(k)   R7(data_in, rout7, load[7], clk);
 
   assign load = preload & {8{write}};
 endmodule
 
 // n - bit width of data/I/O
 module Register(in, out, load, clk);
-  parameter n = 8;
+  parameter k = 8;
 
-  input [n - 1:0] in;
+  input [k - 1:0] in;
   input load;
   input clk;
-  output [n - 1:0] out;
+  output [k - 1:0] out;
 
-  wire [n - 1:0] D, Q;
+  wire [k - 1:0] D, Q;
 
-  Mux2 #(16) U0(out, in, load, D);
-  DFF #(16) U1(D, out, clk);
+  Mux2 #(k) U0(out, in, load, D);
+  DFF #(k) U1(D, out, clk);
 endmodule
 
 // d flip flop
 // n - bit width of the IO
 module DFF(in, out, clk);
-  parameter n = 4;
+  parameter k = 4;
 
-  input [n - 1:0] in;
+  input [k - 1:0] in;
   input clk;
-  output reg [n - 1:0] out;
+  output reg [k - 1:0] out;
 
   always @(posedge clk) out = in;
 endmodule
@@ -86,7 +88,7 @@ module Mux2(a0, a1, select, b);
   input select;
   output [k - 1:0] b;
 
-  assign b = ({k{!select}} & a0) | ({k{select}} & a1);
+  assign b = ({k{~select}} & a0) | ({k{select}} & a1);
 
 endmodule
 

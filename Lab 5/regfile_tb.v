@@ -162,7 +162,7 @@ module Regfile_tb();
   wire [15:0] sim_data_out;
 
   // module
-  Regfile DUT(sim_data_in, sim_data_out, sim_readnum, sim_writenum, sim_write, sim_clk);
+  Regfile #(16) DUT(sim_data_in, sim_data_out, sim_readnum, sim_writenum, sim_write, sim_clk);
 
   // clock
   initial begin
