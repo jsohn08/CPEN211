@@ -9,13 +9,13 @@ z2
 cModel Technology
 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4
 vALU
-Z0 !s110 1476554378
+Z0 !s110 1476557374
 !i10b 1
-!s100 ?@d9R8]<LWSn^:3NQ0kRO1
-Im<U?Q^CzDYeS3bOMDf1SI3
+!s100 B`kSSgRTnXYAh]H=eZ<RF0
+IChcbeKVX@Wke5U::^0O7H1
 Z1 V`JN@9S9cnhjKRR_L]QIcM3
 Z2 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5
-w1476553727
+w1476557371
 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v
 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v
 L0 1
@@ -23,7 +23,7 @@ Z3 OV;L;10.3d;59
 r1
 !s85 0
 31
-!s108 1476554378.736000
+!s108 1476557374.381000
 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v|
 !i113 1
@@ -44,7 +44,7 @@ R3
 r1
 !s85 0
 31
-!s108 1476554378.813000
+!s108 1476557374.481000
 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v|
 !i113 1
@@ -53,21 +53,21 @@ n@a@l@u_tb
 vDecoder
 R0
 !i10b 1
-!s100 XW]g]^YMVO5`HbPePen2E2
-IJnF9Gb4iBo5Di>P28heHH0
+!s100 _I_S_Nnozbmn[MWRC3BAF3
+Iz^?[oOBR4M`0deFT01`G`2
 R1
 R2
-Z5 w1476553317
+Z5 w1476556311
 Z6 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v
 Z7 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v
-L0 59
+Z8 L0 60
 R3
 r1
 !s85 0
 31
-Z8 !s108 1476554378.564000
-Z9 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v|
-Z10 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v|
+Z9 !s108 1476557374.187000
+Z10 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v|
+Z11 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v|
 !i113 1
 R4
 n@decoder
@@ -78,25 +78,25 @@ R0
 IjPH8l1jl4YC[cD70FHVn]0
 R1
 R2
-Z11 w1476553208
-Z12 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v
-Z13 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v
-L0 60
+Z12 w1476553208
+Z13 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v
+Z14 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v
+R8
 R3
 r1
 !s85 0
 31
-Z14 !s108 1476554378.625000
-Z15 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v|
-Z16 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v|
+Z15 !s108 1476557374.262000
+Z16 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v|
+Z17 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile_tb.v|
 !i113 1
 R4
 n@decoder_tb
 vDFF
 R0
 !i10b 1
-!s100 FkFN4@86Y^BXR2F0a@Tc@3
-IgQYCMK>nz;X6m>JlGb8a_2
+!s100 NTSNZU;]Ez:PjKV>3fgAC0
+IXC:@3oDGk_k1==UIJl0WH0
 R1
 R2
 R5
@@ -107,9 +107,9 @@ R3
 r1
 !s85 0
 31
-R8
 R9
 R10
+R11
 !i113 1
 R4
 n@d@f@f
@@ -120,38 +120,38 @@ R0
 IbU??dUdOSioobJiA;aA7Z0
 R1
 R2
-R11
 R12
 R13
+R14
 L0 81
 R3
 r1
 !s85 0
 31
-R14
 R15
 R16
+R17
 !i113 1
 R4
 n@d@f@f_tb
 vMux2
 R0
 !i10b 1
-!s100 zP=Q<5D<;Re>bIeBH47HM1
-IVY36;cmDSGG0]I>D4@f^82
+!s100 YSGzS;S?9gR9BkCc`_AJG3
+I7^kL:MPoB6=Uoo=_nY?>c2
 R1
 R2
 R5
 R6
 R7
-L0 84
+L0 85
 R3
 r1
 !s85 0
 31
-R8
 R9
 R10
+R11
 !i113 1
 R4
 n@mux2
@@ -162,59 +162,59 @@ R0
 IVXXJaVjZ<=]dFDz8Pm?be1
 R1
 R2
-R11
 R12
 R13
+R14
 L0 2
 R3
 r1
 !s85 0
 31
-R14
 R15
 R16
+R17
 !i113 1
 R4
 n@mux2_tb
 vMux2OH
 R0
 !i10b 1
-!s100 8]mU0IMPG:kGWA:aHI`=?2
-I4_BBC4b5n@>SUNbSiAXO`3
+!s100 [@96QR2fnZTj2aLGW5XfH0
+Im==I_Xa;8jig]_A6@07zc3
 R1
 R2
 R5
 R6
 R7
-L0 72
+L0 73
 R3
 r1
 !s85 0
 31
-R8
 R9
 R10
+R11
 !i113 1
 R4
 n@mux2@o@h
 vMux8
 R0
 !i10b 1
-!s100 9V2_FH@YVe>eDc^MjXoej1
-I^^E:Hg<3KT6[gh4L0?z4Y2
+!s100 Qz>U_P0[i?zCbeGl@l>H_1
+Im=de@DLPabUJ8;l==BXPW3
 R1
 R2
 R5
 R6
 R7
-L0 96
+L0 97
 R3
 r1
 !s85 0
 31
-R8
 R9
 R10
+R11
 !i113 1
 R4
 n@mux8
@@ -225,17 +225,17 @@ R0
 I8nLVOUU2WXR`Jc`SB`FCP3
 R1
 R2
-R11
 R12
 R13
-Z17 L0 30
+R14
+Z18 L0 30
 R3
 r1
 !s85 0
 31
-R14
 R15
 R16
+R17
 !i113 1
 R4
 n@mux8_tb
@@ -254,9 +254,9 @@ R3
 r1
 !s85 0
 31
-R8
 R9
 R10
+R11
 !i113 1
 R4
 n@regfile
@@ -267,17 +267,17 @@ R0
 IbnefW7QFf1KNldR=5d0=L1
 R1
 R2
-R11
 R12
 R13
+R14
 L0 158
 R3
 r1
 !s85 0
 31
-R14
 R15
 R16
+R17
 !i113 1
 R4
 n@regfile_tb
@@ -291,14 +291,14 @@ R2
 R5
 R6
 R7
-R17
+R18
 R3
 r1
 !s85 0
 31
-R8
 R9
 R10
+R11
 !i113 1
 R4
 n@register
@@ -309,17 +309,17 @@ R0
 ICoLV]7UElJc5V679C_7]P3
 R1
 R2
-R11
 R12
 R13
+R14
 L0 114
 R3
 r1
 !s85 0
 31
-R14
 R15
 R16
+R17
 !i113 1
 R4
 n@register_tb

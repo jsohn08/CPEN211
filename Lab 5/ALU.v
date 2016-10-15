@@ -3,13 +3,26 @@ module ALU(ain, bin, op, out, status);
 
   input [k - 1:0] ain, bin;
   input [1:0] op;
-  output [k - 1:0] out;
+  output reg [k - 1:0] out;
   output status;
 
-  assign out =
-  ({k{!op}} & (ain + bin)) |
-  ({k{~op[1] & op[0]}} & (ain - bin)) |
-  ({k{op[1] & ~op[0]}} & (ain & bin)) |
-  ({k{&op}} & ain);
+  // using logic gates
+  // assign out =
+  // ({k{!op}} & (ain + bin)) |
+  // ({k{~op[1] & op[0]}} & (ain - bin)) |
+  // ({k{op[1] & ~op[0]}} & (ain & bin)) |
+  // ({k{&op}} & ain);
+
+  // using case statements
+  always @(*) begin
+    case (op)
+      2'b00: out = ain + bin;
+      2'b01: out = ain - bin;
+      2'b10: out = ain & bin;
+      2'b11: out = ain;
+      default: out = ain;
+    endcase
+  end
+
   assign status = !out;
 endmodule

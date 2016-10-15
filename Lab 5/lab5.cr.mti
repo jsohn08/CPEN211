@@ -1,9 +1,16 @@
-{F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v} {1 {vlog -work work -stats=none {F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU.v}
+{F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v} {1 {vlog -work work -stats=none {F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/Regfile.v}
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
--- Compiling module ALU
+-- Compiling module Regfile
+-- Compiling module Register
+-- Compiling module DFF
+-- Compiling module Decoder
+-- Compiling module Mux2OH
+-- Compiling module Mux2
+-- Compiling module Mux8
 
 Top level modules:
-	ALU
+	Regfile
+	Mux2OH
 
 } {} {}} {F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v} {1 {vlog -work work -stats=none {F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/ALU_tb.v}
 Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
