@@ -1,0 +1,157 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 4
+vDecoder
+Z0 !s110 1476492181
+!i10b 1
+!s100 <8JBf8R4eDUFJ5[EjA7e91
+I>kkf1`ei98gR14cIm^>T[0
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+Z2 dF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5
+Z3 w1476492065
+Z4 8F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
+Z5 FF:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v
+L0 58
+Z6 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z7 !s108 1476492181.257000
+Z8 !s107 F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|F:/OneDrive/Documents/2017 UBC/CPEN 211/Projects/Lab 5/regfile.v|
+!i113 1
+Z10 o-work work
+n@decoder
+vDFF
+R0
+!i10b 1
+!s100 GW_0;>a:F?n8I8lnU?I7Y3
+IH4N7o?L?SgbL102i83WN=0
+R1
+R2
+R3
+R4
+R5
+L0 45
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@d@f@f
+vMux2
+R0
+!i10b 1
+!s100 IAhdSNdW;39@5M8BRbh?M1
+IikZY`X7_PRbm34iH^=2bf2
+R1
+R2
+R3
+R4
+R5
+L0 83
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@mux2
+vMux2OH
+R0
+!i10b 1
+!s100 oGlaOQcln[L@XAdUlGhaM0
+I0^TU]0lW4:O7_ga>20UmK0
+R1
+R2
+R3
+R4
+R5
+L0 71
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@mux2@o@h
+vMux8
+R0
+!i10b 1
+!s100 4hKoK2U>_hgK9gMRjYNff2
+IkTam53n_dYmKge35R2LSW2
+R1
+R2
+R3
+R4
+R5
+L0 94
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@mux8
+vRegfile
+R0
+!i10b 1
+!s100 KN^kbGmm9?3^@o:DS;Bk>1
+IKDUN<fD4GJl4W^km_7i[m1
+R1
+R2
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@regfile
+vRegister
+R0
+!i10b 1
+!s100 TCN??Z]^e3@W7L1MXM3kk3
+InmM`Bknl<cc3iU9=d8VhS0
+R1
+R2
+R3
+R4
+R5
+L0 29
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@register
