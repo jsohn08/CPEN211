@@ -164,55 +164,77 @@ endmodule
 // code will not work with the DE1-SoC because the order of segments used in
 // the book is not the same as on the DE1-SoC (see comments below).
 
+// One bit per segment. On the DE1-SoC a HEX segment is illuminated when
+// the input bit is 0. Bits 6543210 correspond to:
+//
+//    0000
+//   5    1
+//   5    1
+//    6666
+//   4    2
+//   4    2
+//    3333
+//
+// Decimal value | Hexadecimal symbol to render on (one) HEX display
+//             0 | 0
+//             1 | 1
+//             2 | 2
+//             3 | 3
+//             4 | 4
+//             5 | 5
+//             6 | 6
+//             7 | 7
+//             8 | 8
+//             9 | 9
+//            10 | A
+//            11 | b
+//            12 | C
+//            13 | d
+//            14 | E
+//            15 | F
 module sseg(in,segs);
   input [3:0] in;
   output [6:0] segs;
 
-  // NOTE: The code for sseg below is not complete: You can use your code from
-  // Lab4 to fill this in or code from someone else's Lab4.
-  //
-  // IMPORTANT:  If you *do* use someone else's Lab4 code for the seven
-  // segment display you *need* to state the following three things in
-  // a file README.txt that you submit with handin along with this code:
-  //
-  //   1.  First and last name of student providing code
-  //   2.  Student number of student providing code
-  //   3.  Date and time that student provided you their code
-  //
-  // You must also (obviously!) have the other student's permission to use
-  // their code.
-  //
-  // To do otherwise is considered plagiarism.
-  //
-  // One bit per segment. On the DE1-SoC a HEX segment is illuminated when
-  // the input bit is 0. Bits 6543210 correspond to:
-  //
-  //    0000
-  //   5    1
-  //   5    1
-  //    6666
-  //   4    2
-  //   4    2
-  //    3333
-  //
-  // Decimal value | Hexadecimal symbol to render on (one) HEX display
-  //             0 | 0
-  //             1 | 1
-  //             2 | 2
-  //             3 | 3
-  //             4 | 4
-  //             5 | 5
-  //             6 | 6
-  //             7 | 7
-  //             8 | 8
-  //             9 | 9
-  //            10 | A
-  //            11 | b
-  //            12 | C
-  //            13 | d
-  //            14 | E
-  //            15 | F
+  // easier for the seven segment things
+  // numbers
+  `define ZERO  7'b1000000
+  `define ONE   7'b1111001
+  `define TWO   7'b0100100
+  `define THREE 7'b0110000
+  `define FOUR  7'b0011001
+  `define FIVE  7'b0010010
+  `define SIX   7'b0000010
+  `define SEVEN 7'b1111000
+  `define EIGHT 7'b0000000
+  `define NINE  7'b0010000
 
-  assign segs = 7'b0001110;  // this will output "F"
+  // letters
+  `define A     7'b0001000
+  `define B     7'b0000011
+  `define C     7'b1000110
+  `define D     7'b0100001
+  `define E     7'b0000110
+  `define F     7'b0001110
 
+  always @(*) begin
+    case (in)
+      4'b0000: seg = `ZERO;
+      4'b0001: seg = `ONE;
+      4'b0010: seg = `TWO;
+      4'b0011: seg = `THREE;
+      4'b0100: seg = `FOUR;
+      4'b0101: seg = `FIVE;
+      4'b0110; seg = `SIX;
+      4'b0111; seg = `SEVEN;
+      4'b1000: seg = `EIGHT;
+      4'b1001: seg = `NINE;
+      4'b1010: seg = `A;
+      4'b1011: seg = `B;
+      4'b1100: seg = `C;
+      4'b1101: seg = `D;
+      4'b1110: seg = `E;
+      4'b1111: seg = `F;
+    endcase
+  end
 endmodule
