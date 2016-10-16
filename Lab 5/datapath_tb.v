@@ -75,7 +75,7 @@ module datapath_tb();
 
     // store RC to R2
     write = 1;
-    vsel = 1;
+    vsel = 0;
     writenum = 3'd2;
     #15;
 
