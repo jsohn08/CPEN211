@@ -78,8 +78,15 @@ module MUX2(a0, a1, select, b);
   input select;
   output [k - 1:0] b;
 
-  assign b = ({k{~select}} & a0) | ({k{select}} & a1);
-
+  // aparently this won't work if either a0 or a1 is XXX
+  // assign b = ({k{~select}} & a0) | ({k{select}} & a1);
+  always @(*) begin
+    case(select)
+      1'b0: b = a0;
+      1'b1: b = a1;
+      default: b = a0;
+    endcase
+  end
 endmodule
 
 // k - width of IO

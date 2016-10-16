@@ -21,8 +21,11 @@ module datapath_tb();
   wire status;
 
   // datapath module
-  datapath DUT(clk, readnum, writenum, write, ALUop, loada, loadb, loadc, asel, bsel,
-    shift, datapath_in, vsel, loads, datapath_out, status);
+  datapath DUT(.clk(clk), .readnum(readnum), .writenum(writenum),
+               .write(write), .ALUop(ALUop), .loada(loada), .loadb(loadb),
+               .loadc(loadc), .asel(asel), .bsel(bsel), .shift(shift),
+               .datapath_in(datapath_in), .vsel(vsel), .loads(loads),
+               .datapath_out(datapath_out), .status(status));
 
   initial begin
     forever begin
@@ -32,6 +35,19 @@ module datapath_tb();
   end
 
   initial begin
+    readnum = 0;
+    writenum = 0;
+    write = 0;
+    ALUop = 0;
+    loada = 0;
+    loadb = 0;
+    loadc = 0;
+    asel = 0;
+    bsel = 0;
+    shift = 0;
+    datapath_in = 0;
+    vsel = 0;
+    loads = 0;
     #1;
 
     // store 7 in R0
