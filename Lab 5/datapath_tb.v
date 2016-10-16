@@ -28,6 +28,7 @@ module datapath_tb();
                .datapath_out(datapath_out), .status(status));
 
   initial begin
+    #5;
     forever begin
       clk = 1; #5;
       clk = 0; #5;
@@ -35,24 +36,9 @@ module datapath_tb();
   end
 
   initial begin
-    readnum = 0;
-    writenum = 0;
-    write = 0;
-    ALUop = 0;
-    loada = 0;
-    loadb = 0;
-    loadc = 0;
-    asel = 0;
-    bsel = 0;
-    shift = 0;
-    datapath_in = 0;
-    vsel = 0;
-    loads = 0;
-    #1;
-
     // store 7 in R0
     write = 1;
-    vsel = 0;
+    vsel = 1;
     datapath_in = 16'd7;
     writenum = 3'd0;
     #10;
@@ -68,7 +54,6 @@ module datapath_tb();
     loada = 0;
     loadb = 1;
     #10;
-    loadb = 0;
 
     // fetch R1 to RA
     readnum = 3'd1;
@@ -92,7 +77,7 @@ module datapath_tb();
     write = 1;
     vsel = 1;
     writenum = 3'd2;
-    #10;
+    #15;
 
     // stop sim
     $stop;

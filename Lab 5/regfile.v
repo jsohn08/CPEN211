@@ -76,7 +76,7 @@ module MUX2(a0, a1, select, b);
 
   input [k - 1:0] a0, a1;
   input select;
-  output [k - 1:0] b;
+  output reg [k - 1:0] b;
 
   // aparently this won't work if either a0 or a1 is XXX
   // assign b = ({k{~select}} & a0) | ({k{select}} & a1);
