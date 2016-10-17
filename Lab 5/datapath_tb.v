@@ -34,12 +34,11 @@ module datapath_tb();
       clk = 0; #5;
     end
   end
-
   initial begin
     // store 7 in R0
+    datapath_in = 16'd7;
     write = 1;
     vsel = 1;
-    datapath_in = 16'd7;
     writenum = 3'd0;
     #10;
 

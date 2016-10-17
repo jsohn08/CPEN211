@@ -6,7 +6,8 @@ module lab5_top_tb;
   reg CLOCK_50;
   reg [2:0] debug;
 
-  lab5_top DUT(KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,CLOCK_50);
+  lab5_top DUT(
+    KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,CLOCK_50);
 
   initial forever begin
     CLOCK_50 = 0; #5;
@@ -15,63 +16,65 @@ module lab5_top_tb;
 
   initial begin
     SW = 0;
-
-    // take 7 and store it in R0
-    // ===DATAPATH IN===
+    // store 7 in R0
     SW[9] = 1;
-    SW[7:0] = 8'd7;
-    #5;
-    SW[9] = 0;
+    SW[7:0] = 8'b00000111;
+    #10; SW[9] = 0;
 
-    // ===WRITEBACK===
+    SW = 0;
     SW[0] = 1;
-    SW[3:1] = 3'd0;
     SW[4] = 1;
-    #5;
+    SW[3:1] = 3'b000;
+    #100;
+
+    // store 2 in R1
+    SW = 0;
+    SW[9] = 1;
+    SW[7:0] = 8'b00000010;
+    #10; SW[9] = 0;
+
+    SW = 0;
+    SW[0] = 1;
+    SW[4] = 1;
+    SW[3:1] = 3'b001;
+    #100;
     SW[0] = 0;
 
-    // take 2 and store it in R1
-    // ===DATAPATH IN===
-    SW[9] = 1;
-    SW[7:0] = 8'd2;
-    #5;
-    SW[9] = 0;
-
-    // ===WRITEBACK===
-    SW[0] = 1;
-    SW[3:1] = 3'd1;
-    SW[4] = 1;
-    #5;
-    SW[0] = 0;
-
-    // R2 = R1 + (R0 << 1)
-    // ===READ R1===
-    SW[3:1] = 3'd1;
-    SW[5] = 1;
-    #10;
-
-    // ===READ R2===
-    SW[3:1] = 3'd0;
+    // fetch R0 to RB (for shifting)
+    SW = 0;
+    SW[3:1] = 3'b000;
+    SW[5] = 0;
     SW[6] = 1;
-    #10;
+    #100;
 
-    // ===EXECUTE===
+    // fetch R1 to RA
+    SW = 0;
+    SW[3:1] = 3'b001;
+    SW[5] = 1;
+    SW[6] = 0;
+    #100;
+    SW[5] = 0;
+
+    // shift RB by 1 and add
+    SW = 0;
     SW[2:1] = 2'b01;
+    SW[6:5] = 2'b00;
     SW[3] = 0;
     SW[4] = 0;
-    SW[6:5] = 2'b00; // add
     SW[7] = 1;
     SW[8] = 1;
-    #10;
+    #100;
     SW[7] = 0;
     SW[8] = 0;
 
-    // ===WRITEBACK===
+    // store RC to R2
+    SW = 0;
     SW[0] = 1;
-    SW[3:1] = 3'd2;
     SW[4] = 0;
-    #10;
+    SW[3:1] = 3'b010;
+    #100;
 
+    // stop sim
     $stop;
   end
 endmodule

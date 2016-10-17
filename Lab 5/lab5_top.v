@@ -24,7 +24,7 @@
 //
 // HEX3, HEX2, HEX1, HEX0 are wired to datapath_out.
 //
-// When SW[9] is set to 1, SW[7:0] changes the lower 8 bits of datapath_in.
+// When SW[9] is set to 1, SW[8:0] changes the lower 8 bits of datapath_in.
 // (The upper 8-bits are hardwired to zero.) The LEDR[7:0] will show the
 // current control inputs (LED "on" means input has logic value of 1).
 //
@@ -54,7 +54,8 @@
 //              vsel  SW[4]
 
 
-module lab5_top(KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,CLOCK_50);
+module lab5_top(
+  KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,CLOCK_50);
   input [3:0] KEY;
   input [9:0] SW;
 

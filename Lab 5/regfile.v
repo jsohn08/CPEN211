@@ -22,7 +22,7 @@ module regfile(data_in, data_out, readnum, writenum, write, clk);
   register #(k)   R4(data_in, rout4, load[4], clk);
   register #(k)   R5(data_in, rout5, load[5], clk);
   register #(k)   R6(data_in, rout6, load[6], clk);
-  register #(k)   R7(data_in, rout7, load[7], clk);
+  register #(k)   R7(data_in, rout7, load[7], clk);  
 
   assign load = preload & {8{write}};
 endmodule
