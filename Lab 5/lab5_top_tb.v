@@ -1,4 +1,3 @@
-// === DOES NOT WORK ATM ===
 module lab5_top_tb;
   reg [3:0] KEY;
   reg [9:0] SW;

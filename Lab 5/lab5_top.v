@@ -136,7 +136,7 @@ module input_iface(clk, SW, datapath_in, write, vsel, loada, loadb, asel, bsel,
     //     shift         asel        bse         ALUop         loadc       loads
            ctrl_sw[2:1], ctrl_sw[3], ctrl_sw[4], ctrl_sw[6:5], ctrl_sw[7], ctrl_sw[8],
     // set when "writing back" to register file
-    //   writenum        write
+    //     writenum      write
            ctrl_sw[3:1], ctrl_sw[0]
   };
 
@@ -169,9 +169,7 @@ endmodule
 //
 //    0000
 //   5    1
-//   5    1
 //    6666
-//   4    2
 //   4    2
 //    3333
 //
@@ -194,7 +192,7 @@ endmodule
 //            15 | F
 module sseg(in,segs);
   input [3:0] in;
-  output [6:0] segs;
+  output reg [6:0] segs;
 
   // easier for the seven segment things
   // numbers
@@ -219,22 +217,22 @@ module sseg(in,segs);
 
   always @(*) begin
     case (in)
-      4'b0000: seg = `ZERO;
-      4'b0001: seg = `ONE;
-      4'b0010: seg = `TWO;
-      4'b0011: seg = `THREE;
-      4'b0100: seg = `FOUR;
-      4'b0101: seg = `FIVE;
-      4'b0110; seg = `SIX;
-      4'b0111; seg = `SEVEN;
-      4'b1000: seg = `EIGHT;
-      4'b1001: seg = `NINE;
-      4'b1010: seg = `A;
-      4'b1011: seg = `B;
-      4'b1100: seg = `C;
-      4'b1101: seg = `D;
-      4'b1110: seg = `E;
-      4'b1111: seg = `F;
+      4'b0000: segs = `ZERO;
+      4'b0001: segs = `ONE;
+      4'b0010: segs = `TWO;
+      4'b0011: segs = `THREE;
+      4'b0100: segs = `FOUR;
+      4'b0101: segs = `FIVE;
+      4'b0110: segs = `SIX;
+      4'b0111: segs = `SEVEN;
+      4'b1000: segs = `EIGHT;
+      4'b1001: segs = `NINE;
+      4'b1010: segs = `A;
+      4'b1011: segs = `B;
+      4'b1100: segs = `C;
+      4'b1101: segs = `D;
+      4'b1110: segs = `E;
+      4'b1111: segs = `F;
     endcase
   end
 endmodule
