@@ -28,26 +28,41 @@ module regfile(data_in, data_out, readnum, writenum, write, clk);
 endmodule
 
 // n - bit width of data/I/O
-// TODO: FOUND THE ISSUE
+// TODO: SOME CONNECTION PROBLEMS HERE WITH REGISTER OUTPUT NOT
+//       SYNTHESIZED CORRECTLY
+// module register(in, out, load, clk);
+//   parameter k = 1;
+//
+//   input [k - 1:0] in;
+//   input load, clk;
+//   output [k - 1:0] out;
+//
+//   wire [k - 1:0] mux_out;
+//   wire [k - 1:0] reg_out;
+//
+//   MUX2 #(k) U0(.a0(reg_out), .a1(in), .select(load), .b(mux_out));
+//   DFF #(k) U1(.D(mux_out), .Q(reg_out), .clk(clk));
+//
+//   assign out = reg_out;
+// endmodule
+
+
 module register(in, out, load, clk);
-  parameter k = 8;
+  parameter k = 1;
 
-  input [k - 1:0] in;
-  input load;
-  input clk;
-  output [k - 1:0] out = reg_out;
+  input [k-1:0] in;
+  input load, clk;
+  output reg [k-1:0] out;
 
-  wire [k - 1:0] mux_out;
-  wire [k - 1:0] reg_out;
-
-  MUX2 #(k) U0(reg_out, in, load, mux_out);
-  DFF #(k) U1(mux_out, reg_out, clk);
+  always @(posedge clk) begin
+    out = load ? in : out;
+  end
 endmodule
 
 // d flip flop
 // n - bit width of the IO
 module DFF(D, Q, clk);
-  parameter k = 4;
+  parameter k = 1;
 
   input [k - 1:0] D;
   input clk;
