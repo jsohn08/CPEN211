@@ -6,13 +6,6 @@ module alu(ain, bin, op, out, status);
   output reg [k - 1:0] out;
   output status;
 
-  // using logic gates
-  // assign out =
-  // ({k{!op}} & (ain + bin)) |
-  // ({k{~op[1] & op[0]}} & (ain - bin)) |
-  // ({k{op[1] & ~op[0]}} & (ain & bin)) |
-  // ({k{&op}} & ain);
-
   // using case statements
   always @(*) begin
     case (op)

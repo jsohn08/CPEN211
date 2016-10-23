@@ -22,24 +22,26 @@ module regfile(data_in, data_out, readnum, writenum, write, clk);
   register #(k)   R4(data_in, rout4, load[4], clk);
   register #(k)   R5(data_in, rout5, load[5], clk);
   register #(k)   R6(data_in, rout6, load[6], clk);
-  register #(k)   R7(data_in, rout7, load[7], clk);  
+  register #(k)   R7(data_in, rout7, load[7], clk);
 
   assign load = preload & {8{write}};
 endmodule
 
 // n - bit width of data/I/O
+// TODO: FOUND THE ISSUE
 module register(in, out, load, clk);
   parameter k = 8;
 
   input [k - 1:0] in;
   input load;
   input clk;
-  output [k - 1:0] out;
+  output [k - 1:0] out = reg_out;
 
-  wire [k - 1:0] D, Q;
+  wire [k - 1:0] mux_out;
+  wire [k - 1:0] reg_out;
 
-  MUX2 #(k) U0(out, in, load, D);
-  DFF #(k) U1(D, out, clk);
+  MUX2 #(k) U0(reg_out, in, load, mux_out);
+  DFF #(k) U1(mux_out, reg_out, clk);
 endmodule
 
 // d flip flop
@@ -76,17 +78,9 @@ module MUX2(a0, a1, select, b);
 
   input [k - 1:0] a0, a1;
   input select;
-  output reg [k - 1:0] b;
+  output [k - 1:0] b;
 
-  // aparently this won't work if either a0 or a1 is XXX
-  // assign b = ({k{~select}} & a0) | ({k{select}} & a1);
-  always @(*) begin
-    case(select)
-      1'b0: b = a0;
-      1'b1: b = a1;
-      default: b = a0;
-    endcase
-  end
+  assign b = select ? a1 : a0;
 endmodule
 
 // k - width of IO

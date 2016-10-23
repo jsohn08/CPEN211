@@ -10,8 +10,8 @@ module lab5_top_tb;
     KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,CLOCK_50);
 
   initial forever begin
-    CLOCK_50 = 0; #5;
-    CLOCK_50 = 1; #5;
+    CLOCK_50 = 0; KEY = 0; #5;
+    CLOCK_50 = 1; KEY = 1; #5;
   end
 
   initial begin
@@ -27,12 +27,7 @@ module lab5_top_tb;
     SW[3:1] = 3'b000;
     #100;
 
-    // store 2 in R1
-    SW = 0;
-    SW[9] = 1;
-    SW[7:0] = 8'b00000010;
-    #10; SW[9] = 0;
-
+    // store 7 in R1
     SW = 0;
     SW[0] = 1;
     SW[4] = 1;
