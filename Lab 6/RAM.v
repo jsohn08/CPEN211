@@ -1,5 +1,5 @@
 // based off of the code provided on lecture slide set #8, page 24
-module RAM(clk, read_address, write_address, write, din, dout);
+module ram(clk, read_address, write_address, write, din, dout);
   parameter data_width = 32;
   parameter addr_width = 4;
   parameter filename = "data.txt";
@@ -21,5 +21,6 @@ module RAM(clk, read_address, write_address, write, din, dout);
       memory[write_address] <= din;
 
     // read data after 1 cycle delay due to non-blocking assignment
-    dout <= mem[read_address];
+    dout <= memory[read_address];
   end
+endmodule
