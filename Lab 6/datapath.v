@@ -11,7 +11,6 @@ module datapath (clk,
                 loads,
                 writenum,
                 write,
-                datapath_in,
                 status,
                 datapath_out,
 
@@ -31,7 +30,6 @@ module datapath (clk,
   input asel, bsel, loadc, loads;
 
   // writing back input
-  input [15:0] datapath_in;
   input [2:0] writenum;
   input write;
 

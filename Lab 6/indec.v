@@ -10,8 +10,8 @@ module indec(
   input [15:0] in;
   input [2:0] nsel;
   output [15:0] sximm5, sximm8;
-  output [2:0] op, readnum, writenum;
-  output [1:0] opcode, ALUop, shift;
+  output [2:0] opcode, readnum, writenum;
+  output [1:0] op, ALUop, shift;
 
   wire [4:0] imm5 = in[4:0];
   wire [7:0] imm8 = in[7:0];
