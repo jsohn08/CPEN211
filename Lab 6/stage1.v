@@ -1,12 +1,10 @@
-module stage1(B, C, loadpc, loadir, mwrite, msel, IRout, reset, clk);
+module stage1(B, C, loadpc, loadir, mwrite, msel, reset, clk);
   parameter addr_width = 8;
   parameter data_width = 16;
 
   input [addr_width-1:0] B, C;
   input loadpc, reset, msel, mwrite, loadir, clk;
-
-  output IRout;
-
+  
   wire [addr_width-1:0] pc_in, pc_out, addr;
   wire [data_width-1:0] mdata, ir_out;
 

@@ -13,7 +13,10 @@ module datapath (clk,
                 write,
                 datapath_in,
                 status,
-                datapath_out);
+                datapath_out,
+
+                // lab 6 stage 1 addons
+                loadpc, loadir, reset, mwrite, msel);
 
   // clock input
   input clk;
@@ -31,7 +34,10 @@ module datapath (clk,
   input [2:0] writenum;
   input write;
 
+  // PC + Mem control input
+  input loadpc, loadir, mwrite, msel, reset;
   // output
+
   output [15:0] datapath_out;
   output status;
 
@@ -40,10 +46,11 @@ module datapath (clk,
               RA_out, RB_out,
               shifter_out,
               ain, bin,
-              ALU_out, ALU_status;
+              ALU_out, ALU_status,
+              RC_out;
 
   // modules
-  MUX2 #(16) M0(.a0(datapath_out), .a1(datapath_in), .select(vsel), .b(data_in));
+  MUX2 #(16) M0(.a0(RC_out), .a1(datapath_in), .select(vsel), .b(data_in));
 
   regfile #(16) RF(data_in, data_out, readnum, writenum, write, clk);
 
@@ -57,6 +64,12 @@ module datapath (clk,
 
   alu #(16) ALU(ain, bin, ALUop, ALU_out, ALU_status);
 
-  register #(16) RC(.in(ALU_out), .out(datapath_out), .load(loadc), .clk(clk));
+  register #(16) RC(.in(ALU_out), .out(RC_out), .load(loadc), .clk(clk));
   register #(1) RS(.in(ALU_status), .out(status), .load(loads), .clk(clk));
+
+  // memory
+  stage1 #(8, 16) S1(RB_out, RC_out, loadpc, loadir, mwrite, msel, reset, clk);
+
+  // assign data out
+  assign datapath_out = RC_out;
 endmodule
