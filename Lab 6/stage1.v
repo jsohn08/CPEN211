@@ -24,7 +24,7 @@ module stage1(B, C, loadpc, loadir, mwrite, msel, IRout, reset, clk);
   MUX2 #(addr_width) M_msel(pc_out, C[7:0], msel, addr);
 
   // RAM module
-  RAM #(data_width, addr_width, "data.txt") RAMY(clk, addr, addr, mwrite, B, mdata);
+  ram #(data_width, addr_width, "data.txt") RAMY(clk, addr, addr, mwrite, B, mdata);
 
   // instructions register, IR only gets mdata when loadir is HIGH
   vDFF #(data_width) IR(clk, loadir ? mdata : ir_out, ir_out);
