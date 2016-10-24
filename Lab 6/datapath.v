@@ -55,6 +55,9 @@ module datapath (clk,
               mdata,              // data out from memory
               ir_out;             // output of the instruction register
 
+              // === MODIFICATIONS (lab 6 stage 2) ===
+              sximm5;
+
   wire [7:0] loadpc_out, pc_in, pc_out, addr;
 
   wire ALU_status;
@@ -70,7 +73,7 @@ module datapath (clk,
   shifter #(16) S0(.in(RB_out), .out(shifter_out), .shift(shift));
 
   MUX2 #(16) MA(.a0(RA_out), .a1(16'b0), .select(asel), .b(ain));
-  MUX2 #(16) MB(.a0(shifter_out), .a1({11'b0, datapath_in[4:0]}), .select(bsel), .b(bin));
+  MUX2 #(16) MB(.a0(shifter_out), .a1({sximm5}), .select(bsel), .b(bin));
 
   alu #(16) ALU(ain, bin, ALUop, ALU_out, ALU_status);
 
