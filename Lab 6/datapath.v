@@ -46,8 +46,10 @@ module datapath (clk,
               RA_out, RB_out,
               shifter_out,
               ain, bin,
-              ALU_out, ALU_status,
+              ALU_out,
               RC_out;
+
+  wire ALU_status;
 
   // modules
   MUX2 #(16) M0(.a0(RC_out), .a1(datapath_in), .select(vsel), .b(data_in));

@@ -2,7 +2,7 @@ module stage1(B, C, loadpc, loadir, mwrite, msel, reset, clk);
   parameter addr_width = 8;
   parameter data_width = 16;
 
-  input [addr_width-1:0] B, C;
+  input [data_width-1:0] B, C;
   input loadpc, reset, msel, mwrite, loadir, clk;
 
   wire [addr_width-1:0] loadpc_out, pc_in, pc_out, addr;
@@ -14,7 +14,7 @@ module stage1(B, C, loadpc, loadir, mwrite, msel, reset, clk);
   assign loadpc_out = loadpc ? pc_out + 1 : pc_out;
 
   // reset program count
-  // TODO: change mux to conditional statements 
+  // TODO: change mux to conditional statements
   MUX2 #(addr_width) M_reset(loadpc_out, 8'b0, reset, pc_in);
 
   // holds current count
@@ -24,7 +24,7 @@ module stage1(B, C, loadpc, loadir, mwrite, msel, reset, clk);
   MUX2 #(addr_width) M_msel(pc_out, C[7:0], msel, addr);
 
   // RAM module
-  ram #(data_width, addr_width, "data.txt") RAMY(clk, addr, addr, mwrite, B, mdata);
+  ram #(data_width, addr_width, "data.txt") MEM(clk, addr, addr, mwrite, B, mdata);
 
   // instructions register, IR only gets mdata when loadir is HIGH
   vDFF #(data_width) IR(clk, loadir ? mdata : ir_out, ir_out);
