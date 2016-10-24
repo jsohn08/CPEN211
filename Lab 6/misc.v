@@ -56,3 +56,11 @@ module MUX8(
   ({k{select[6]}} & a6) |
   ({k{select[7]}} & a7);
 endmodule
+
+module plusplus(in, out);
+  parameter k = 1;
+  input [k-1:0] in;
+  output reg [k-1:0] out;
+  always @(in)
+    assign out = in + 1;
+endmodule

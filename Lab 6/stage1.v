@@ -4,16 +4,18 @@ module stage1(B, C, loadpc, loadir, mwrite, msel, reset, clk);
 
   input [addr_width-1:0] B, C;
   input loadpc, reset, msel, mwrite, loadir, clk;
-  
-  wire [addr_width-1:0] pc_in, pc_out, addr;
+
+  wire [addr_width-1:0] loadpc_out, pc_in, pc_out, addr;
   wire [data_width-1:0] mdata, ir_out;
 
   // modules
   // increment program count
-  MUX2 #(addr_width) M_loadpc(pc_out, pc_out + 1, loadpc, loadpc_out);
+  // MUX2 #(addr_width) M_loadpc(pc_out, pc_out1, loadpc, loadpc_out);
+  assign loadpc_out = loadpc ? pc_out + 1 : pc_out;
 
   // reset program count
-  MUX2 #(addr_width) M_reset(8'b0, loadpc_out, reset, pc_in);
+  // TODO: change mux to conditional statements 
+  MUX2 #(addr_width) M_reset(loadpc_out, 8'b0, reset, pc_in);
 
   // holds current count
   vDFF #(addr_width) PC(clk, pc_in, pc_out);

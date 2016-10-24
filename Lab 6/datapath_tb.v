@@ -58,7 +58,7 @@ module datapath_tb();
     loadir = 0;
 
     // quick reset
-    reset = 1; #5;
+    reset = 1; #6;
     reset = 0;
 
     // clock cycle i-1
