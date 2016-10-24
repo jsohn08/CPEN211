@@ -63,6 +63,7 @@ module datapath (clk,
   wire ALU_status;
 
   // modules
+  // TODO: change this to MUX4
   MUX2 #(16) M0(.a0(RC_out), .a1(datapath_in), .select(vsel), .b(data_in));
 
   regfile #(16) RF(data_in, data_out, readnum, writenum, write, clk);
@@ -72,8 +73,8 @@ module datapath (clk,
 
   shifter #(16) S0(.in(RB_out), .out(shifter_out), .shift(shift));
 
-  MUX2 #(16) MA(.a0(RA_out), .a1(16'b0), .select(asel), .b(ain));
-  MUX2 #(16) MB(.a0(shifter_out), .a1({sximm5}), .select(bsel), .b(bin));
+  assign ain = asel ? RA_out : 16'b0;
+  assign bin = bsel ? shifter_out : sximm5;
 
   alu #(16) ALU(ain, bin, ALUop, ALU_out, ALU_status);
 
