@@ -4,7 +4,7 @@ module alu(ain, bin, op, out, status);
   input [k - 1:0] ain, bin;
   input [1:0] op;
   output reg [k - 1:0] out;
-  output status;
+  output [2:0] status;
 
   // using case statements
   always @(*) begin
@@ -17,5 +17,9 @@ module alu(ain, bin, op, out, status);
     endcase
   end
 
-  assign status = !out;
+  // three bits for status:
+  // [0] - HIGH if the result is 0
+  // [1] - HIGH if the result is negative (last bit is 1)
+  // [2] - HIGH if there is overflow (lab 7)
+  assign status = {1'b1, out[k-1], !out};
 endmodule

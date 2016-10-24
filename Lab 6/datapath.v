@@ -40,7 +40,7 @@ module datapath (clk,
   // output
 
   output [15:0] datapath_out;
-  output status;
+  output [2:0] status;
 
   // wires
   wire [15:0]
@@ -54,14 +54,14 @@ module datapath (clk,
 
               // === MEMORY (lab 6 stage 1) ===
               mdata,              // data out from memory
-              ir_out;             // output of the instruction register
+              ir_out,             // output of the instruction register
 
               // === MODIFICATIONS (lab 6 stage 2) ===
               sximm5, sximm8;
 
   wire [7:0] loadpc_out, pc_in, pc_out, addr;
 
-  wire ALU_status;
+  wire [2:0] ALU_status;
 
   // === STANDARD MODULES ===
   // data in selector MUX
@@ -86,7 +86,7 @@ module datapath (clk,
 
   // register R and S
   register #(16) RC(.in(ALU_out), .out(RC_out), .load(loadc), .clk(clk));
-  register #(1) RS(.in(ALU_status), .out(status), .load(loads), .clk(clk));
+  register #(3) RS(.in(ALU_status), .out(status), .load(loads), .clk(clk));
 
   // === MEMORY ===
   // increment program count by 1 if loadpc is HIGH
