@@ -86,10 +86,13 @@ module MUX8(
   ({k{select[7]}} & a7);
 endmodule
 
-module plusplus(in, out);
-  parameter k = 1;
+// sign extender for both positive and negative numbers
+module signxtender(in, out);
+  parameter k = 8;
+  parameter l = 16;
+
   input [k-1:0] in;
-  output reg [k-1:0] out;
-  always @(in)
-    assign out = in + 1;
+  output [l-1:0] out;
+
+  assign out = {{(l - k){in[k - 1]}}, in};
 endmodule

@@ -121,15 +121,15 @@ module register_tb();
   end
 endmodule
 
-module plusplus_tb();
-  reg [3:0] sim_in;
-  wire [3:0] sim_out;
+module signxtender_tb();
+  reg [3:0] in;
+  wire [7:0] out;
 
-  plusplus #(4) DUT(sim_in, sim_out);
+  signxtender #(4, 8) DUT(in, out);
 
   initial begin
-    sim_in = 4; #5;
-    sim_in = 8; #5;
-    sim_in = 4'b1111; #5;
+    in = 4'b0000; #5;
+    in = 4'b1000; #5;
+    in = 4'b0111; #5;
   end
 endmodule
