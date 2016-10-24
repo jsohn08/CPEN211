@@ -23,7 +23,8 @@ module datapath (clk,
 
   // fetch stage input
   input [2:0] readnum;
-  input vsel, loada, loadb;
+  input [1:0] vsel;
+  input loada, loadb;
 
   // computation input
   input [1:0] shift, ALUop;
@@ -56,32 +57,38 @@ module datapath (clk,
               ir_out;             // output of the instruction register
 
               // === MODIFICATIONS (lab 6 stage 2) ===
-              sximm5;
+              sximm5, sximm8;
 
   wire [7:0] loadpc_out, pc_in, pc_out, addr;
 
   wire ALU_status;
 
-  // modules
-  // TODO: change this to MUX4
-  MUX2 #(16) M0(.a0(RC_out), .a1(datapath_in), .select(vsel), .b(data_in));
+  // === STANDARD MODULES ===
+  // data in selector MUX
+  MUX4 #(16) M0(mdata, sximm8, {8'b0, pc_out}, RC_out, vsel, data_in);
 
+  // register file
   regfile #(16) RF(data_in, data_out, readnum, writenum, write, clk);
 
+  // RA and RB
   register #(16) RA(.in(data_out), .out(RA_out), .load(loada), .clk(clk));
   register #(16) RB(.in(data_out), .out(RB_out), .load(loadb), .clk(clk));
 
+  // shifter on RB
   shifter #(16) S0(.in(RB_out), .out(shifter_out), .shift(shift));
 
+  // Ain and Bin selector MUX
   assign ain = asel ? RA_out : 16'b0;
   assign bin = bsel ? shifter_out : sximm5;
 
+  // computation
   alu #(16) ALU(ain, bin, ALUop, ALU_out, ALU_status);
 
+  // register R and S
   register #(16) RC(.in(ALU_out), .out(RC_out), .load(loadc), .clk(clk));
   register #(1) RS(.in(ALU_status), .out(status), .load(loads), .clk(clk));
 
-  // ****** memory ******
+  // === MEMORY ===
   // increment program count by 1 if loadpc is HIGH
   assign loadpc_out = loadpc ? pc_out + 1 : pc_out;
 

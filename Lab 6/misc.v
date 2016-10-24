@@ -35,6 +35,35 @@ module MUX2(a0, a1, select, b);
   assign b = select ? a1 : a0;
 endmodule
 
+module MUX4(
+  a0, a1, a2, a3,
+  select, b
+  );
+  parameter k = 1;
+
+  input [k-1:0] a0, a1, a2, a3;
+  input [1:0] select;
+  output reg [k-1:0] b;
+
+  // method 1 - use case statements
+  always @(*) begin
+    case (b)
+      2'b00: b = a0;
+      2'b01: b = a1;
+      2'b10: b = a2;
+      2'b11: b = a3;
+    end
+  end
+
+  // method 2 - use assign and logic operators
+  // assign b =
+  // ({k{select[0]}} & a0) |
+  // ({k{select[1]}} & a1) |
+  // ({k{select[2]}} & a2) |
+  // ({k{select[3]}} & a3);
+endmodule
+
+
 // k - width of IO
 module MUX8(
   a0, a1, a2, a3, a4, a5, a6, a7,
@@ -42,9 +71,9 @@ module MUX8(
   );
   parameter k = 1;
 
-  input[k - 1:0] a0, a1, a2, a3, a4, a5, a6, a7;
-  input[7:0] select;
-  output[k - 1:0] b;
+  input [k - 1:0] a0, a1, a2, a3, a4, a5, a6, a7;
+  input [7:0] select;
+  output [k - 1:0] b;
 
   assign b =
   ({k{select[0]}} & a0) |
