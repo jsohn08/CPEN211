@@ -35,6 +35,23 @@ module MUX2(a0, a1, select, b);
   assign b = select ? a1 : a0;
 endmodule
 
+module MUX3(a0, a1, a2, select, b);
+  parameter k = 1;
+  input [k-1:0] a0, a1, a2;
+  input [1:0] select;
+  output reg [k-1:0] b;
+
+  // method 1 - use case statements
+  always @(*) begin
+    case (b)
+      2'b00: b = a0;
+      2'b01: b = a1;
+      2'b10: b = a2;
+      default: b = a0;
+    endcase
+  end
+endmodule
+
 module MUX4(
   a0, a1, a2, a3,
   select, b
@@ -87,7 +104,7 @@ module MUX8(
 endmodule
 
 // sign extender for both positive and negative numbers
-module signxtender(in, out);
+module sxtend(in, out);
   parameter k = 8;
   parameter l = 16;
 

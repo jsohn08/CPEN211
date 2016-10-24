@@ -121,7 +121,7 @@ module register_tb();
   end
 endmodule
 
-module signxtender_tb();
+module sxtend_tb();
   reg [3:0] in;
   wire [7:0] out;
 
