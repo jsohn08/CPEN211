@@ -42,12 +42,20 @@ module datapath (clk,
   output status;
 
   // wires
-  wire [15:0] data_in, data_out,
-              RA_out, RB_out,
-              shifter_out,
-              ain, bin,
-              ALU_out,
-              RC_out;
+  wire [15:0]
+              // === DATAPATH WIRES (From lab 5) ===
+              data_in, data_out,  // data in and out of the regfile
+              RA_out, RB_out,     // output of register A and B
+              shifter_out,        // output of shifter
+              ain, bin,           // inputs to the ALU
+              ALU_out,            // output of the ALU
+              RC_out,             // output of register C
+
+              // === MEMORY (lab 6 stage 1) ===
+              mdata,              // data out from memory
+              ir_out;             // output of the instruction register
+
+  wire [7:0] loadpc_out, pc_in, pc_out, addr;
 
   wire ALU_status;
 
@@ -69,8 +77,24 @@ module datapath (clk,
   register #(16) RC(.in(ALU_out), .out(RC_out), .load(loadc), .clk(clk));
   register #(1) RS(.in(ALU_status), .out(status), .load(loads), .clk(clk));
 
-  // memory
-  stage1 #(8, 16) S1(RB_out, RC_out, loadpc, loadir, mwrite, msel, reset, clk);
+  // ****** memory ******
+  // increment program count by 1 if loadpc is HIGH
+  assign loadpc_out = loadpc ? pc_out + 1 : pc_out;
+
+  // reset program count
+  assign pc_in = reset ? 8'b0 : loadpc_out;
+
+  // vDDF for holding the current PC count
+  vDFF #(8) PC(clk, pc_in, pc_out);
+
+  // choose from PC or lower 8 bits of C
+  assign addr = msel ? RC_out[7:0] : pc_out;
+
+  // RAM module (addr for both read and write address)
+  ram #(16, 8, "data.txt") MEM(clk, addr, addr, mwrite, RB_out, mdata);
+
+  // instruction register
+  vDFF #(16) IR(clk, loadir ? mdata : ir_out, ir_out);
 
   // assign data out
   assign datapath_out = RC_out;
