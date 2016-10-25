@@ -9,11 +9,11 @@ module alu(ain, bin, op, out, status);
   // using case statements
   always @(*) begin
     case (op)
-      2'b00: out = ain + bin;
-      2'b01: out = ain - bin;
-      2'b10: out = ain & bin;
-      2'b11: out = ~bin;
-      default: out = ain;
+      2'b00: out = ain + bin;  // ADD
+      2'b01: out = ain - bin;  // CMP
+      2'b10: out = ain & bin;  // AND
+      2'b11: out = ~bin;       // MVN (negate)
+      default: out = bin;
     endcase
   end
 

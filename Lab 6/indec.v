@@ -1,11 +1,6 @@
 // INSTRUCTION DECODER
-module indec(
-  in,
-  opcode, op, ALUop,
-  sximm5, sximm8,
-  shift, readnum, writenum,
-  nsel
-  );
+module indec(in, opcode, op, ALUop, sximm5, sximm8,
+  shift, readnum, writenum, nsel);
 
   input [15:0] in;
   input [2:0] nsel;

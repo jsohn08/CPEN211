@@ -15,7 +15,10 @@ module datapath (clk,
                 datapath_out,
 
                 // lab 6 stage 1 addons
-                loadpc, loadir, reset, mwrite, msel);
+                loadpc, loadir, reset, mwrite, msel, ir_out,
+
+                // lab 6 stage 2 addons
+                sximm5, sximm8);
 
   // clock input
   input clk;
@@ -41,24 +44,22 @@ module datapath (clk,
   output [2:0] status;
 
   // wires
-  wire [15:0]
-              // === DATAPATH WIRES (From lab 5) ===
-              data_in, data_out,  // data in and out of the regfile
+  // === DATAPATH WIRES (From lab 5) ===
+  wire [15:0] data_in, data_out,  // data in and out of the regfile
               RA_out, RB_out,     // output of register A and B
               shifter_out,        // output of shifter
               ain, bin,           // inputs to the ALU
               ALU_out,            // output of the ALU
-              RC_out,             // output of register C
+              RC_out;             // output of register C
 
-              // === MEMORY (lab 6 stage 1) ===
-              mdata,              // data out from memory
-              ir_out,             // output of the instruction register
+  // === MEMORY (lab 6 stage 1) ===
+  wire [15:0] mdata;              // data out from memory
+  output [15:0] ir_out;            // output of the instruction register
 
-              // === MODIFICATIONS (lab 6 stage 2) ===
-              sximm5, sximm8;
+  // === MODIFICATIONS (lab 6 stage 2) ===
+  input [15:0] sximm5, sximm8;
 
   wire [7:0] loadpc_out, pc_in, pc_out, addr;
-
   wire [2:0] ALU_status;
 
   // === STANDARD MODULES ===
