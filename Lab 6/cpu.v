@@ -17,7 +17,7 @@ module cpu(
   input [1:0] op;
   input reset, clk;
 
-  output reg [2:0] nsel;
+  output reg [1:0] nsel;
   output reg loadir, loadpc, msel, mwrite;
 
   output reg [1:0] vsel;
@@ -34,10 +34,10 @@ module cpu(
       10'b1_xxx_xx_xxxx: state = 4'b0000;
 
       // loadir (home) state (0)
-      10'b0_xxx_xx_0000: state = 4'b0001;
+      10'b0_xxx_xx_0000: begin state <= 4'b0001; loadir = 1; end
 
       // update pc (1)
-      10'b0_xxx_xx_0001: state = 4'b0010;
+      10'b0_xxx_xx_0001: begin state = 4'b0010; loadpc = 1; end
 
       // decode and first read (2)
       10'b0_110_10_0010: begin // MOV1
@@ -118,12 +118,13 @@ module cpu(
       10'b0_100_00_1000: begin // STR
         mwrite = 1;
         state = 4'b0001; end
+      default: state = 4'b0000;
       endcase
   end
 
-  always @(*) begin
-    loadir = (state == 4'b0001) ? 1 : 0;
-    loadpc = (state == 4'b0010) ? 1 : 0;
-  end
+  // always @(*) begin
+  //   loadir = (state == 4'b0001) ? 1 : 0;
+  //   loadpc = (state == 4'b0010) ? 1 : 0;
+  // end
 
 endmodule;

@@ -3,7 +3,7 @@ module indec(in, opcode, op, ALUop, sximm5, sximm8,
   shift, readnum, writenum, nsel);
 
   input [15:0] in;
-  input [2:0] nsel;
+  input [1:0] nsel;
   output [15:0] sximm5, sximm8;
   output [2:0] opcode, readnum, writenum;
   output [1:0] op, ALUop, shift;

@@ -1,14 +1,15 @@
-module lab6_top();
+module lab6_top(reset, clk);
   // TODO: wire these as switches
   //input reset, clk;
-  wire reset, clk;
+  input reset, clk;
 
   wire [15:0] instructions_in, sximm5, sximm8;
-  wire [2:0] op, readnum, writenum, nsel;
-  wire [1:0] opcode, ALUop, shift;
+  wire [2:0] opcode, readnum, writenum;
+  wire [1:0] op, ALUop, shift, nsel;
 
-  wire vsel, write, asel, bsel, loada, loadb, laodc, loads;
+  wire [1:0] vsel;
 
+  wire write, asel, bsel, loada, loadb, laodc, loads;
   wire loadpc, loadir, mwrite, msel;
 
   wire [2:0] status;
