@@ -122,11 +122,8 @@ module cpu(
         state = 4'b0001; end
       default: state = 4'b0000;
       endcase
+		
+		loadir = (state == 4'b0001) ? 1 : 0;
+		loadpc = (state == 4'b0010) ? 1 : 0;
   end
-
-  always @(state) begin
-    loadir = (state == 4'b0001) ? 1 : 0;
-    loadpc = (state == 4'b0010) ? 1 : 0;
-  end
-
 endmodule

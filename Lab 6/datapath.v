@@ -77,8 +77,8 @@ module datapath (clk,
   shifter #(16) S0(.in(RB_out), .out(shifter_out), .shift(shift));
 
   // Ain and Bin selector MUX
-  assign ain = asel ? RA_out : 16'b0;
-  assign bin = bsel ? shifter_out : sximm5;
+  assign ain = asel ? 16'b0 : RA_out;
+  assign bin = bsel ? sximm5 : shifter_out;
 
   // computation
   alu #(16) ALU(ain, bin, ALUop, ALU_out, ALU_status);

@@ -69,6 +69,7 @@ module MUX4(
       2'b01: b = a1;
       2'b10: b = a2;
       2'b11: b = a3;
+      default: b = a0;
     endcase
   end
 
