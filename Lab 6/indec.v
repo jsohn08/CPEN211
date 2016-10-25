@@ -4,7 +4,7 @@ module indec(
   opcode, op, ALUop,
   sximm5, sximm8,
   shift, readnum, writenum,
-  nsel;
+  nsel
   );
 
   input [15:0] in;
@@ -16,7 +16,7 @@ module indec(
   wire [4:0] imm5 = in[4:0];
   wire [7:0] imm8 = in[7:0];
 
-  wire [2:0] Rn = in[10:8], Rd = in[7:5], Rm = in[2:0]
+  wire [2:0] Rn = in[10:8], Rd = in[7:5], Rm = in[2:0];
   wire [2:0] mux_out;
 
   assign ALUop = in[12:11];

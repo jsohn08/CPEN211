@@ -7,20 +7,26 @@ module cpu(
   reset, clk,
 
   // output
-  loadir, loadpc, msel, mwrite, nsel
+  loadir, loadpc, msel, mwrite, nsel,
 
   // TBD output
+  vsel, write, asel, bsel, loada, loadb, loadc, loads
   );
 
   input [2:0] opcode;
   input [1:0] op;
   input reset, clk;
-  output [2:0] nsel;
+
+  output reg [2:0] nsel;
+  output reg loadir, loadpc, msel, mwrite;
+
+  output reg vsel, write, asel, bsel, loada, loadb, loadc, loads;
 
   wire [6:0] state = 5'd0;
 
   always @(posedge clk) begin
     {loadir, loadpc, msel, mwrite, nsel} = 7'b0;
+    {vsel, write, asel, bsel, loada, loadb, loadc, loads} = 8'b0;
     case (state)
       5'd0: state = 5'd1; // reset -> loadir
       5'd1: state = 5'd2; // loadir -> update
@@ -32,13 +38,10 @@ module cpu(
       default: state = 5'd0;
     endcase
 
-    case (state)
-      5'd1: loadir = 1;
-      5'd2: loadpc = 1;
-      5'd3: nsel = 2'b00;
-      5'd4: nsel = 2'b10;
-      5'd5:
-
+    if (state == 5'd3) begin
+      case ({opcode, op})
+        5'b110_10: nsel = 2'b00;
+        5'b110_00: 
+    end
   end
-
 endmodule;

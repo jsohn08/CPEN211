@@ -12,7 +12,7 @@ module alu(ain, bin, op, out, status);
       2'b00: out = ain + bin;
       2'b01: out = ain - bin;
       2'b10: out = ain & bin;
-      2'b11: out = ain;
+      2'b11: out = ~bin;
       default: out = ain;
     endcase
   end
