@@ -4,14 +4,15 @@ module lab6_top_tb();
   lab6_top DUT(reset, clk);
 
   initial begin
-    reset = 1;
-    clk = 0;
-    #5;
-    reset = 0;
-
     repeat (20) begin
       clk = 1; #5;
       clk = 0; #5;
     end
+  end
+
+  initial begin
+    reset = 1;
+    #6;
+    reset = 0;
   end
 endmodule

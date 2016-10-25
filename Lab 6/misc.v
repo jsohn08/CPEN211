@@ -39,17 +39,25 @@ module MUX3(a0, a1, a2, select, b);
   parameter k = 1;
   input [k-1:0] a0, a1, a2;
   input [1:0] select;
-  output reg [k-1:0] b;
+  output [k-1:0] b;
 
   // method 1 - use case statements
-  always @(*) begin
-    case (select)
-      2'b00: b = a0;
-      2'b01: b = a1;
-      2'b10: b = a2;
-      default: b = a0;
-    endcase
-  end
+  // always @(*) begin
+  //   case (select)
+  //     2'b00: b = a0;
+  //     2'b01: b = a1;
+  //     2'b10: b = a2;
+  //     default: b = a0;
+  //   endcase
+  // end
+
+  // assign b =
+  // ({k{select == 2'b00}} & a0) |
+  // ({k{select == 2'b01}} & a1) |
+  // ({k{select == 2'b10}} & a2);
+
+  assign b = (select == 2'b00) ? a0 :
+             (select == 2'b01) ? a1 : a2;
 endmodule
 
 module MUX4(
@@ -60,25 +68,29 @@ module MUX4(
 
   input [k-1:0] a0, a1, a2, a3;
   input [1:0] select;
-  output reg [k-1:0] b;
+  output [k-1:0] b;
 
   // method 1 - use case statements
-  always @(*) begin
-    case (b)
-      2'b00: b = a0;
-      2'b01: b = a1;
-      2'b10: b = a2;
-      2'b11: b = a3;
-      default: b = a0;
-    endcase
-  end
+  // always @(*) begin
+  //   case (select)
+  //     2'b00: b = a0;
+  //     2'b01: b = a1;
+  //     2'b10: b = a2;
+  //     2'b11: b = a3;
+  //     default: b = a0;
+  //   endcase
+  // end
 
   // method 2 - use assign and logic operators
   // assign b =
-  // ({k{select[0]}} & a0) |
-  // ({k{select[1]}} & a1) |
-  // ({k{select[2]}} & a2) |
-  // ({k{select[3]}} & a3);
+  // ({k{select == 2'b00}} & a0) |
+  // ({k{select == 2'b01}} & a1) |
+  // ({k{select == 2'b10}} & a2) |
+  // ({k{select == 2'b11}} & a3);
+
+  assign b = (select == 2'b00) ? a0 :
+             (select == 2'b01) ? a1 :
+             (select == 2'b10) ? a2 : a3;
 endmodule
 
 
