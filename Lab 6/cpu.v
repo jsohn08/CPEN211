@@ -23,7 +23,7 @@ module cpu(
   output reg [1:0] vsel;
   output reg write, asel, bsel, loada, loadb, loadc, loads;
 
-  reg [4:0] state = 4'd0;
+  reg [3:0] state = 4'd0;
 
   always @(posedge clk) begin
     {loadir, loadpc, msel, mwrite, nsel} = 7'b0;
@@ -122,7 +122,7 @@ module cpu(
         state = 4'b0001; end
       default: state = 4'b0000;
       endcase
-		
+
 		loadir = (state == 4'b0001) ? 1 : 0;
 		loadpc = (state == 4'b0010) ? 1 : 0;
   end
