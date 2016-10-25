@@ -5,7 +5,8 @@ module datapath_tb();
 
   // fetch
   reg [2:0] readnum;
-  reg vsel, loada, loadb;
+  reg [1:0] vsel;
+  reg loada, loadb;
 
   // excute
   reg [1:0] shift, ALUop;
@@ -21,7 +22,12 @@ module datapath_tb();
 
   // output
   wire [15:0] datapath_out;
-  wire status;
+  wire [2:0] status;
+  wire [15:0] ir_out;
+
+  // sign extended
+  wire [15:0] sximm5;
+  wire [15:0] sximm8;
 
   // datapath module
   datapath DUT( clk,
@@ -37,12 +43,14 @@ module datapath_tb();
                 loads,
                 writenum,
                 write,
-                datapath_in,
                 status,
                 datapath_out,
 
-                // lab 6 stage 1
-                loadpc, loadir, reset, mwrite, msel);
+                // lab 6 stage 1 addons
+                loadpc, loadir, reset, mwrite, msel, ir_out,
+
+                // lab 6 stage 2 addons
+                sximm5, sximm8);
 
   initial begin
     forever begin

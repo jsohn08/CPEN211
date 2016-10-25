@@ -43,7 +43,7 @@ module MUX3(a0, a1, a2, select, b);
 
   // method 1 - use case statements
   always @(*) begin
-    case (b)
+    case (select)
       2'b00: b = a0;
       2'b01: b = a1;
       2'b10: b = a2;
