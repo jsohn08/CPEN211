@@ -37,6 +37,9 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
   sseg H1(datapath_out[7:4],   HEX1);
   sseg H2(datapath_out[11:8],  HEX2);
   sseg H3(datapath_out[15:12], HEX3);
+
+  // [9:7] LEDs are for status
+  assign LEDR[9:7] = status;
 endmodule
 
 // seven segment modules (from lab5)

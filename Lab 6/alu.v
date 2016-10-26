@@ -6,6 +6,9 @@ module alu(ain, bin, op, out, status);
   output reg [k - 1:0] out;
   output [2:0] status;
 
+  // on if there's overflow
+  wire overflow;
+
   // using case statements
   always @(*) begin
     case (op)
@@ -17,9 +20,11 @@ module alu(ain, bin, op, out, status);
     endcase
   end
 
+  assign overflow = (ain[k-1] ^ out) | (bin[k-1] ^ out);
+
   // three bits for status:
   // [0] - HIGH if the result is 0
   // [1] - HIGH if the result is negative (last bit is 1)
   // [2] - HIGH if there is overflow (lab 7)
-  assign status = {1'b1, out[k-1], !out};
+  assign status = {overflow, out[k-1], !out};
 endmodule
