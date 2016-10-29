@@ -28,7 +28,7 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
   ALUop, loadc, loads, writenum, write, status, datapath_out,
   loadpc, loadir, reset, mwrite, msel, instructions_in, sximm5, sximm8);
 
-  cpu CTRL(opcode, op, reset, clk,
+  cpu CPU(opcode, op, reset, clk,
     loadir, loadpc, msel, mwrite, nsel,
     vsel, write, asel, bsel, loada, loadb, loadc, loads);
 

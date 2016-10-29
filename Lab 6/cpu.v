@@ -23,107 +23,130 @@ module cpu(
   output reg [1:0] vsel;
   output reg write, asel, bsel, loada, loadb, loadc, loads;
 
-  reg [3:0] state = 4'd0;
+  reg [3:0] next_state;
+  wire [3:0] state;
+
+  // using register for states
+  vDFF #(4) RS(clk, next_state, state);
 
   always @(posedge clk) begin
     {loadir, loadpc, msel, mwrite, nsel} = 7'b0;
     {vsel, write, asel, bsel, loada, loadb, loadc, loads} = 9'b0;
 
-    casex({reset, opcode, op, state})
-      // reset
-      10'b1_xxx_xx_xxxx: state = 4'b0000;
+    `define REST 4'd0
+    `define LDIR 4'd1
+    `define LDPC 4'd2
+    `define RDRN 4'd3
+    `define RDRM 4'd4
+    `define WRRN 4'd5
+    `define CALC 4'd6
+    `define STAT 4'd7
+    `define WMEM 4'd8
+    `define WRRD 4'd9
+    `define RDRD 4'd10
 
-      // loadir (home) state (0)
-      // 10'b0_xxx_xx_0000: begin state <= 4'b0001; loadir = 1; end
-      10'b0_xxx_xx_0000: state = 4'b0001;
+    // reset if key0 is pressed
+    if (reset) next_state = `REST;
+    else begin
+      case(state)
+        // [0] reset state, pc = 0
+        `REST: next_state = `LDIR;
 
-      // update pc (1)
-      // 10'b0_xxx_xx_0001: begin state = 4'b0010; loadpc = 1; end
-      10'b0_xxx_xx_0001: state = 4'b0010;
+        // [1] load IR
+        `LDIR: begin
+          loadir = 1;
+          next_state = 4'b0010;
+          end
 
-      // decode and first read (2)
-      10'b0_110_10_0010: begin // MOV1
-        // write data in for datapath to rn
-        nsel = 2'b00;
-        vsel = 2'b01;
-        write = 1;
-        state = 4'b0001; end
-      10'b0_110_00_0010, 10'b0_101_11_0010: begin // MOV2, MVN
-        // read rm to rb
-        nsel = 2'b10;
-        loadb = 1;
-        state = 4'b0100; end
-      10'b0_101_x0_0010, 10'b0_101_01_0010: begin // ADD, AND, CMP
-        // read rn to ra
-        nsel = 2'b00;
-        loada = 1;
-        state = 4'b0011; end
-      10'b0_011_00_0010, 10'b0_100_00_0010: begin // LDR, STR
-        // read rn to ra
-        nsel = 2'b00;
-        loada = 1;
-        state = 4'b0100; end
+        // [2] loadpc
+        `LDPC: begin
+          loadpc = 1;
+          if ({opcode, op} == 5'b110_10)
+            next_state = `WRRN; // to state 5 (write rn)
+          else if (({opcode, op} == 5'b110_00) || ({opcode, op} == 5'b101_11))
+            next_state = `RDRM; // to state 4 (read rm)
+          else
+            next_state = `RDRN; // to state 3 (read rn)
+          end
 
-      // second read (3)
-      10'b0_101_x0_0011, 10'b0_101_01_0011: begin // ADD, AND, CMP
-        // read rm to rb
-        nsel = 2'b10;
-        loadb = 1;
-        state = 4'b0100; end
+        // [3] read rn
+        `RDRN: begin
+          loada = 1;
+          if (opcode == 3'b101)
+            next_state = `RDRM; // to state 4 (read rm)
+          else
+            next_state = `CALC; // to state 6 (ALU)
+          end
 
-      // ALU (4)
-      10'b0_101_01_0100: begin // CMP
-        // load to status register
-        loads = 1;
-        state = 4'b0001; end
-      10'b0_101_1x_0100, 10'b0_101_00_0100: begin // ADD, AND, MVN
-        // write alu results into rc
-        loadc = 1;
-        state = 4'b0101; end
-      10'b0_110_00_0100: begin // MOV2
-        asel = 1;
-        loadc = 1;
-        state = 4'b0101; end
-      10'b0_011_00_0100, 10'b0_100_00_0100: begin // LDR, STR
-        // write alu into rc
-        bsel = 1;
-        loadc = 1;
-        state = 4'b0110; end
+        // [4] read rm
+        `RDRM: begin
+          loadb = 1;
+          next_state = `CALC;
+          end
 
-      // writeback (5)
-      10'b0_1xx_xx_0101: begin // ADD, AND, CMP, MOV2
-        nsel = 2'b01;
-        vsel = 2'b11;
-        write = 1;
-        state = 4'b0001; end
-      10'b0_011_00_0101: begin // LDR
-        nsel = 2'b01;
-        vsel = 2'b00;
-        write = 1;
-        state = 4'b0001; end
+        // [5] write rn
+        `WRRN: begin
+          nsel  = 2'b00;
+          vsel  = 2'b01;
+          write = 1;
+          next_state = `LDIR;
+          end
 
-      // store to ram (6)
-      10'b0_011_00_0110: begin // LDR
-        msel = 1;
-        mwrite = 1;
-        state = 4'b0101; end
-      10'b0_100_00_0110: begin // STR
-        msel = 1;
-        mwrite = 1;
-        state = 4'b0111; end
+        // [6] ALU
+        `CALC: begin
+          loadc = 1;
+          if ({opcode, op} == 5'b101_01) // CMP
+            next_state = `STAT; // to state 7 (status register)
+          else if (opcode == 3'b011) begin // LDR
+            bsel = 1;
+            next_state = `WMEM; // to state 8 (write to memory)
+            end
+          else if (opcode == 3'b100) begin // STR
+            bsel = 1;
+            next_state = `RDRD; // to state 10 (read rd)
+            end
+          else if (opcode == 3'b110) begin // MOV2
+            asel = 1;
+            next_state = `WRRD;
+            end
+          else // ADD AND MVN
+            next_state = `WRRD;
+          end
 
-      // store in register (7)
-      10'b0_100_00_0111: begin // STR
-        nsel = 2'b01;
-        loadb = 1;
-        state = 4'b1000; end
-      10'b0_100_00_1000: begin // STR
-        mwrite = 1;
-        state = 4'b0001; end
-      default: state = 4'b0000;
+        // [7] Status Reg
+        `STAT: begin
+          loads = 1;
+          next_state = `LDIR;
+          end
+
+        // [8] Memory
+        `WMEM: begin
+          msel   = 1;
+          mwrite = 1;
+          if (opcode == 3'b011) // LDR
+            next_state = `WRRD;
+          else  // STR
+            next_state = `LDIR;
+          end
+
+        // [9] Write to Rd
+        `WRRD: begin
+          nsel  = 1;
+          write = 1;
+          if (opcode == 3'b011) // LDR
+            vsel = 2'b00;
+          else // ADD AND CMP MOV2
+            vsel = 2'b11;
+          next_state = `LDIR;
+          end
+
+        // [10] read rd
+        `RDRD: begin
+          loadb = 1;
+          next_state = `WMEM;
+        end
+        default: next_state = `REST;
       endcase
-
-		loadir = (state == 4'b0001) ? 1 : 0;
-		loadpc = (state == 4'b0010) ? 1 : 0;
+    end
   end
 endmodule
