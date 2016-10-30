@@ -10,7 +10,11 @@ module cpu(
   loadir, loadpc, msel, mwrite, nsel,
 
   // TBD output
-  vsel, write, asel, bsel, loada, loadb, loadc, loads
+  vsel, write, asel, bsel, loada, loadb, loadc, loads,
+
+
+  // for debugging
+  state
   );
 
   input [2:0] opcode;
@@ -24,7 +28,7 @@ module cpu(
   output reg write, asel, bsel, loada, loadb, loadc, loads;
 
   reg [3:0] next_state = 0;
-  wire [3:0] state;
+  output [3:0] state;
 
   // using register for states
   // vDFF #(4) RS(clk, next_state, state);

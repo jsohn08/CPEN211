@@ -19,6 +19,8 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
   wire [2:0] status;
   wire [15:0] datapath_out;
 
+  wire [3:0] state;
+
   // instruction decoder module
   indec ID(instructions_in, opcode, op, ALUop, sximm5, sximm8,
     shift, readnum, writenum, nsel);
@@ -30,7 +32,7 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
 
   cpu CPU(opcode, op, reset, clk,
     loadir, loadpc, msel, mwrite, nsel,
-    vsel, write, asel, bsel, loada, loadb, loadc, loads);
+    vsel, write, asel, bsel, loada, loadb, loadc, loads, state);
 
   // seven segment modules (from lab5)
   sseg H0(datapath_out[3:0],   HEX0);
@@ -40,6 +42,9 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
 
   // [9:7] LEDs are for status
   assign LEDR[9:7] = status;
+
+  // [3:0] are for states
+  assign LEDR[3:0] = state;
 endmodule
 
 // seven segment modules (from lab5)
