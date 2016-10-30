@@ -43,7 +43,7 @@ module datapath (clk,
   input loadpc, loadir, mwrite, msel, reset;
   // output
 
-  output [15:0] datapath_out;
+  output reg [15:0] datapath_out;
   output [2:0] status;
 
   // wires
@@ -113,5 +113,9 @@ module datapath (clk,
   vDFF #(16) IR(clk, loadir ? mdata : ir_out, ir_out);
 
   // assign data out
-  assign datapath_out = RC_out;
+  always @(reset) begin
+    if (~reset) datapath_out = RC_out;
+    else datapath_out = 16'b0;
+  end
+
 endmodule

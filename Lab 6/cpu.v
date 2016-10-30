@@ -172,7 +172,10 @@ module cpu(
         else // ADD AND CMP MOV2
           vsel = 2'b11;
         end
-      `RDRD: loadb = 1;
+      `RDRD: begin
+        nsel  = 2'b01;
+        loadb = 1;
+        end
       default: begin
         // set everything to 0 first
         {loadir, loadpc, msel, mwrite, nsel} = 7'b0;
