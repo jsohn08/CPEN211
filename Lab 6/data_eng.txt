@@ -14,6 +14,7 @@ put inverted R2 into R3
 
 put 1 into R0
 put 10 into R1
-store R1 to memory with address R0 + 15
 
-load from memory with address R0 + 15 to R2
+load memory with address 0 to R2
+
+store R1 to memory with address R0 + 15

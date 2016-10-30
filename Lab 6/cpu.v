@@ -183,5 +183,4 @@ module cpu(
         end
     endcase
   end
-
 endmodule

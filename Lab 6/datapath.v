@@ -113,7 +113,7 @@ module datapath (clk,
   vDFF #(16) IR(clk, loadir ? mdata : ir_out, ir_out);
 
   // assign data out
-  always @(reset) begin
+  always @(*) begin
     if (~reset) datapath_out = RC_out;
     else datapath_out = 16'b0;
   end
