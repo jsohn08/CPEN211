@@ -4,8 +4,9 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
   output [9:0] LEDR;
   output [6:0] HEX0, HEX1, HEX2, HEX3;
 
-  wire reset = KEY[1];
-  wire clk = KEY[0];
+  // inverted keys
+  wire reset = ~KEY[1];
+  wire clk = ~KEY[0];
 
   wire [15:0] instructions_in, sximm5, sximm8;
   wire [2:0] opcode, readnum, writenum;

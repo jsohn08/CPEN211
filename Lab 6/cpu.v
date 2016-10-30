@@ -173,6 +173,11 @@ module cpu(
           vsel = 2'b11;
         end
       `RDRD: loadb = 1;
+      default: begin
+        // set everything to 0 first
+        {loadir, loadpc, msel, mwrite, nsel} = 7'b0;
+        {vsel, write, asel, bsel, loada, loadb, loadc, loads} = 9'b0;
+        end
     endcase
   end
 
