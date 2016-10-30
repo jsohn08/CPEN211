@@ -8,15 +8,15 @@ module lab6_top_tb();
 
   initial begin
     repeat (15) begin
-      KEY[0] = 1; #5;
       KEY[0] = 0; #5;
+      KEY[0] = 1; #5;
     end
   end
 
   initial begin
     // reset
-    KEY[1] = 1;
-    #11;
     KEY[1] = 0;
+    #11;
+    KEY[1] = 1;
   end
 endmodule
