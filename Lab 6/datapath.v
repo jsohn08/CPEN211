@@ -18,7 +18,10 @@ module datapath (clk,
                 loadpc, loadir, reset, mwrite, msel, ir_out,
 
                 // lab 6 stage 2 addons
-                sximm5, sximm8);
+                sximm5, sximm8,
+
+                // pccounter
+                pcount_out);
 
   // clock input
   input clk;
@@ -61,6 +64,9 @@ module datapath (clk,
 
   wire [7:0] loadpc_out, pc_in, pc_out, addr;
   wire [2:0] ALU_status;
+
+  output [7:0] pcount_out;
+  assign pcount_out = pc_out;
 
   // === STANDARD MODULES ===
   // data in selector MUX

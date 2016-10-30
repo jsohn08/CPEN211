@@ -1,8 +1,8 @@
-module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
+module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
   input [3:0] KEY;
   input [9:0] SW;
   output [9:0] LEDR;
-  output [6:0] HEX0, HEX1, HEX2, HEX3;
+  output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 
   // inverted keys
   wire reset = ~KEY[1];
@@ -21,6 +21,7 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
   wire [15:0] datapath_out;
 
   wire [3:0] state;
+  wire [7:0] pc;
 
   // instruction decoder module
   indec ID(instructions_in, opcode, op, ALUop, sximm5, sximm8,
@@ -29,7 +30,7 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
   // TODO: CONTINUE IMPLEMENTING FSM AND CPU.V FROM HERE
   datapath DP(clk, readnum, vsel, loada, loadb, shift, asel, bsel,
   ALUop, loadc, loads, writenum, write, status, datapath_out,
-  loadpc, loadir, reset, mwrite, msel, instructions_in, sximm5, sximm8);
+  loadpc, loadir, reset, mwrite, msel, instructions_in, sximm5, sximm8, pc);
 
   cpu CPU(opcode, op, reset, clk,
     loadir, loadpc, msel, mwrite, nsel,
@@ -40,6 +41,10 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3);
   sseg H1(datapath_out[7:4],   HEX1);
   sseg H2(datapath_out[11:8],  HEX2);
   sseg H3(datapath_out[15:12], HEX3);
+
+  // for pc
+  sseg H4(pc[3:0], HEX4);
+  sseg H5(pc[7:4], HEX5);
 
   // [9:7] LEDs are for status
   assign LEDR[9:7] = status;
