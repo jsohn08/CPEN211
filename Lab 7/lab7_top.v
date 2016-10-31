@@ -1,12 +1,14 @@
-module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50);
   input [3:0] KEY;
   input [9:0] SW;
+  input CLOCK_50;
   output [9:0] LEDR;
   output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 
   // inverted keys
   wire reset = ~KEY[1];
-  wire clk = ~KEY[0];
+  // wire clk = ~KEY[0];
+  wire clk = CLOCK_50;
 
   wire [15:0] instructions_in, sximm5, sximm8;
   wire [2:0] opcode, readnum, writenum;
@@ -18,7 +20,8 @@ module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
   wire loadir, mwrite, msel;
 
   wire [2:0] status;
-  wire [15:0] datapath_out;
+  // wire [15:0] datapath_out;
+  wire [15:0] R0_out;
 
   wire [3:0] state;
   wire [7:0] pc;
@@ -31,8 +34,13 @@ module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
   indec ID(instructions_in, opcode, op, ALUop, sximm5, sximm8,
     shift, readnum, writenum, nsel, cond);
 
+  // datapath DP(clk, readnum, vsel, loada, loadb, shift, asel, bsel,
+  // ALUop, loadc, loads, writenum, write, status, datapath_out,
+  // loadir, reset, mwrite, msel, instructions_in,
+  // sximm5, sximm8, tsel, incp, execb, cond, pc);
+
   datapath DP(clk, readnum, vsel, loada, loadb, shift, asel, bsel,
-  ALUop, loadc, loads, writenum, write, status, datapath_out,
+  ALUop, loadc, loads, writenum, write, status, R0_out,
   loadir, reset, mwrite, msel, instructions_in,
   sximm5, sximm8, tsel, incp, execb, cond, pc);
 
@@ -42,10 +50,15 @@ module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     tsel, incp, execb, state);
 
   // seven segment modules (from lab5)
-  sseg H0(datapath_out[3:0],   HEX0);
-  sseg H1(datapath_out[7:4],   HEX1);
-  sseg H2(datapath_out[11:8],  HEX2);
-  sseg H3(datapath_out[15:12], HEX3);
+  // sseg H0(datapath_out[3:0],   HEX0);
+  // sseg H1(datapath_out[7:4],   HEX1);
+  // sseg H2(datapath_out[11:8],  HEX2);
+  // sseg H3(datapath_out[15:12], HEX3);
+  sseg H0(R0_out[3:0],   HEX0);
+  sseg H1(R0_out[7:4],   HEX1);
+  sseg H2(R0_out[11:8],  HEX2);
+  sseg H3(R0_out[15:12], HEX3);
+
 
   // for pc
   sseg H4(pc[3:0], HEX4);

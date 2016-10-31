@@ -1,0 +1,33 @@
+onerror {resume}
+quietly WaveActivateNextPane {} 0
+add wave -noupdate {/lab7_top_tb/KEY[1]}
+add wave -noupdate {/lab7_top_tb/KEY[0]}
+add wave -noupdate -radix decimal /lab7_top_tb/DUT/datapath_out
+add wave -noupdate -radix decimal /lab7_top_tb/DUT/DP/RF/rout0
+add wave -noupdate -radix decimal /lab7_top_tb/DUT/DP/RF/rout1
+add wave -noupdate -radix decimal /lab7_top_tb/DUT/DP/RF/rout2
+add wave -noupdate -radix decimal /lab7_top_tb/DUT/DP/RA_out
+add wave -noupdate -radix decimal /lab7_top_tb/DUT/DP/RB_out
+add wave -noupdate -radix decimal /lab7_top_tb/DUT/DP/RC_out
+add wave -noupdate /lab7_top_tb/DUT/DP/status
+add wave -noupdate -radix unsigned /lab7_top_tb/DUT/DP/PC/pc_out
+add wave -noupdate -radix decimal -childformat {{{/lab7_top_tb/DUT/DP/MEM/memory[100][15]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][14]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][13]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][12]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][11]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][10]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][9]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][8]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][7]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][6]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][5]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][4]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][3]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][2]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][1]} -radix decimal} {{/lab7_top_tb/DUT/DP/MEM/memory[100][0]} -radix decimal}} -subitemconfig {{/lab7_top_tb/DUT/DP/MEM/memory[100][15]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][14]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][13]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][12]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][11]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][10]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][9]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][8]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][7]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][6]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][5]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][4]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][3]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][2]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][1]} {-height 15 -radix decimal} {/lab7_top_tb/DUT/DP/MEM/memory[100][0]} {-height 15 -radix decimal}} {/lab7_top_tb/DUT/DP/MEM/memory[100]}
+add wave -noupdate -radix decimal {/lab7_top_tb/DUT/DP/MEM/memory[101]}
+TreeUpdate [SetDefaultTree]
+WaveRestoreCursors {{Cursor 1} {59 ps} 0}
+quietly wave cursor active 1
+configure wave -namecolwidth 150
+configure wave -valuecolwidth 100
+configure wave -justifyvalue left
+configure wave -signalnamewidth 1
+configure wave -snapdistance 10
+configure wave -datasetprefix 0
+configure wave -rowmargin 4
+configure wave -childrowmargin 2
+configure wave -gridoffset 0
+configure wave -gridperiod 1
+configure wave -griddelta 40
+configure wave -timeline 0
+configure wave -timelineunits ps
+update
+WaveRestoreZoom {0 ps} {378 ps}

@@ -32,9 +32,6 @@ module cpu(
 
   reg [3:0] next_state = 0;
   output [3:0] state;
-
-  // using register for states
-  // vDFF #(4) RS(clk, next_state, state);
   assign state = next_state;
 
   // state definitions
@@ -53,6 +50,7 @@ module cpu(
   // lab 7 new states
   `define EXBR 4'd11
   `define EXBM 4'd12
+  `define HALT 4'd13
 
   always @(posedge clk) begin
     // reset if key0 is pressed
@@ -71,6 +69,7 @@ module cpu(
           else if (({opcode, op} == 5'b110_00) || ({opcode, op} == 5'b101_11))
             next_state = `RDRM; // to state 4 (read rm)
           else if (opcode == 3'b001) next_state = `EXBR; // to state 11 (branch 1)
+          else if (opcode == 3'b111) next_state = `HALT; // to state 13 (stops the machine)
           else next_state = `RDRN; // to state 3 (read rn)
           end
 
@@ -115,6 +114,9 @@ module cpu(
 
         // [12] branch 2
         `EXBM: next_state = `LDIR;
+
+        // [13] stop
+        `HALT: next_state = `HALT;
 
         default: next_state = `REST;
       endcase
