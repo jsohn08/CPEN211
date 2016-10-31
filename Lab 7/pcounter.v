@@ -1,7 +1,7 @@
 module pcounter(
   tsel, incp,   // MUX selectors
   sximm8, A,    // 8 bit input
-  execb, status, cond // branch unit input
+  execb, status, cond, // branch unit input
   clk, reset,   // FSM
   pc_out);      // output
 
@@ -23,11 +23,12 @@ module pcounter(
   assign pc_next = incp ? pc_out + 1: pctgt;
 
   // branching unit
-  assign taken = 0; // TODO HERE
+  // combinational logic for taken
+  assign taken = execb ? ((cond == status) ? 1 : 0) : 0;
   assign loadpc = taken | incp;
 
-  // reset program count or select pc_next
-  assign pc_in = reset ? 8'b0 : loadpc ? : pc_next : pc_out;
+  // reset program count or select pc_next or current pc
+  assign pc_in = reset ? 8'b0 : (loadpc ? pc_next : pc_out);
 
   // vDDF for holding the current PC count
   vDFF #(8) PC(clk, pc_in, pc_out);

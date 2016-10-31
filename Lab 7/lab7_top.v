@@ -1,4 +1,4 @@
-module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
   input [3:0] KEY;
   input [9:0] SW;
   output [9:0] LEDR;
@@ -15,7 +15,7 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
   wire [1:0] vsel;
 
   wire write, asel, bsel, loada, loadb, laodc, loads;
-  wire loadpc, loadir, mwrite, msel;
+  wire loadir, mwrite, msel;
 
   wire [2:0] status;
   wire [15:0] datapath_out;
@@ -23,18 +23,23 @@ module lab6_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
   wire [3:0] state;
   wire [7:0] pc;
 
+  // lab 7
+  wire [2:0] cond;
+  wire tsel, incp, execb;
+
   // instruction decoder module
   indec ID(instructions_in, opcode, op, ALUop, sximm5, sximm8,
-    shift, readnum, writenum, nsel);
+    shift, readnum, writenum, nsel, cond);
 
-  // TODO: CONTINUE IMPLEMENTING FSM AND CPU.V FROM HERE
   datapath DP(clk, readnum, vsel, loada, loadb, shift, asel, bsel,
   ALUop, loadc, loads, writenum, write, status, datapath_out,
-  loadpc, loadir, reset, mwrite, msel, instructions_in, sximm5, sximm8, pc);
+  loadir, reset, mwrite, msel, instructions_in,
+  sximm5, sximm8, tsel, incp, execb, cond, pc);
 
   cpu CPU(opcode, op, reset, clk,
-    loadir, loadpc, msel, mwrite, nsel,
-    vsel, write, asel, bsel, loada, loadb, loadc, loads, state);
+    loadir, msel, mwrite, nsel,
+    vsel, write, asel, bsel, loada, loadb, loadc, loads,
+    tsel, incp, execb, state);
 
   // seven segment modules (from lab5)
   sseg H0(datapath_out[3:0],   HEX0);

@@ -15,10 +15,16 @@ module datapath (clk,
                 datapath_out,
 
                 // lab 6 stage 1 addons
-                loadpc, loadir, reset, mwrite, msel, ir_out,
+                loadir, reset, mwrite, msel, ir_out,
 
                 // lab 6 stage 2 addons
                 sximm5, sximm8,
+
+                // lab 7 from CPU
+                tsel, incp, execb,
+
+                // lab 7 from decoder
+                cond,
 
                 // pccounter
                 pcount_out);
@@ -40,9 +46,13 @@ module datapath (clk,
   input write;
 
   // PC + Mem control input
-  input loadpc, loadir, mwrite, msel, reset;
-  // output
+  input loadir, mwrite, msel, reset;
 
+  // lab 7 PC
+  input tsel, incp, execb;
+  input [2:0] cond;
+
+  // output
   output reg [15:0] datapath_out;
   output [2:0] status;
 
@@ -57,7 +67,7 @@ module datapath (clk,
 
   // === MEMORY (lab 6 stage 1) ===
   wire [15:0] mdata;              // data out from memory
-  output [15:0] ir_out;            // output of the instruction register
+  output [15:0] ir_out;           // output of the instruction register
 
   // === MODIFICATIONS (lab 6 stage 2) ===
   input [15:0] sximm5, sximm8;
@@ -95,7 +105,13 @@ module datapath (clk,
 
   // === MEMORY ===
   // program counter
-  pcounter PC(loadpc, clk, reset, pc_out);
+  pcounter PC(
+    .tsel(tsel), .incp(incp),
+    .sximm8(sximm8), .A(RA_out[7:0]),
+    .execb(execb), .status(status), .cond(cond),
+    .clk(clk), .reset(reset),
+    .pc_out(pc_out)
+    );
 
   // choose from PC or lower 8 bits of C
   assign addr = msel ? RC_out[7:0] : pc_out;
