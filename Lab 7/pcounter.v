@@ -15,18 +15,32 @@ module pcounter(
   output pc_out;
 
   wire [7:0] pc_in, pc_out, pc_next, pctgt, pcrel;
-  wire taken, loadpc;
+  reg taken;
+  wire loadpc;
 
   // pc assignments
   assign pcrel = sximm8 + pc_out;
   assign pctgt = tsel ? pcrel : A;
-  assign pc_next = incp ? pc_out + 1: pctgt;
+
+  // the guy she told you not to worry about
+  assign pc_next = incp ? (pc_out + 1) : pctgt;
 
   // branching unit
   // combinational logic for taken
-  assign taken = execb ? (
-    (cond == status) || (cond == 3'b000) ? 1 : 0
-    ) : 0;
+  always @(*) begin
+    if (execb) begin
+      case (cond)
+        3'b000:  taken = 1;
+        3'b001:  taken = status[0];
+        3'b010:  taken = ~status[0];
+        3'b011:  taken = ~(status[1] & status[2]);
+        3'b100:  taken = ~(status[1] & status[2]) & status[0];
+        default: taken = 0;
+      endcase
+      end
+    else taken = 0;
+  end
+
   assign loadpc = taken | incp;
 
   // reset program count or select pc_next or current pc

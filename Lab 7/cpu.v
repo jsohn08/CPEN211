@@ -145,7 +145,7 @@ module cpu(
         write = 1;
         end
       `CALC: begin
-        loadc = 1;
+        loadc = ({opcode, op} == 5'b10101) ? 0 : 1;
         if (opcode == 3'b011 || opcode == 3'b100) // LDR STR
           bsel = 1;
         else if (opcode == 3'b110)

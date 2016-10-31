@@ -7,7 +7,7 @@ module lab7_top_tb();
   lab7_top DUT(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
   initial begin
-    repeat (50) begin
+    repeat (100) begin
       KEY[0] = 0; #5;
       KEY[0] = 1; #5;
     end
