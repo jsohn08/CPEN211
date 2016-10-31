@@ -20,7 +20,7 @@ module alu(ain, bin, op, out, status);
     endcase
   end
 
-  assign overflow = (ain[k-1] ^ out) | (bin[k-1] ^ out);
+  assign overflow = (ain[k-1] ^ out[k-1]) | (bin[k-1] ^ out[k-1]);
 
   // three bits for status:
   // [0] - HIGH if the result is 0

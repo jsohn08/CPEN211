@@ -24,7 +24,9 @@ module pcounter(
 
   // branching unit
   // combinational logic for taken
-  assign taken = execb ? ((cond == status) ? 1 : 0) : 0;
+  assign taken = execb ? (
+    (cond == status) || (cond == 3'b000) ? 1 : 0
+    ) : 0;
   assign loadpc = taken | incp;
 
   // reset program count or select pc_next or current pc
