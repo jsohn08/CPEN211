@@ -107,7 +107,7 @@ module datapath (clk,
   // program counter
   pcounter PC(
     .tsel(tsel), .incp(incp),
-    .sximm8(sximm8), .A(RA_out[7:0]),
+    .sximm8(sximm8[7:0]), .A(RA_out[7:0]),
     .execb(execb), .status(status), .cond(cond),
     .clk(clk), .reset(reset),
     .pc_out(pc_out)

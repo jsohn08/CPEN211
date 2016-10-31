@@ -33,8 +33,8 @@ module pcounter(
         3'b000:  taken = 1;
         3'b001:  taken = status[0];
         3'b010:  taken = ~status[0];
-        3'b011:  taken = ~(status[1] & status[2]);
-        3'b100:  taken = ~(status[1] & status[2]) & status[0];
+        3'b011:  taken = status[1] ^ status[2];
+        3'b100:  taken = (status[1] ^ status[2]) & status[0];
         default: taken = 0;
       endcase
       end
