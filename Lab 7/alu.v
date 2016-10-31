@@ -19,11 +19,11 @@ module alu(ain, bin, op, out, status);
         end
       2'b01: out = ain - bin;  // CMP
       2'b10: out = ain & bin;  // AND
-      2'b11: out = ~bin;       // MVN (negate)
-      default: out = ~bin;
+      2'b11: out = ~ain;       // MVN (negate)
+      default: out = ~ain;
     endcase
   end
-  
+
   // three bits for status:
   // [0] - HIGH if the result is 0
   // [1] - HIGH if the result is negative (last bit is 1)

@@ -30,27 +30,27 @@ module cpu(
   output reg write, asel, bsel, loada, loadb, loadc, loads;
   output reg tsel, incp, execb;
 
-  reg [3:0] next_state = 0;
-  output [3:0] state;
+  reg [4:0] next_state = 0;
+  output [4:0] state;
   assign state = next_state;
 
   // state definitions
-  `define REST 4'd0
-  `define LDIR 4'd1
-  `define LDPC 4'd2
-  `define RDRN 4'd3
-  `define RDRM 4'd4
-  `define WRRN 4'd5
-  `define CALC 4'd6
-  `define STAT 4'd7
-  `define WMEM 4'd8
-  `define WRRD 4'd9
-  `define RDRD 4'd10
+  `define REST 5'd0
+  `define LDIR 5'd1
+  `define LDPC 5'd2
+  `define RDRN 5'd3
+  `define RDRM 5'd4
+  `define WRRN 5'd5
+  `define CALC 5'd6
+  `define STAT 5'd7
+  `define WMEM 5'd8
+  `define WRRD 5'd9
+  `define RDRD 5'd10
 
   // lab 7 new states
-  `define EXBR 4'd11
-  `define EXBM 4'd12
-  `define HALT 4'd13
+  `define EXBR 5'd11
+  `define EXBM 5'd12
+  `define HALT 5'd13
 
   always @(posedge clk) begin
     // reset if key0 is pressed

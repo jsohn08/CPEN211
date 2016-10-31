@@ -23,7 +23,7 @@ module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50);
   // wire [15:0] datapath_out;
   wire [15:0] R0_out;
 
-  wire [3:0] state;
+  wire [4:0] state;
   wire [7:0] pc;
 
   // lab 7
@@ -68,7 +68,7 @@ module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50);
   assign LEDR[9:7] = status;
 
   // [3:0] are for states
-  assign LEDR[3:0] = state;
+  assign LEDR[4:0] = state;
 endmodule
 
 // seven segment modules (from lab5)
