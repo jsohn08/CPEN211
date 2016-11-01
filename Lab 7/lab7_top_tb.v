@@ -7,7 +7,7 @@ module lab7_top_tb();
   lab7_top DUT(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY[0]);
 
   initial begin
-    repeat (80) begin
+    forever begin
       KEY[0] = 0; #2;
       KEY[0] = 1; #2;
     end
@@ -18,5 +18,9 @@ module lab7_top_tb();
     KEY[1] = 0;
     #5;
     KEY[1] = 1;
+  end
+
+  always @(*) begin
+    if (LEDR[4:0] == 5'b01101) $stop;
   end
 endmodule
