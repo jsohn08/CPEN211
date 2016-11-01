@@ -49,7 +49,7 @@ module cpu(
 
   // lab 7 new states
   `define EXBR 5'd11
-  `define EXBM 5'd12
+  `define WAIT 5'd12
   `define HALT 5'd13
 
   // lab 7 bonus 1 states
@@ -109,7 +109,7 @@ module cpu(
         // [8] Memory
         `WMEM: begin
           if (opcode == 3'b011) next_state = `WRRD; // LDR
-          else next_state = `LDIR; // STR
+          else next_state = `WAIT; // STR
           end
 
         // [9] Write to Rd
@@ -119,10 +119,10 @@ module cpu(
         `RDRD: next_state = `WMEM;
 
         // [11] branch 1
-        `EXBR: next_state = `EXBM;
+        `EXBR: next_state = `WAIT;
 
         // [12] branch 2
-        `EXBM: next_state = `LDIR;
+        `WAIT: next_state = `LDIR;
 
         // [13] stop
         `HALT: next_state = `HALT;
@@ -131,7 +131,7 @@ module cpu(
         `BXRD: next_state = `BXPC;
 
         // [15] load RA to PC
-        `BXPC: next_state = `EXBM;
+        `BXPC: next_state = `WAIT;
 
         default: next_state = `REST;
       endcase
@@ -195,7 +195,7 @@ module cpu(
         tsel = 1;
         incp = 0;
         end
-      `EXBM: begin // wait for ram
+      `WAIT: begin // wait for ram
         incp = 0;
         end
       `BXRD: begin // put R7 to RA
