@@ -21,6 +21,6 @@ module ram(clk, read_address, write_address, write, din, dout);
       memory[write_address] <= din;
 
     // read data after 1 cycle delay due to non-blocking assignment
-    dout <= memory[read_address];
+    dout = memory[read_address];
   end
 endmodule

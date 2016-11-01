@@ -52,6 +52,12 @@ module cpu(
   `define EXBM 5'd12
   `define HALT 5'd13
 
+  // lab 7 bonus 1 states
+  `define BXRD 5'd14
+  `define BXPC 5'd15
+
+  // lab 7 bonus 2 states
+
   always @(posedge clk) begin
     // reset if key0 is pressed
     if (reset) next_state = `REST;
@@ -70,6 +76,9 @@ module cpu(
             next_state = `RDRM; // to state 4 (read rm)
           else if (opcode == 3'b001) next_state = `EXBR; // to state 11 (branch 1)
           else if (opcode == 3'b111) next_state = `HALT; // to state 13 (stops the machine)
+          else if ({opcode, op} == 5'b01011) next_state = `EXBR;  // to state 11 (branch PC)
+          else if ({opcode, op} == 5'b01000) next_state = `BXRD;  // retrieve PC from Rd (R7)
+          else if ({opcode, op} == 5'b00000) next_state = `LDIR; // don't go anywhere
           else next_state = `RDRN; // to state 3 (read rn)
           end
 
@@ -117,6 +126,12 @@ module cpu(
 
         // [13] stop
         `HALT: next_state = `HALT;
+
+        // [14] load R7 to RA
+        `BXRD: next_state = `BXPC;
+
+        // [15] load RA to PC
+        `BXPC: next_state = `EXBM;
 
         default: next_state = `REST;
       endcase
@@ -170,13 +185,27 @@ module cpu(
         loadb = 1;
         end
       `EXBR: begin
+        // save PC to register
+        if ({opcode, op} == 5'b01011) begin
+          nsel = 2'b00;
+          vsel = 2'b10;
+          write = 1;
+          end
         execb = 1;
         tsel = 1;
         incp = 0;
         end
       `EXBM: begin // wait for ram
-        tsel = 1;
         incp = 0;
+        end
+      `BXRD: begin // put R7 to RA
+        nsel = 2'b01;
+        loada = 1;
+        end
+      `BXPC: begin // put RA to PC
+        tsel = 0;
+        incp = 0;
+        execb = 1;
         end
       default: begin
         // set everything to 0 first

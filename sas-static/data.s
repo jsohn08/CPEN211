@@ -1,23 +1,11 @@
 .org 0
-    MOV R0, #0
-L1: MOV R1, #X
-    ADD R1, R1, R0
-    LDR R1, [R1]
-    MOV R2, #5
-    ADD R1, R1, R2
-    MOV R2, #Y
-    ADD R2, R2, R0
-    STR R1, [R2]
-    MOV R1, #1
-    ADD R0, R0, R1
-    MOV R1, #3
-    CMP R0, R1
-    BLT L1
-    HALT
-.org 100
-X:
-.word 5
-.word 10
-.word 25
-.org 110
-Y:
+main:
+    MOV R0,#10 // R0 = 10
+    MOV R1,#2 // R1 = 2
+    BL sum // Link register (R7) = PC+1 = 3; Result 12 is returned in R0
+    MOV R1,#8 // R1 = 8
+    BL sum // Link register (R7) = PC+1 = 5; Result 20 is returned in R0
+    HALT // special instruction to stop the processor (opcode=111)
+sum:
+    ADD R0,R0,R1 // R0 = R0 + R1
+    BX R7 // PC = R7

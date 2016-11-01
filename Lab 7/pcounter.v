@@ -30,7 +30,7 @@ module pcounter(
   always @(*) begin
     if (execb) begin
       case (cond)
-        3'b000:  taken = 1;
+        3'b000, 3'b111:  taken = 1; // for unconditional branch
         3'b001:  taken = status[0];
         3'b010:  taken = ~status[0];
         3'b011:  taken = status[1] ^ status[2];
