@@ -56,8 +56,6 @@ module cpu(
   `define BXRD 5'd14
   `define BXPC 5'd15
 
-  // lab 7 bonus 2 states
-
   always @(posedge clk) begin
     // reset if key0 is pressed
     if (reset) next_state = `REST;

@@ -1,12 +1,12 @@
 // k - bit width of the data to store
-module regfile(data_in, data_out, readnum, writenum, write, clk);
+module regfile(data_in, data_out, readnum, writenum, write, clk, R0_out);
   parameter k = 16;
 
   input [k - 1:0] data_in;
   input [2:0] writenum, readnum;
   input write;
   input clk;
-  output [k - 1:0] data_out;
+  output [k - 1:0] data_out, R0_out;
 
   wire [7:0] preload, load, read_select;
   wire [k - 1:0] rout0, rout1, rout2, rout3, rout4, rout5, rout6, rout7;
@@ -25,6 +25,7 @@ module regfile(data_in, data_out, readnum, writenum, write, clk);
   register #(k)   R7(data_in, rout7, load[7], clk);
 
   assign load = preload & {8{write}};
+  assign R0_out = rout0;
 endmodule
 
 module register(in, out, load, clk);

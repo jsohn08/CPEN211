@@ -16,6 +16,11 @@
 *.vstf
 *.zip
 *.lst
+*.o
+*.axf
+*.objdump
+*.amp
+*.srec
 db/
 incremental_db/
 output_files/

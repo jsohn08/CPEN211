@@ -64,6 +64,7 @@ module datapath (clk,
               ain, bin,           // inputs to the ALU
               ALU_out,            // output of the ALU
               RC_out;             // output of register C
+              R0_out
 
   // === MEMORY (lab 6 stage 1) ===
   wire [15:0] mdata;              // data out from memory
@@ -83,7 +84,7 @@ module datapath (clk,
   MUX4 #(16) M0(mdata, sximm8, {8'b0, pc_out}, RC_out, vsel, data_in);
 
   // register file
-  regfile #(16) RF(data_in, data_out, readnum, writenum, write, clk);
+  regfile #(16) RF(data_in, data_out, readnum, writenum, write, clk, R0_out);
 
   // RA and RB
   register #(16) RA(.in(data_out), .out(RA_out), .load(loada), .clk(clk));
@@ -124,7 +125,8 @@ module datapath (clk,
 
   // assign data out
   always @(*) begin
-    if (~reset) datapath_out = RC_out;
+    // if (~reset) datapath_out = RC_out;
+    if (~reset) datapath_out = R0_out;
     else datapath_out = 16'b0;
   end
 

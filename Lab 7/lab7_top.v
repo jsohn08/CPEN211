@@ -34,11 +34,6 @@ module lab7_top(KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50);
   indec ID(instructions_in, opcode, op, ALUop, sximm5, sximm8,
     shift, readnum, writenum, nsel, cond);
 
-  // datapath DP(clk, readnum, vsel, loada, loadb, shift, asel, bsel,
-  // ALUop, loadc, loads, writenum, write, status, datapath_out,
-  // loadir, reset, mwrite, msel, instructions_in,
-  // sximm5, sximm8, tsel, incp, execb, cond, pc);
-
   datapath DP(clk, readnum, vsel, loada, loadb, shift, asel, bsel,
   ALUop, loadc, loads, writenum, write, status, R0_out,
   loadir, reset, mwrite, msel, instructions_in,
