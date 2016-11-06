@@ -1,9 +1,9 @@
 // before program
-        .include "address_map_arm"
+        .include "address_map_arm.s"
         .text
         .global _start
 
-// setup variables for counting
+// main program
 _start:
         LDR R0, =LEDR_BASE      // LED for output
         MOV R1, #0              // counter is set at R1
