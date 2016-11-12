@@ -1,16 +1,31 @@
+// Lab 9
+    .include "address_map_arm"
+    .text
+    .global _main
+
+// main function
+_main:
+    LDR r8, =LEDR_BASE      // LED output
+
+    // TODO: setup array
+
+    // TODO: setup arguments for function call
+
+    // TODO: get return from function call
+
+    // TOOD: put that return value onto LED
+
 // recursive binary search function
 // r0 - [PARAM 1] - int * numbers   -- pointer to the array
 // r1 - [PARAM 2] - int key         -- thing we're looking for
 // r2 - [PARAM 3] - int startIndex  -- starting index to search
 // r3 - [PARAM 4] - int endIndex    -- ending index
 // r4 - [PARAM 5] - int NumCalls    -- "depth" of recursion
-
+//
 // r5 - int middleIndex
 // r6 - value of array at middleIndex
 // r7 - (-)NumCalls
-
-// r12 - return value from function call
-
+//
 binary_search:
     // save changing registers
     SUB sp, sp, #8
@@ -40,13 +55,13 @@ L1: LDR r6, [r0, r5, LSL #2]
     // compare if the key index matches value from middle index
     CMP r6, r1
 
-    // return midpoint if key (r1) matches the value (r6)
+    // (if) key (r1) == value of midpoint (r6) then return midpoint
     BLT L2                  // else if midpoint too small
     BGT L3                  // else if midpoint too large
     MOV r0, r5              // set return value to middle
     B   LX                  // end of function
 
-    // if midpoint too small, call binary search function
+    // (else if) midpoint too small, call binary search function
     // binary_search(numbers, key, middleIndex+1, endIndex, NumCalls)
 L2: LDR r0, [sp, #0]        // set r0 to addr to array
     MOV r2, r5
@@ -58,7 +73,7 @@ L2: LDR r0, [sp, #0]        // set r0 to addr to array
     // after function, go assign numbers[midpoint] to numcalls
     B   L4                  // assign -numcalls
 
-    // if midpoint too large, call binary search function
+    // (else if) midpoint too large, call binary search function
     // binary_search(numbers, key, startIndex, middleIndex-1, NumCalls)
 L3: LDR r0, [sp, #0]        // set r0 to addr to array
     MOV r3, r5
