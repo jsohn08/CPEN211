@@ -7,16 +7,15 @@
 
 // r5 - int middleIndex
 // r6 - value of array at middleIndex
+// r7 - (-)NumCalls
 
 // r12 - return value from function call
 
 binary_search:
     // save changing registers
-    SUB sp, sp, #16
+    SUB sp, sp, #8
     STR r0, [sp, #0]        // backup r0 (since return value of functions override)
-    STR r2, [sp, #4]        // backup starting index
-    STR r3, [sp, #8]        // backup ending index
-    STR lr, [sp, #12]       // backup link register
+    STR lr, [sp, #4]        // backup link register
 
 
     // increment NumCalls
@@ -33,8 +32,7 @@ binary_search:
     BLE L1                  // else (startIndex <= endIndex)
     MOV r0, #0
     SUB r0, r0, #1          // return (r0) -1
-    ADD sp, sp, #16         // pop stack
-    MOV pc, lr              // return to caller function
+    B   LX                  // end of function
 
     // get value of array at middleIndex
 L1: LDR r6, [r0, r5, LSL #2]
@@ -46,8 +44,7 @@ L1: LDR r6, [r0, r5, LSL #2]
     BLT L2                  // else if midpoint too small
     BGT L3                  // else if midpoint too large
     MOV r0, r5              // set return value to middle
-    ADD sp, sp, #16         // restore stack
-    MOV pc, lr              // return to caller
+    B   LX                  // end of function
 
     // if midpoint too small, call binary search function
     // binary_search(numbers, key, middleIndex+1, endIndex, NumCalls)
@@ -58,12 +55,31 @@ L2: LDR r0, [sp, #0]        // set r0 to addr to array
     // call recursive function, return value stored in r0
     BL  binary_search
 
-    // after calling, go to the end of the function
-    B   L4
-L3:
+    // after function, go assign numbers[midpoint] to numcalls
+    B   L4                  // assign -numcalls
 
-L4:
+    // if midpoint too large, call binary search function
+    // binary_search(numbers, key, startIndex, middleIndex-1, NumCalls)
+L3: LDR r0, [sp, #0]        // set r0 to addr to array
+    MOV r3, r5
+    SUB r3, r3, #1          // set endIndex to middleIndex - 1
 
+    // call function, returned value stored in r0
+    BL  binary_search
+
+    // after function, go assign numbers[midpoint] to numcalls
+    B   L4                  // assign -numcalls
+
+    // set numeber[middlePoint] to -numcalls
+L4: LDR r0, [sp, #0]          // load back the addr to the array
+    MOV r7, #0
+    SUB r7, r7, r4            // r7 = 0 - numcalls
+    STR r7, [r0, r5, LSL #2]  // array[middlePoint] = -NumCalls
+
+    // go to the end of function
+    B   LX
+
+    // end of function
 LX: LDR lr, [sp, #12]       // loadback link register
-    ADD sp, sp, #16         // restore stack pointer
+    ADD sp, sp, #8          // pop stack
     MOV pc, lr              // return to caller
