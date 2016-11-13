@@ -11,7 +11,7 @@ _start:
     LDR r0, =array
 
     // setup arguments for function call
-    MOV r1, #30             // looking for 30 - should return dec9
+    MOV r1, #47             // looking for 30 - should return dec9
     MOV r2, #0              // starting index
     MOV r3, #19             // ending index
     MOV r4, #0              // numcalls
@@ -21,6 +21,8 @@ _start:
 
     // put that return value onto LED
     STR r0, [r8]            // display to LEDs
+
+HT: B  HT                   // halt the program
 
 // recursive binary search function
 // r0 - [PARAM 1] - int * numbers   -- pointer to the array
