@@ -8,12 +8,12 @@ _start:
     LDR r8, =LEDR_BASE      // LED output
 
     // setup array
-    LDR r0, =array
+    LDR r0, =array_one
 
     // setup arguments for function call
     MOV r1, #47             // looking for 30 - should return dec9
     MOV r2, #0              // starting index
-    MOV r3, #19             // ending index
+    MOV r3, #0              // ending index
     MOV r4, #0              // numcalls
 
     // get return from function call
@@ -35,6 +35,7 @@ HT: B  HT                   // halt the program
 // r6 - value of array at middleIndex
 // r7 - (-)NumCalls
 //
+// r12 - return store
 // !!IMPORTANT TODO!! - PARAM 4 NumCalls must be passed in via stack
 binary_search:
     // save changing registers
@@ -81,7 +82,7 @@ L2: LDR r0, [sp, #0]        // set r0 to addr to array
     BL  binary_search
 
     // after function, go assign numbers[midpoint] to numcalls
-    B   L4                  // assign -numcalls
+    B   LA                  // assign -numcalls
 
     // (else if) midpoint too large, call binary search function
     // binary_search(numbers, key, startIndex, middleIndex-1, NumCalls)
@@ -93,25 +94,40 @@ L3: LDR r0, [sp, #0]        // set r0 to addr to array
     BL  binary_search
 
     // after function, go assign numbers[midpoint] to numcalls
-    B   L4                  // assign -numcalls
+    B   LA                  // assign -numcalls
 
     // set numeber[middlePoint] to -numcalls
-L4: LDR r0, [sp, #0]          // load back the addr to the array
+LA: MOV r12, r0               // backup the return to r12
+    LDR r0, [sp, #0]          // load back the addr to the array
     MOV r7, #0
     SUB r7, r7, r4            // r7 = 0 - numcalls
     STR r7, [r0, r5, LSL #2]  // array[middlePoint] = -NumCalls
+    MOV r0, r12               // move back the return value
 
     // go to the end of function
     B   LX
 
     // end of function
-LX: LDR lr, [sp, #4]       // loadback link register
+LX: LDR lr, [sp, #4]        // loadback link register
     ADD sp, sp, #8          // pop stack
     MOV pc, lr              // return to caller
 
 
-// array
-array:
+// arrays
+array_one:
+    .word 32
+
+array_two:
+    .word 1
+    .word 2
+    .word 4
+    .word 8
+    .word 15
+    .word 16
+    .word 23
+    .word 42
+
+array_three:
     .word 4
     .word 7
     .word 11
