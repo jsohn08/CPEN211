@@ -7,13 +7,20 @@
 _main:
     LDR r8, =LEDR_BASE      // LED output
 
-    // TODO: setup array
+    // setup array
+    LDR r0, =array
 
-    // TODO: setup arguments for function call
+    // setup arguments for function call
+    MOV r1, #55             // looking for 55 - should return dec17
+    MOV r2, #0              // starting index
+    MOV r3, #19             // ending index
+    MOV r4, #0              // numcalls
 
-    // TODO: get return from function call
+    // get return from function call
+    BL  binary_search       // call function, returned in r0
 
-    // TOOD: put that return value onto LED
+    // put that return value onto LED
+    STR r0, [r8]            // display to LEDs
 
 // recursive binary search function
 // r0 - [PARAM 1] - int * numbers   -- pointer to the array
@@ -26,6 +33,7 @@ _main:
 // r6 - value of array at middleIndex
 // r7 - (-)NumCalls
 //
+// !!IMPORTANT TODO!! - PARAM 4 NumCalls must be passed in via stack
 binary_search:
     // save changing registers
     SUB sp, sp, #8
@@ -98,3 +106,27 @@ L4: LDR r0, [sp, #0]          // load back the addr to the array
 LX: LDR lr, [sp, #12]       // loadback link register
     ADD sp, sp, #8          // pop stack
     MOV pc, lr              // return to caller
+
+
+// array
+array:
+    .word 4
+    .word 7
+    .word 11
+    .word 14
+    .word 16
+    .word 17
+    .word 18
+    .word 22
+    .word 26
+    .word 30
+    .word 33
+    .word 37
+    .word 40
+    .word 44
+    .word 47
+    .word 49
+    .word 52
+    .word 55
+    .word 59
+    .word 60
