@@ -8,12 +8,12 @@ _start:
     LDR r8, =LEDR_BASE      // LED output
 
     // setup array
-    LDR r0, =array_one
+    LDR r0, =array_two
 
     // setup arguments for function call
-    MOV r1, #32             // looking for 30 - should return dec9
+    MOV r1, #60             // looking for 8
     MOV r2, #0              // starting index
-    MOV r3, #0              // ending index
+    MOV r3, #7              // ending index
     MOV r4, #0              // numcalls
 
     // get return from function call
