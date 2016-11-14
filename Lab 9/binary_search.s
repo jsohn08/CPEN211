@@ -117,11 +117,6 @@ binary_search:
     SUB r5, r3, r2          // middleIndex = endIndex - startIndex
     ADD r5, r2, r5, LSR #1  // middleIndex = middleIndex / 2 + startIndex
 
-    // set numeber[middlePoint] to -numcalls
-    MOV r7, #0
-    SUB r7, r7, r4            // r7 = 0 - numcalls
-    STR r7, [r0, r5, LSL #2]  // array[middlePoint] = -NumCalls
-
     // compare starting index and ending index
     CMP r2, r3
 
@@ -133,6 +128,11 @@ binary_search:
 
     // get value of array at middleIndex
 L1: LDR r6, [r0, r5, LSL #2]
+
+    // set numeber[middlePoint] to -numcalls
+    MOV r7, #0
+    SUB r7, r7, r4            // r7 = 0 - numcalls
+    STR r7, [r0, r5, LSL #2]  // array[middlePoint] = -NumCalls
 
     // compare if the key index matches value from middle index
     CMP r6, r1
@@ -169,7 +169,6 @@ L3: MOV r3, r5
 LX: LDR lr, [sp, #0]        // loadback link register
     ADD sp, sp, #4          // pop stack
     MOV pc, lr              // return to caller
-
 
 // arrays
 array_one:
