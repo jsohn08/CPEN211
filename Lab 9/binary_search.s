@@ -107,7 +107,15 @@ HT: B  HT                   // halt the program
 // !!IMPORTANT TODO!! - PARAM 4 NumCalls must be passed in via stack
 binary_search:
     // save changing registers
-    SUB sp, sp, #4
+    SUB sp, sp, #36
+    @STR r11, [sp, #32]
+    @STR r10, [sp, #28]
+    @STR r9, [sp, #24]
+    @STR r8, [sp, #20]
+    STR r7, [sp, #16]
+    STR r6, [sp, #12]
+    STR r5, [sp, #8]
+    STR r4, [sp, #4]        // backup r4-r11
     STR lr, [sp, #0]        // backup link register
 
     // increment NumCalls
@@ -167,8 +175,20 @@ L3: MOV r3, r5
 
     // end of function
 LX: LDR lr, [sp, #0]        // loadback link register
-    ADD sp, sp, #4          // pop stack
-    MOV pc, lr              // return to caller
+
+    // restore registers
+    @LDR r11, [sp, #32]
+    @LDR r10, [sp, #28]
+    @LDR r9, [sp, #24]
+    @LDR r8, [sp, #20]
+    LDR r7, [sp, #16]
+    LDR r6, [sp, #12]
+    LDR r5, [sp, #8]
+    LDR r4, [sp, #4]        // restore r4-r11
+    ADD sp, sp, #36         // pop stack
+
+    // return to caller
+    MOV pc, lr
 
 // arrays
 array_one:
