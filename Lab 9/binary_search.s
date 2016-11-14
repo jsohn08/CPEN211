@@ -3,27 +3,6 @@
     .text
     .global _start
 
-/* main function */
-_start:
-    LDR r8, =LEDR_BASE      // LED output
-
-    // setup array
-    LDR r0, =array_three
-
-    // setup arguments for function call
-    MOV r1, #60             // looking for 60, should return 19 (13)
-    MOV r2, #0              // starting index
-    MOV r3, #22             // ending index
-    MOV r4, #0              // numcalls
-
-    // get return from function call
-    BL  binary_search       // call function, returned in r0
-
-    // put that return value onto LED
-    STR r0, [r8]            // display to LEDs
-
-HT: B  HT                   // halt the program
-
 // r0 - address to array and return of binary search
 // r1 - key
 // r2 - startIndex
@@ -33,90 +12,100 @@ HT: B  HT                   // halt the program
 // r6 - SW base
 // r7 - SW values
 /* main function */
-@_start:
-@    // setup switches
-@    LDR r5, =LEDR_BASE
-@    LDR r6, =SW_BASE
-@B1: LDR r7, [r6]            // wait for switches
-@
-@    // check all the switches are off
-@    MOV r8 #0
-@    CMP r7, r8
-@
-@    // if off
-@    BEQ B1
-@
-@    // else setup arguments for first test
-@    LDR r0, =array_one      // first test
-@    MOV r1, #32             // looking for 32, should return 0
-@    MOV r2, #0
-@    MOV r3, #0              // start & end index 0 since only 1 item
-@
-@    // call function, returned at r0
-@    BL  binary_search
-@
-@    // display to LED
-@    STR r0, [r5]
-@
-@B2: LDR r7, [r6]            // wait for switches to turn 0
-@    CMP r7, r8
-@    BNE B2
-@
-@B3: LDR r7, [r6]            // wait for switches to turn 1
-@    CMP r7, r8
-@    BEQ B3
-@
-@    // second test
-@    LDR r0, =array_two
-@    MOV r1, #4              // looking for 4, should return 2
-@    MOV r2, #0
-@    MOV r3, #7              // 8 items
-@    BL  binary_search
-@    STR r0, [r5]
-@
-@B4: LDR r7, [r6]            // wait for switches to turn 0
-@    CMP r7, r8
-@    BNE B4
-@
-@B5: LDR r7, [r6]            // wait for switches to turn 1
-@    CMP r7, r8
-@    BEQ B5
-@
-@    // third test
-@    LDR r0, =array_three
-@    MOV r1, #60             // looking for 60, should return 19 (13)
-@    MOV r2, #0
-@    MOV r3, #22             // 23 items
-@    BL  binary_search
-@    STR r0, [r5]
-@
-@HT: B HT                    // halt program
+_start:
+    // setup switches
+    LDR r5, =LEDR_BASE
+    LDR r6, =SW_BASE
+
+    // reset LED
+    MOV r0, #0
+    STR r0, [r5]
+
+    MOV r8, #0
+B1: LDR r7, [r6]
+    CMP r7, r8              // wait for all switches to be turned off
+
+    // if off
+    BEQ B1
+
+    // else setup arguments for first test
+    LDR r0, =array_one      // first test
+    @MOV r1, #32             // looking for 32, should return 0
+    MOV r1, #30             // looking for 30, should return -1 (FFFFFFFF)
+    MOV r2, #0
+    MOV r3, #0              // start & end index 0 since only 1 item
+    MOV r4, #0
+    STR r4, [sp]            // pass numcalls as parameter via stack
+
+    // call function, returned at r0
+    BL  binary_search
+
+    // display to LED
+    STR r0, [r5]
+
+B2: LDR r7, [r6]            // wait for switches to turn 0
+    CMP r7, r8
+    BNE B2
+
+B3: LDR r7, [r6]            // wait for switches to turn 1
+    CMP r7, r8
+    BEQ B3
+
+    // second test
+    LDR r0, =array_two
+    MOV r1, #4              // looking for 4, should return 2
+    MOV r2, #0
+    MOV r3, #7              // 8 items
+    STR r4, [sp]            // pass numcalls as parameter via stack
+    BL  binary_search
+    STR r0, [r5]
+
+B4: LDR r7, [r6]            // wait for switches to turn 0
+    CMP r7, r8
+    BNE B4
+
+B5: LDR r7, [r6]            // wait for switches to turn 1
+    CMP r7, r8
+    BEQ B5
+
+    // third test
+    LDR r0, =array_three
+    MOV r1, #60             // looking for 60, should return 19 (13)
+    MOV r2, #0
+    MOV r3, #22             // 23 items
+    STR r4, [sp]            // pass numcalls as parameter via stack
+    BL  binary_search
+    STR r0, [r5]
+
+HT: B HT                    // halt program
 
 // recursive binary search function
 // r0 - [PARAM 1] - int * numbers   -- pointer to the array
 // r1 - [PARAM 2] - int key         -- thing we're looking for
 // r2 - [PARAM 3] - int startIndex  -- starting index to search
 // r3 - [PARAM 4] - int endIndex    -- ending index
+//
 // r4 - [PARAM 5] - int NumCalls    -- "depth" of recursion
 //
 // r5 - int middleIndex
 // r6 - value of array at middleIndex
 // r7 - (-)NumCalls
 //
-// r12 - return store
-// !!IMPORTANT TODO!! - PARAM 4 NumCalls must be passed in via stack
 binary_search:
     // save changing registers
-    SUB sp, sp, #36
-    @STR r11, [sp, #32]
-    @STR r10, [sp, #28]
-    @STR r9, [sp, #24]
-    @STR r8, [sp, #20]
-    STR r7, [sp, #16]
-    STR r6, [sp, #12]
-    STR r5, [sp, #8]
-    STR r4, [sp, #4]        // backup r4-r11
-    STR lr, [sp, #0]        // backup link register
+    SUB sp, sp, #40
+    @STR r11, [sp, #36]
+    @STR r10, [sp, #32]
+    @STR r9, [sp, #28]
+    @STR r8, [sp, #24]
+    STR r7, [sp, #20]
+    STR r6, [sp, #16]
+    STR r5, [sp, #12]
+    STR r4, [sp, #8]        // backup r4-r11
+    STR lr, [sp, #4]        // backup link register
+
+    // get argument from stack
+    LDR r4, [sp, #40]
 
     // increment NumCalls
     ADD r4, r4, #1
@@ -155,6 +144,7 @@ L1: LDR r6, [r0, r5, LSL #2]
     // binary_search(numbers, key, middleIndex+1, endIndex, NumCalls)
 L2: MOV r2, r5
     ADD r2, r2, #1          // set startIndex to middleIndex + 1
+    STR r4, [sp]       // pass numcalls via stack
 
     // call recursive function, return value stored in r0
     BL  binary_search
@@ -166,6 +156,7 @@ L2: MOV r2, r5
     // binary_search(numbers, key, startIndex, middleIndex-1, NumCalls)
 L3: MOV r3, r5
     SUB r3, r3, #1          // set endIndex to middleIndex - 1
+    STR r4, [sp]       // pass numcalls via stack
 
     // call function, returned value stored in r0
     BL  binary_search
@@ -174,18 +165,18 @@ L3: MOV r3, r5
     B   LX
 
     // end of function
-LX: LDR lr, [sp, #0]        // loadback link register
+LX: LDR lr, [sp, #4]        // loadback link register
 
     // restore registers
-    @LDR r11, [sp, #32]
-    @LDR r10, [sp, #28]
-    @LDR r9, [sp, #24]
-    @LDR r8, [sp, #20]
-    LDR r7, [sp, #16]
-    LDR r6, [sp, #12]
-    LDR r5, [sp, #8]
-    LDR r4, [sp, #4]        // restore r4-r11
-    ADD sp, sp, #36         // pop stack
+    @LDR r11, [sp, #36]
+    @LDR r10, [sp, #32]
+    @LDR r9, [sp, #28]
+    @LDR r8, [sp, #24]
+    LDR r7, [sp, #20]
+    LDR r6, [sp, #16]
+    LDR r5, [sp, #12]
+    LDR r4, [sp, #8]        // restore r4-r11
+    ADD sp, sp, #40         // pop stack
 
     // return to caller
     MOV pc, lr
