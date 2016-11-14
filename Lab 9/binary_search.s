@@ -3,26 +3,96 @@
     .text
     .global _start
 
+// r0 - address to array and return of binary search
+// r1 - key
+// r2 - startIndex
+// r3 - end index
+// r4 - num calls
+// r5 - LEDR base
+// r6 - SW base
+// r7 - SW values
+
+
+/* main function */
+@_start:
+@    LDR r8, =LEDR_BASE      // LED output
+@
+@    // setup array
+@    LDR r0, =array_three
+@
+@    // setup arguments for function call
+@    MOV r1, #60             // looking for 8
+@    MOV r2, #0              // starting index
+@    MOV r3, #22             // ending index
+@    MOV r4, #0              // numcalls
+@
+@    // get return from function call
+@    BL  binary_search       // call function, returned in r0
+@
+@    // put that return value onto LED
+@    STR r0, [r8]            // display to LEDs
+@
+@HT: B  HT                   // halt the program
+
 /* main function */
 _start:
-    LDR r8, =LEDR_BASE      // LED output
+    // setup switches
+    LDR r5, =LEDR_BASE
+    LDR r6, =SW_BASE
+B1: LDR r7, [r6]            // wait for switches
 
-    // setup array
+    // check all the switches are off
+    MOV r8 #0
+    CMP r7, r8
+
+    // if off
+    BEQ B1
+
+    // else setup arguments for first test
+    LDR r0, =array_one      // first test
+    MOV r1, #32             // looking for 32, should return 0
+    MOV r2, #0
+    MOV r3, #0              // start & end index 0 since only 1 item
+
+    // call function, returned at r0
+    BL  binary_search
+
+    // display to LED
+    STR r0, [r5]
+
+B2: LDR r7, [r6]            // wait for switches to turn 0
+    CMP r7, r8
+    BNE B2
+
+B3: LDR r7, [r6]            // wait for switches to turn 1
+    CMP r7, r8
+    BEQ B3
+
+    // second test
+    LDR r0, =array_two
+    MOV r1, #4              // looking for 4, should return 2
+    MOV r2, #0
+    MOV r3, #7              // 8 items
+    BL  binary_search
+    STR r0, [r5]
+
+B4: LDR r7, [r6]            // wait for switches to turn 0
+    CMP r7, r8
+    BNE B4
+
+B5: LDR r7, [r6]            // wait for switches to turn 1
+    CMP r7, r8
+    BEQ B5
+
+    // third test
     LDR r0, =array_three
+    MOV r1, #60             // looking for 60, should return 19 (13)
+    MOV r2, #0
+    MOV r3, #22             // 23 items
+    BL  binary_search
+    STR r0, [r5]
 
-    // setup arguments for function call
-    MOV r1, #60             // looking for 8
-    MOV r2, #0              // starting index
-    MOV r3, #22             // ending index
-    MOV r4, #0              // numcalls
-
-    // get return from function call
-    BL  binary_search       // call function, returned in r0
-
-    // put that return value onto LED
-    STR r0, [r8]            // display to LEDs
-
-HT: B  HT                   // halt the program
+HT: B HT                    // halt program
 
 // recursive binary search function
 // r0 - [PARAM 1] - int * numbers   -- pointer to the array
@@ -42,7 +112,6 @@ binary_search:
     SUB sp, sp, #8
     STR r0, [sp, #0]        // backup r0 (since return value of functions override)
     STR lr, [sp, #4]        // backup link register
-
 
     // increment NumCalls
     ADD r4, r4, #1

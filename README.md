@@ -2,7 +2,7 @@
 
 ## LAB 9 - RECURSIVE FUNCTION
 
-[ ] TODO: Modify main function to test all three cases
+[X] TODO: Modify main function to test all three cases
 
 [ ] TODO: Modify main function to test each case only on HIGH switch signals
 
