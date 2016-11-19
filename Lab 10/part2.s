@@ -1,6 +1,6 @@
 /* ********************************************************************************
  * Copied from ALTERA MONITOR PROGRAM example files
- * Other modifications are done by Muchen He based off of Lab 10 instructions
+ * Other modifications are done based off of Lab 10 instructions
  ********************************************************************************/
 
 				.include	"address_map_arm.s"
@@ -54,42 +54,42 @@ IDLE:
 
 /*--- Undefined instructions --------------------------------------------------*/
 SERVICE_UND:
-    			B SERVICE_UND
+  			B SERVICE_UND
 
 /*--- Software interrupts -----------------------------------------------------*/
 SERVICE_SVC:
-    			B SERVICE_SVC
+  			B SERVICE_SVC
 
 /*--- Aborted data reads ------------------------------------------------------*/
 SERVICE_ABT_DATA:
-    			B SERVICE_ABT_DATA
+  			B SERVICE_ABT_DATA
 
 /*--- Aborted instruction fetch -----------------------------------------------*/
 SERVICE_ABT_INST:
-    			B SERVICE_ABT_INST
+  			B SERVICE_ABT_INST
 
 /*--- IRQ ---------------------------------------------------------------------*/
 SERVICE_IRQ:
-    			PUSH		{R0-R7, LR}
+  			PUSH		{R0-R7, LR}
 
-    			/* Read the ICCIAR from the CPU interface */
-    			LDR		R4, =MPCORE_GIC_CPUIF
-    			LDR		R5, [R4, #ICCIAR]				// read from ICCIAR
+  			/* Read the ICCIAR from the CPU interface */
+  			LDR		R4, =MPCORE_GIC_CPUIF
+  			LDR		R5, [R4, #ICCIAR]				// read from ICCIAR
 
 FPGA_IRQ1_HANDLER:
-    			CMP		R5, #KEYS_IRQ
-UNEXPECTED:	BNE		UNEXPECTED    				// if not recognized, stop here
-
-    			BL			KEY_ISR
+  			CMP		R5, #KEYS_IRQ
+UNEXPECTED:
+        BNE		UNEXPECTED    				 // if not recognized, stop here
+  			BL			KEY_ISR
 EXIT_IRQ:
-    			/* Write to the End of Interrupt Register (ICCEOIR) */
-    			STR		R5, [R4, #ICCEOIR]			// write to ICCEOIR
+  			/* Write to the End of Interrupt Register (ICCEOIR) */
+  			STR		R5, [R4, #ICCEOIR]			// write to ICCEOIR
 
-    			POP		{R0-R7, LR}
-    			SUBS		PC, LR, #4
+  			POP		{R0-R7, LR}
+  			SUBS		PC, LR, #4
 
 /*--- FIQ ---------------------------------------------------------------------*/
 SERVICE_FIQ:
-    			B			SERVICE_FIQ
+  			B			SERVICE_FIQ
 
-				.end
+			  .end

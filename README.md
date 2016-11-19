@@ -5,7 +5,7 @@
 
 [IN PROGRESS]: PART 2
 
-- *Create Part 2 Files (done)*
+- ~~Create Part 2 Files~~
 
 - Add JTAG UART interrupt
 
