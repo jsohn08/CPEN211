@@ -16,7 +16,17 @@ CONFIG_GIC:
   			/* CONFIG_INTERRUPT (int_ID (R0), CPU_target (R1)); */
   			MOV		R0, #73					// KEY port (interrupt ID = 73)
   			MOV		R1, #1					// this field is a bit-mask; bit 0 targets cpu0
-  			BL			CONFIG_INTERRUPT
+  			BL		CONFIG_INTERRUPT
+
+        /* CHANGED
+         * Enable interrupt to JTAG UART (80) or built in timer (29)
+         * Call to function CONFIG INTERRUPT for each interrupt */
+        MOV   R0, #80         // JTAG IRQ (interript ID = 80)
+        MOV   R1, #1          // calls CPU 1
+        BL    CONFIG_INTERRUPT
+        MOV   R0, #29         // timer (interrupt ID = 29)
+        MOV   R1, #1
+        BL    CONFIG_INTERRUPT
 
 				/* configure the GIC CPU interface */
   			LDR		R0, =MPCORE_GIC_CPUIF	// base address of CPU interface
@@ -42,7 +52,7 @@ CONFIG_GIC:
  * other registers in the GIC
  * Arguments: R0 = interrupt ID, N
  *            R1 = CPU target
-*/
+ */
 CONFIG_INTERRUPT:
   			PUSH		{R4-R5, LR}
 
