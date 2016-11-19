@@ -9,7 +9,33 @@
 
 - ~~Add JTAG UART interrupt~~
 
-- Add timer interrupt
+- Add timer (200MHz) interrupt before IDLE (generate interrupt every 0.5 seconds)
+
+  - Base address 0xFFFEC600
+
+  - Load value (#0) - to countdown from
+
+  - Control value (#0):
+
+    - Prescaler - to slowdown countdown;
+
+      prescaler of 1 slows down countdown by 1 cycle (slows down by half)
+
+      prescaler of 3 slows down by 4 times
+
+      99 slows down to 1% of original rate
+
+      maximum prescaler is 255, so using 200 is easier (500kHz)
+
+      putting 250000 in load will ensure 2Hz
+
+      $$200\times10^6 \text{Hz} = 2\text{Hz} \times (100\times10^6)$$
+
+    - I - generate interrupt (should be set to 1)
+
+    - A - Auto reload (should be 1)
+
+    - E - Enables timer (should be 1)
 
 - Add code to configure timer
 

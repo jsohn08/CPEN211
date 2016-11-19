@@ -47,6 +47,14 @@ _start:
         // enable IRQ interrupts in the processor
         MOV		R0, #0b01010011					// IRQ unmasked, MODE = SVC
         MSR		CPSR_c, R0
+
+        /* CHANGED
+         * Setup timer interrupt on 2Hz */
+        MOV   R0, #0xFFFEC600         // get base address for timer config
+        MOV   R1, #0x0003D090
+        STR   R1, [R0, #0]            // 250,000 in base 10 for load
+        MOV   R1, #0x0000C807
+        STR   R1, [R0, #0x8]          // store prescaler and AEI
 IDLE:
         B 			IDLE									// main program simply idles
 
