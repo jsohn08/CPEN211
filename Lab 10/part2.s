@@ -86,9 +86,19 @@ SERVICE_IRQ:
 
 FPGA_IRQ1_HANDLER:
   			CMP		R5, #KEYS_IRQ
+@ UNEXPECTED:
+@         BNE		UNEXPECTED    				 // if not recognized, stop here
+@   			BL			KEY_ISR
+        /* CHANGED
+         * Now it should handle more than just key exceptions including timer */
+        BNE   ELSE1
+        BL    KEY_ISR
+
 UNEXPECTED:
-        BNE		UNEXPECTED    				 // if not recognized, stop here
-  			BL			KEY_ISR
+        CMP   R5, #MPCORE_PRIV_TIMER_IRQ
+        BNE   UNEXPECTED
+        BL    @ TODO FIXME XXX HERE
+
 EXIT_IRQ:
   			/* Write to the End of Interrupt Register (ICCEOIR) */
   			STR		R5, [R4, #ICCEOIR]			// write to ICCEOIR
