@@ -44,17 +44,17 @@ _start:
         MOV		R1, #0xF								// set interrupt mask bits
         STR		R1, [R0, #0x8]					// interrupt mask register is (base + 8)
 
-        // enable IRQ interrupts in the processor
+        @ enable IRQ interrupts in the processor
         MOV		R0, #0b01010011					// IRQ unmasked, MODE = SVC
         MSR		CPSR_c, R0
 
         /* CHANGED
          * Setup timer interrupt on 2Hz */
-        MOV   R0, #0xFFFEC600         // get base address for timer config
-        MOV   R1, #0x0003D090
-        STR   R1, [R0, #0]            // 250,000 in base 10 for load
-        MOV   R1, #0x0000C807
-        STR   R1, [R0, #0x8]          // store prescaler and AEI
+        LDR   R0, =MPCORE_PRIV_TIMER      @ base address of timer config
+        LDR   R1, =TIMER_LOAD_VALUE       @ 250,000 (immediate can't load it)
+        LDR   R2, =TIMER_PRESCALER_VALUE
+        STR   R1, [R0]                    @ store timer load value
+        STR   R2, [R0, #0x8]              @ store timer prescaler value
 IDLE:
         B 		IDLE									// main program simply idles
 
@@ -97,12 +97,19 @@ FPGA_IRQ1_HANDLER:
 
         @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
-        
+
 UNEXPECTED:
         BNE   UNEXPECTED              @ loop if interript is unexpected
 
         @ increment global variable
+        LDR   R0, =TIMER_LED
+        LDR   R1, [R0]
+        ADD   R1, R1, #1
+        STR   R1, [R0]
 
+        @ update LEDs
+        LDR   R0, =LEDR_BASE
+        STR   R1, [R0]
 
 EXIT_IRQ:
   			/* Write to the End of Interrupt Register (ICCEOIR) */
@@ -118,5 +125,9 @@ SERVICE_FIQ:
         .end
 
 /*--- GLOBAL VARIABLES --------------------------------------------------------*/
+TIMER_LOAD_VALUE:
+        .word 0x0003D090
+TIMER_PRESCALER_VALUE:
+        .word 0x0000C807
 TIMER_LED:
         .word 0
