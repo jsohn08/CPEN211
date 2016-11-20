@@ -37,7 +37,7 @@ _start:
         MSR		CPSR, R1								// change to supervisor mode
         LDR		SP, =DDR_END - 3				// set SVC stack to top of DDR3 memory
 
-        BL			CONFIG_GIC						// configure the ARM generic interrupt controller
+        BL		CONFIG_GIC						  // configure the ARM generic interrupt controller
 
         // write to the pushbutton KEY interrupt mask register
         LDR		R0, =KEY_BASE						// pushbutton KEY base address
@@ -56,7 +56,7 @@ _start:
         MOV   R1, #0x0000C807
         STR   R1, [R0, #0x8]          // store prescaler and AEI
 IDLE:
-        B 			IDLE									// main program simply idles
+        B 		IDLE									// main program simply idles
 
 /* Define the exception service routines */
 
@@ -83,6 +83,7 @@ SERVICE_IRQ:
   			/* Read the ICCIAR from the CPU interface */
   			LDR		R4, =MPCORE_GIC_CPUIF
   			LDR		R5, [R4, #ICCIAR]				// read from ICCIAR
+        @ NOTE LDR R5, =MPCORE... + ICCIAR
 
 FPGA_IRQ1_HANDLER:
   			CMP		R5, #KEYS_IRQ
@@ -94,10 +95,14 @@ FPGA_IRQ1_HANDLER:
         BNE   ELSE1
         BL    KEY_ISR
 
-UNEXPECTED:
+        @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
-        BNE   UNEXPECTED
-        BL    @ TODO FIXME XXX HERE
+        
+UNEXPECTED:
+        BNE   UNEXPECTED              @ loop if interript is unexpected
+
+        @ increment global variable
+
 
 EXIT_IRQ:
   			/* Write to the End of Interrupt Register (ICCEOIR) */
@@ -111,3 +116,7 @@ SERVICE_FIQ:
   			B			SERVICE_FIQ
 
         .end
+
+/*--- GLOBAL VARIABLES --------------------------------------------------------*/
+TIMER_LED:
+        .word 0
