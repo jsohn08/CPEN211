@@ -25,6 +25,14 @@
         B 			SERVICE_IRQ        // IRQ interrupt vector
         B 			SERVICE_FIQ				 // FIQ interrupt vector
 
+/*--- GLOBAL VARIABLES --------------------------------------------------------*/
+TIMER_LOAD_VALUE:
+        .word 0x0003D090
+TIMER_PRESCALER_VALUE:
+        .word 0x0000C807
+TIMER_LED:
+        .word 0
+
         .text
         .global	_start
 _start:
@@ -95,7 +103,7 @@ FPGA_IRQ1_HANDLER:
         BNE   ELSE1
         BL    KEY_ISR
 
-        @ else if source of interrupt is from timer
+ELSE1:  @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
 
 UNEXPECTED:
@@ -123,11 +131,3 @@ SERVICE_FIQ:
   			B			SERVICE_FIQ
 
         .end
-
-/*--- GLOBAL VARIABLES --------------------------------------------------------*/
-TIMER_LOAD_VALUE:
-        .word 0x0003D090
-TIMER_PRESCALER_VALUE:
-        .word 0x0000C807
-TIMER_LED:
-        .word 0

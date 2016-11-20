@@ -17,7 +17,7 @@
         .equ  HEX3_HEX0_BASE,        0xFF200020
         .equ  HEX5_HEX4_BASE,        0xFF200030
         .equ  SW_BASE,               0xFF200040
-        .equ  MPCORE_GIC_DIST,       0xFF200050
+        .equ  KEY_BASE,              0xFF200050
         .equ  JP1_BASE,              0xFF200060
         .equ  JP2_BASE,              0xFF200070
         .equ  PS2_BASE,              0xFF200100
