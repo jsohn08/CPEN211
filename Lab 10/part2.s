@@ -16,14 +16,14 @@
 
         .section .vectors, "ax"
 
-        B 			_start					   // reset vector
-        B 			SERVICE_UND				 // undefined instruction vector
-        B 			SERVICE_SVC				 // software interrrupt vector
-        B 			SERVICE_ABT_INST	 // aborted prefetch vector
-        B 			SERVICE_ABT_DATA	 // aborted data vector
-        .word 	0							     // unused vector
-        B 			SERVICE_IRQ        // IRQ interrupt vector
-        B 			SERVICE_FIQ				 // FIQ interrupt vector
+        B 			_start					   @ reset vector
+        B 			SERVICE_UND				 @ undefined instruction vector
+        B 			SERVICE_SVC				 @ software interrrupt vector
+        B 			SERVICE_ABT_INST	 @ aborted prefetch vector
+        B 			SERVICE_ABT_DATA	 @ aborted data vector
+        .word 	0							     @ unused vector
+        B 			SERVICE_IRQ        @ IRQ interrupt vector
+        B 			SERVICE_FIQ				 @ FIQ interrupt vector
 
 /*--- GLOBAL VARIABLES --------------------------------------------------------*/
 TIMER_LOAD_VALUE:
@@ -37,23 +37,23 @@ TIMER_LED:
         .global	_start
 _start:
         /* Set up stack pointers for IRQ and SVC processor modes */
-        MOV		R1, #0b11010010					// interrupts masked, MODE = IRQ
-        MSR		CPSR_c, R1							// change to IRQ mode
-        LDR		SP, =A9_ONCHIP_END - 3	// set IRQ stack to top of A9 onchip memory
+        MOV		R1, #0b11010010					@ interrupts masked, MODE = IRQ
+        MSR		CPSR_c, R1							@ change to IRQ mode
+        LDR		SP, =A9_ONCHIP_END - 3	@ set IRQ stack to top of A9 onchip memory
         /* Change to SVC (supervisor) mode with interrupts disabled */
-        MOV		R1, #0b11010011					// interrupts masked, MODE = SVC
-        MSR		CPSR, R1								// change to supervisor mode
-        LDR		SP, =DDR_END - 3				// set SVC stack to top of DDR3 memory
+        MOV		R1, #0b11010011					@ interrupts masked, MODE = SVC
+        MSR		CPSR, R1								@ change to supervisor mode
+        LDR		SP, =DDR_END - 3				@ set SVC stack to top of DDR3 memory
 
-        BL		CONFIG_GIC						  // configure the ARM generic interrupt controller
+        BL		CONFIG_GIC						  @ configure the ARM generic interrupt controller
 
-        // write to the pushbutton KEY interrupt mask register
-        LDR		R0, =KEY_BASE						// pushbutton KEY base address
-        MOV		R1, #0xF								// set interrupt mask bits
-        STR		R1, [R0, #0x8]					// interrupt mask register is (base + 8)
+        @ write to the pushbutton KEY interrupt mask register
+        LDR		R0, =KEY_BASE						@ pushbutton KEY base address
+        MOV		R1, #0xF								@ set interrupt mask bits
+        STR		R1, [R0, #0x8]					@ interrupt mask register is (base + 8)
 
         @ enable IRQ interrupts in the processor
-        MOV		R0, #0b01010011					// IRQ unmasked, MODE = SVC
+        MOV		R0, #0b01010011					@ IRQ unmasked, MODE = SVC
         MSR		CPSR_c, R0
 
         /* CHANGED
@@ -61,10 +61,14 @@ _start:
         LDR   R0, =MPCORE_PRIV_TIMER      @ base address of timer config
         LDR   R1, =TIMER_LOAD_VALUE       @ 250,000 (immediate can't load it)
         LDR   R2, =TIMER_CONTROL_VALUE    @ prescaler 200, IAE = 111
-        STR   R1, [R0]                    @ store timer load value
-        STR   R2, [R0, #0x8]              @ store timer prescaler value
+
+        LDR   R3, [R1]                    @ load the values of the global variables
+        LDR   R4, [R2]
+
+        STR   R3, [R0]                    @ store timer load value
+        STR   R4, [R0, #0x8]              @ store timer prescaler value
 IDLE:
-        B 		IDLE									// main program simply idles
+        B 		IDLE									@ main program simply idles
 
 /* Define the exception service routines */
 
@@ -108,6 +112,12 @@ ELSE1:  @ else if source of interrupt is from timer
 UNEXPECTED:
         BNE   UNEXPECTED              @ loop if interript is unexpected
 
+        @ deal with timer interrupt
+        LDR   R0, =MPCORE_PRIV_TIMER
+        LDR   R1, [R0, #0xC]          @ read edge capture register at offset 12
+        MOV   R2, #0xF
+        STR   R2, [R0, #0xC]          @ write to offset 12 to clear interrupt
+
         @ increment global variable
         LDR   R0, =TIMER_LED
         LDR   R1, [R0]
@@ -120,7 +130,7 @@ UNEXPECTED:
 
 EXIT_IRQ:
   			/* Write to the End of Interrupt Register (ICCEOIR) */
-  			STR		R5, [R4, #ICCEOIR]			// write to ICCEOIR
+  			STR		R5, [R4, #ICCEOIR]			@ write to ICCEOIR
 
   			POP		{R0-R7, LR}
   			SUBS		PC, LR, #4
