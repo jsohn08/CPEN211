@@ -28,7 +28,7 @@
 /*--- GLOBAL VARIABLES --------------------------------------------------------*/
 TIMER_LOAD_VALUE:
         .word 0x0003D090
-TIMER_PRESCALER_VALUE:
+TIMER_CONTROL_VALUE:
         .word 0x0000C807
 TIMER_LED:
         .word 0
@@ -60,7 +60,7 @@ _start:
          * Setup timer interrupt on 2Hz */
         LDR   R0, =MPCORE_PRIV_TIMER      @ base address of timer config
         LDR   R1, =TIMER_LOAD_VALUE       @ 250,000 (immediate can't load it)
-        LDR   R2, =TIMER_PRESCALER_VALUE
+        LDR   R2, =TIMER_CONTROL_VALUE    @ prescaler 200, IAE = 111
         STR   R1, [R0]                    @ store timer load value
         STR   R2, [R0, #0x8]              @ store timer prescaler value
 IDLE:
@@ -90,18 +90,17 @@ SERVICE_IRQ:
 
   			/* Read the ICCIAR from the CPU interface */
   			LDR		R4, =MPCORE_GIC_CPUIF
-  			LDR		R5, [R4, #ICCIAR]				// read from ICCIAR
+  			LDR		R5, [R4, #ICCIAR]				@ read from ICCIAR
         @ NOTE LDR R5, =MPCORE... + ICCIAR
 
 FPGA_IRQ1_HANDLER:
   			CMP		R5, #KEYS_IRQ
-@ UNEXPECTED:
-@         BNE		UNEXPECTED    				 // if not recognized, stop here
-@   			BL			KEY_ISR
+
         /* CHANGED
          * Now it should handle more than just key exceptions including timer */
         BNE   ELSE1
         BL    KEY_ISR
+        B     EXIT_IRQ
 
 ELSE1:  @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
