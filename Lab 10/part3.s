@@ -69,11 +69,36 @@ _start:
 
         /* CHANGED (part 3)
          * configure JTAG UART interrupt */
-        LDR   R0, =JTAG_UART_BASE         @ base address of JTAG data register
-        MOV   R1, #1                      @ set RE to 1 for read interrupt
-        STR   R1, [R0, #0x4]              @ write settings to JTAG config
+        LDR   R0, =JTAG_UART_BASE   @ base address of JTAG data register
+        MOV   R1, #1                @ set RE to 1 for read interrupt
+        STR   R1, [R0, #0x4]        @ write settings to JTAG config
+
+        /* CHANGED (part 3)
+        * modified IDLE loop to check for CHAR FLAG */
+        MOV   R2, #0
+        LDR   R3, =CHAR_FLAG        @ moved to outside loop for optimization
 IDLE:
+        LDR   R1, [R3]
+        CMP   R1, #1                @ check if CHAR_FLAG is 1
+        BNE   IDLE                  @ if CHAR_FLAG is not 1, skip
+
+        LDR   R0, =CHAR_BUFFER      @ load CHAR_BUFFER to R0 as argument
+        BL    PUT_JTAG              @ call write JTAG function for DE1->Host computer
+        STR   R2, [R3]              @ reset CHAR_FLAG to 0
+
         B 		IDLE									@ main program simply idles
+
+/* CHANGED
+ * --- JTAG FUNCTION (From Lab 10 instructions) -------------------------------*/
+PUT_JTAG:
+        LDR   R1, =0xFF201000       @ JTAG UART base address
+        LDR   R2, [R1, #4]          @ read the JTAG UART control register
+        LDR   R3, =0xFFFF
+        ANDS  R2, R2, R3            @ check for write space
+        BEQ   END_PUT               @ if no space, ignore the character
+        STR   R0, [R1]              @ send the character
+END_PUT:
+        BX    LR
 
 /* Define the exception service routines */
 
@@ -110,9 +135,10 @@ FPGA_IRQ1_HANDLER:
 
         @ deal with key interrupt
         BL    KEY_ISR
-        B     EXIT_IRQ
+        B     EXIT_IRQ                @ break out
 
 FPGA_IRQ2_HANDLER:
+        /* CHANGED (part 2) */
         @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
         BNE   FPGA_IRQ3_HANDLER
@@ -132,8 +158,10 @@ FPGA_IRQ2_HANDLER:
         @ update LEDs
         LDR   R0, =LEDR_BASE
         STR   R1, [R0]
+        B     EXIT_IRQ                @ break out
 
 FPGA_IRQ3_HANDLER:
+        /* CHANGED (part 3) */
         @ else if source of interrupt is from JTAG UART
         CMP   R5, #JTAG_IRQ
         BNE   UNEXPECTED
@@ -146,6 +174,7 @@ FPGA_IRQ3_HANDLER:
         STR   R3, [R1]                @ store data register to CHAR_BUFFER
         MOV   R6, #1
         STR   R6, [R2]                @ set CHAR_FLAG to 1
+        B     EXIT_IRQ                @ break out
 
 UNEXPECTED:
         B     UNEXPECTED
@@ -155,7 +184,7 @@ EXIT_IRQ:
   			STR		R5, [R4, #ICCEOIR]			@ write to ICCEOIR
 
   			POP		{R0-R7, LR}
-  			SUBS		PC, LR, #4
+  			SUBS	PC, LR, #4
 
 /*--- FIQ ---------------------------------------------------------------------*/
 SERVICE_FIQ:
