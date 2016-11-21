@@ -19,11 +19,11 @@
 
 [IN PROGRESS]: PART 3
 
-- ``Create part 3 files``
+- ~~Create part 3 files~~
 
-- Configure JTAG UART to interrupt when detecting keyboard
+- ~~Configure JTAG UART to interrupt when detecting keyboard~~
 
-- Extend SERVICE_IRQ to process new interrupts
+- ~~Extend SERVICE_IRQ to process new interrupts~~
 
 - Modify IDLE loop
 

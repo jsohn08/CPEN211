@@ -106,15 +106,16 @@ FPGA_IRQ1_HANDLER:
         /* CHANGED
         * Now it should handle more than just key exceptions including timer */
   			CMP		R5, #KEYS_IRQ           @ if interrupt is coming from button
-        BNE   ELSE1
+        BNE   FPGA_IRQ2_HANDLER
 
         @ deal with key interrupt
         BL    KEY_ISR
         B     EXIT_IRQ
 
-ELSE1:  @ else if source of interrupt is from timer
+FPGA_IRQ2_HANDLER:
+        @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
-        BNE   ELSE2
+        BNE   FPGA_IRQ3_HANDLER
 
         @ deal with timer interrupt
         LDR   R0, =MPCORE_PRIV_TIMER
@@ -132,17 +133,19 @@ ELSE1:  @ else if source of interrupt is from timer
         LDR   R0, =LEDR_BASE
         STR   R1, [R0]
 
-ELSE2:  @ else if source of interrupt is from JTAG UART
+FPGA_IRQ3_HANDLER:
+        @ else if source of interrupt is from JTAG UART
         CMP   R5, #JTAG_IRQ
         BNE   UNEXPECTED
 
         @ deal with JTAG interrupt
         LDR   R0, =JTAG_UART_BASE
-        LDR   R1, [R0]                @ R1 is data register
-        LDR   R2, =CHAR_BUFFER
-        STR   R1, [R2]                @ store data register to CHAR_BUFFER
-        
-
+        LDR   R1, =CHAR_BUFFER
+        LDR   R2, =CHAR_FLAG
+        LDR   R3, [R0]                @ read data register
+        STR   R3, [R1]                @ store data register to CHAR_BUFFER
+        MOV   R6, #1
+        STR   R6, [R2]                @ set CHAR_FLAG to 1
 
 UNEXPECTED:
         B     UNEXPECTED
