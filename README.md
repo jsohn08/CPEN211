@@ -17,7 +17,7 @@
 
 - ~~Fix timer not triggering interrupt issue~~
 
-[IN PROGRESS]: PART 3
+[DONE]: PART 3
 
 - ~~Create part 3 files~~
 
@@ -25,7 +25,7 @@
 
 - ~~Extend SERVICE_IRQ to process new interrupts~~
 
-- Modify IDLE loop
+- ~~Modify IDLE loop~~
 
 [TODO]: PART 4
 

@@ -73,18 +73,20 @@ _start:
         MOV   R1, #1                @ set RE to 1 for read interrupt
         STR   R1, [R0, #0x4]        @ write settings to JTAG config
 
+IDLE:
         /* CHANGED (part 3)
         * modified IDLE loop to check for CHAR FLAG */
-        MOV   R2, #0
-        LDR   R3, =CHAR_FLAG        @ moved to outside loop for optimization
-IDLE:
-        LDR   R1, [R3]
-        CMP   R1, #1                @ check if CHAR_FLAG is 1
+        LDR   R4, =CHAR_FLAG
+        LDR   R5, [R4]
+
+        CMP   R5, #1                @ check if CHAR_FLAG is 1
         BNE   IDLE                  @ if CHAR_FLAG is not 1, skip
 
-        LDR   R0, =CHAR_BUFFER      @ load CHAR_BUFFER to R0 as argument
+        LDR   R6, =CHAR_BUFFER      @ load CHAR_BUFFER to R0 as argument
+        LDR   R0, [R6]
         BL    PUT_JTAG              @ call write JTAG function for DE1->Host computer
-        STR   R2, [R3]              @ reset CHAR_FLAG to 0
+        MOV   R7, #0
+        STR   R7, [R4]              @ reset CHAR_FLAG to 0
 
         B 		IDLE									@ main program simply idles
 
