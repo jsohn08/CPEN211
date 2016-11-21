@@ -1,0 +1,7 @@
+MEM1: .word 0xDEADBEEF
+MEM2: .word 0xFFFFFFFF
+LDR R0, =MEM1
+LDR R1, =MEM2
+LDR R2, [R0]
+STR R2, [R1]
+.end

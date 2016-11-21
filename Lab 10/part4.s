@@ -146,10 +146,13 @@ SERVICE_ABT_INST:
 SERVICE_IRQ:
   			PUSH		{R0-R7, LR}
 
+        /* CHANGED
+         * saves a copy of stack pointer at this point in R7 */
+        MOV   R7, SP
+
   			/* Read the ICCIAR from the CPU interface */
   			LDR		R4, =MPCORE_GIC_CPUIF
   			LDR		R5, [R4, #ICCIAR]				@ read from ICCIAR
-        @ NOTE LDR R5, =MPCORE... + ICCIAR
 
 FPGA_IRQ1_HANDLER:
         /* CHANGED
@@ -173,13 +176,17 @@ FPGA_IRQ2_HANDLER:
         MOV   R2, #0xF
         STR   R2, [R0, #0xC]          @ write to offset 12 to clear interrupt
 
-        @ increment global variable
-        LDR   R0, =TIMER_LED
-        LDR   R1, [R0]
-        ADD   R1, R1, #1
-        STR   R1, [R0]
+        @ save R0 - R15 and CPSR to PD_ARRAYs
+        @ LDR   R0, =PD_ARRAY           @ use R0 as base address to PD_ARRAY
+        @ LDR   R1, [R7, #0]            @ read each R0-R7 in stack
+        @ STR   R1, [R0, #0]
+        @ TODO FIXME CONTINUE FROM HERE, store registers to PD_ARRAY
 
-        @ update LEDs
+        @ increment global variable and update LEDs
+        @ LDR   R0, =TIMER_LED
+        @ LDR   R1, [R0]
+        @ ADD   R1, R1, #1
+        @ STR   R1, [R0]
         @ LDR   R0, =LEDR_BASE
         @ STR   R1, [R0]
         B     EXIT_IRQ                @ break out
