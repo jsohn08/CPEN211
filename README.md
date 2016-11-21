@@ -27,19 +27,19 @@
 
 - ~~Modify IDLE loop~~
 
-[TODO]: PART 4
+[IN PROGRESS]: PART 4
 
-- Create part 4 files
+- ~~Create part 4 files~~
 
-- Create second process PROC1
+- ~~Create second process PROC1~~
 
-- Copy code from LAB 8 - PART 4
+- ~~Copy code from LAB 8 - PART 4~~
 
-- Remove code that updates LEDs
+- ~~Remove code that updates LEDs~~
 
-- Create global variable CURRENT_PID
+- ~~Create global variable CURRENT_PID~~
 
-- Add global array PD_ARRAY
+- ~~Add global array PD_ARRAY~~
 
 - Modify SERVICE_IRQ
 
