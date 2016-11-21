@@ -19,7 +19,7 @@
 
 [IN PROGRESS]: PART 3
 
-- Create part 3 files
+- ``Create part 3 files``
 
 - Configure JTAG UART to interrupt when detecting keyboard
 

@@ -26,14 +26,11 @@
         B 			SERVICE_FIQ				 @ FIQ interrupt vector
 
 /*--- GLOBAL VARIABLES --------------------------------------------------------*/
-TIMER_LOAD_VALUE:
-        @ .word 0x0003D090
-        .word 0x05F5E100
-TIMER_CONTROL_VALUE:
-        @ .word 0x0000C807
-        .word 0x00000007
-TIMER_LED:
-        .word 0
+TIMER_LOAD_VALUE:         .word 0x05F5E100
+TIMER_CONTROL_VALUE:      .word 0x00000007
+TIMER_LED:                .word 0
+CHAR_BUFFER:              .word 0
+CHAR_FLAG:                .word 0
 
         .text
         .global	_start
@@ -58,17 +55,23 @@ _start:
         MOV		R0, #0b01010011					@ IRQ unmasked, MODE = SVC
         MSR		CPSR_c, R0
 
-        /* CHANGED
+        /* CHANGED (part 2)
          * Setup timer interrupt on 2Hz */
         LDR   R0, =MPCORE_PRIV_TIMER      @ base address of timer config
-        LDR   R1, =TIMER_LOAD_VALUE       @ 250,000 (immediate can't load it)
-        LDR   R2, =TIMER_CONTROL_VALUE    @ prescaler 200, IAE = 111
+        LDR   R1, =TIMER_LOAD_VALUE       @ 100M (immediate can't load it)
+        LDR   R2, =TIMER_CONTROL_VALUE    @ prescaler 0, IAE = 111
 
         LDR   R3, [R1]                    @ load the values of the global variables
         LDR   R4, [R2]
 
         STR   R3, [R0]                    @ store timer load value
         STR   R4, [R0, #0x8]              @ store timer prescaler value
+
+        /* CHANGED (part 3)
+         * configure JTAG UART interrupt */
+        LDR   R0, =JTAG_UART_BASE         @ base address of JTAG data register
+        MOV   R1, #1                      @ set RE to 1 for read interrupt
+        STR   R1, [R0, #0x4]              @ write settings to JTAG config
 IDLE:
         B 		IDLE									@ main program simply idles
 
@@ -100,19 +103,18 @@ SERVICE_IRQ:
         @ NOTE LDR R5, =MPCORE... + ICCIAR
 
 FPGA_IRQ1_HANDLER:
-  			CMP		R5, #KEYS_IRQ
-
         /* CHANGED
-         * Now it should handle more than just key exceptions including timer */
+        * Now it should handle more than just key exceptions including timer */
+  			CMP		R5, #KEYS_IRQ           @ if interrupt is coming from button
         BNE   ELSE1
+
+        @ deal with key interrupt
         BL    KEY_ISR
         B     EXIT_IRQ
 
 ELSE1:  @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
-
-UNEXPECTED:
-        BNE   UNEXPECTED              @ loop if interript is unexpected
+        BNE   ELSE2
 
         @ deal with timer interrupt
         LDR   R0, =MPCORE_PRIV_TIMER
@@ -129,6 +131,21 @@ UNEXPECTED:
         @ update LEDs
         LDR   R0, =LEDR_BASE
         STR   R1, [R0]
+
+ELSE2:  @ else if source of interrupt is from JTAG UART
+        CMP   R5, #JTAG_IRQ
+        BNE   UNEXPECTED
+
+        @ deal with JTAG interrupt
+        LDR   R0, =JTAG_UART_BASE
+        LDR   R1, [R0]                @ R1 is data register
+        LDR   R2, =CHAR_BUFFER
+        STR   R1, [R2]                @ store data register to CHAR_BUFFER
+        
+
+
+UNEXPECTED:
+        B     UNEXPECTED
 
 EXIT_IRQ:
   			/* Write to the End of Interrupt Register (ICCEOIR) */

@@ -1,14 +1,14 @@
 /* This files provides interrupt IDs */
 
 /* FPGA interrupts (there are 64 in total; only a few are defined below) */
-      .equ	INTERVAL_TIMER_IRQ, 			72
+      .equ	INTERVAL_TIMER_IRQ, 	72
       .equ	KEYS_IRQ, 						73
       .equ	FPGA_IRQ2, 						74
       .equ	FPGA_IRQ3, 						75
       .equ	FPGA_IRQ4, 						76
       .equ	FPGA_IRQ5, 						77
       .equ	AUDIO_IRQ, 						78
-      .equ	PS2_IRQ, 						79
+      .equ	PS2_IRQ,              79
       .equ	JTAG_IRQ, 						80
       .equ	IrDA_IRQ, 						81
       .equ	FPGA_IRQ10,						82
