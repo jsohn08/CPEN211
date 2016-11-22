@@ -54,12 +54,15 @@ IRQPA:   @ store regs into first half and load the second half
 
         @ Change to SVC (supervisor) mode with interrupts disabled
         @ to save SP and LR
+        @ Help from LUCY
+        MRS   R2, CPSR                @ save a copy of CPSR
         MOV		R1, #0b11010011					@ interrupts masked, MODE = SVC
-        MSR		SPSR, R1								@ change to supervisor mode
+        MSR		CPSR, R1								@ change to supervisor mode
         STR   SP, [R0, #52]           @ R13 (SP)
         STR   LR, [R0, #56]           @ R14 (LR)
-        MOV		R1, #0b11010010					@ interrupts masked, MODE = IRQ
-        MSR		CPSR_c, R1							@ change back to IRQ mode
+        @ MOV		R1, #0b11010010					@ interrupts masked, MODE = IRQ
+        @ MSR		CPSR, R1   							@ change back to IRQ mode
+        MSR   CPSR, R2
 
         @ store PC value to exit when returned to this process
         LDR   R1, =EXIT_IRQ
@@ -89,7 +92,6 @@ IRQPB:  @ store new process ID
         STR   R1, [R2]
 
         @ load registers from other half of DP_ARRAY
-        LDR   R1, [R0, #4]            @
         LDR   R2, [R0, #8]            @
         LDR   R3, [R0, #12]           @
         LDR   R4, [R0, #16]           @
@@ -106,6 +108,8 @@ IRQPB:  @ store new process ID
 
         LDR   R1, [R0, #64]           @ load and move status reg into SPSR
         MSR   SPSR, R1
+
+        LDR   R1, [R0, #4]            @ load R1
         LDR   R0, [R0]                @ load R0, overwritting base address
 
         B     EXIT_IRQ                @ break out and restore PC and CPSR
