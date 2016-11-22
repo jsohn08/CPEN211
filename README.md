@@ -41,19 +41,21 @@
 
 - ~~Add global array PD_ARRAY~~
 
-- Modify SERVICE_IRQ to store interrupted program to appropriate location
+- ~~Modify SERVICE_IRQ to store interrupted program to appropriate location~~
 
-- Save and restore PC properly
+- ~~Save and restore PC properly~~???
 
-- Read and save status register using MRS (read) or MSR (write)
+- ~~Read and save status register using MRS (read) or MSR (write)~~
 
-- Save or restore LR and SP by changing CPU mode to Supervisor with disabled interrupt
+- ~~Save or restore LR and SP by changing CPU mode to Supervisor with disabled interrupt~~
 
-- Toggle CURRENT_PID
+- ~~Toggle CURRENT_PID~~
 
-- Load registers from the other process
+- ~~Load registers from the other process~~
 
-- Last two register (pc & lr) should be restored using `SUBS PC, LR, #4`
+- ~~Last two register (pc & lr) should be restored using `SUBS PC, LR, #4`~~
+
+- Debug this piece of shit
 
 Pseudo Code for step 7:
 

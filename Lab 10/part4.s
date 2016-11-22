@@ -172,11 +172,22 @@ FPGA_IRQ2_HANDLER:
         MOV   R2, #0xF
         STR   R2, [R0, #0xC]          @ write to offset 12 to clear interrupt
 
-        @ next steps will overwrite R0, R1 over existing IRQ registers
-        @ PUSH  {R0, R1}
+        @ check if process 1 or 0
+        LDR   R0, =CURRENT_PID
+        LDR   R1, [R0]
+        CMP   R1, #0
+        BEQ   IRQP0A
+        BNE   IRQP1B
 
-        @ save R0 - R15 and CPSR to PD_ARRAYs
-        LDR   R0, =PD_ARRAY           @ use R0 as base address to PD_ARRAY
+IRQP0A: @ get base addrses for first half
+        LDR   R0, =PD_ARRAY
+        B     IRQPA
+IRQP1A: @ get base address for second half
+        LDR   R0, =PD_ARRAY
+        ADD   R0, #68
+        B     IRQPA
+
+IRQPA:   @ store regs into first half and load the second half
         LDR   R1, [SP, #0]            @ read each R0-R7 in stack
         STR   R1, [R0, #0]            @ R0
         LDR   R1, [SP, #4]            @ R1
@@ -193,35 +204,50 @@ FPGA_IRQ2_HANDLER:
         STR   R1, [R0 ,#24]
         LDR   R1, [SP, #28]           @ R7
         STR   R1, [R0 ,#28]
+
         STR   R8, [R0, #32]           @ R8
         STR   R9, [R0, #36]           @ R9
         STR   R10, [R0, #40]          @ R10
         STR   R11, [R0, #44]          @ R11
         STR   R12, [R0, #48]          @ R12
-        STR   PC, [R0, #60]           @ R15 (PC) FIXME
-
-        MRS   R1, SPSR                @ copies status register
-        STR   R1, [R0, #64]           @ CPSR
 
         @ Change to SVC (supervisor) mode with interrupts disabled
         @ to save SP and LR
         MOV		R1, #0b11010011					@ interrupts masked, MODE = SVC
-        MSR		CPSR, R1								@ change to supervisor mode
+        MSR		SPSR, R1								@ change to supervisor mode
         STR   SP, [R0, #52]           @ R13 (SP)
         STR   LR, [R0, #56]           @ R14 (LR)
         MOV		R1, #0b11010010					@ interrupts masked, MODE = IRQ
         MSR		CPSR_c, R1							@ change back to IRQ mode
 
-        @ update CURRENT_PID
-        LDR   R1, =CURRENT_PID
-        LDR   R2, [R1]
-        CMP   R2, #1                  @ toggle CURRENT_PID
-        MOVEQ R3, #0
-        MOVNE R3, #1
-        STR   R3, [R1]
+        @ store PC value to exit when returned to this process
+        LDR   R1, =EXIT_IRQ
+        STR   R1, [R0, #60]           @ R15 (PC)
 
-        @ restore registers from the other process
-        ADD   R0, R0, #68             @ move base address to the second half of DP_ARRAY
+        @ store status
+        MRS   R1, CPSR                @ copies status register
+        STR   R1, [R0, #64]
+
+        @ check for the second part
+        LDR   R1, =PD_ARRAY
+        CMP   R0, R1
+        BEQ   IRQP0B                  @ process 0 -> process 1
+        BNE   IRQP1B                  @ process 1 -> process 0
+
+IRQP0B: @ process 0
+        ADD   R0, R0, #68             @ change base address to second half
+        MOV   R1, #1                  @ change process to 1
+        B     IRQPB
+IRQP1B: @ process 1
+        SUB   R0, R0, #68             @ change base addresss to first half
+        MOV   R1, #0                  @ change process to 0
+        B     IRQPB
+
+IRQPB:  @ store new process ID
+        LDR   R2, =CURRENT_PID
+        STR   R1, [R2]
+
+        @ load registers from other half of DP_ARRAY
         LDR   R1, [R0, #4]
         LDR   R2, [R0, #8]
         LDR   R3, [R0, #12]
@@ -233,17 +259,24 @@ FPGA_IRQ2_HANDLER:
         LDR   R9, [R0, #36]
         LDR   R10, [R0, #40]
         LDR   R11, [R0, #44]
-        LDR   R12, [R0, #48]          @ load R1-R12, we still need R0
-        LDR   
+        LDR   R12, [R0, #48]
+        LDR   R13, [R0, #52]          @ load R1-R13, we still need R0s
 
+        SUBS  PC, LR, #4              @ restore R15 and R16
 
-        @ increment global variable and update LEDs
+        LDR   R1, [R0, #64]           @ load and move status reg into SPSR
+        MSR   SPSR, R1
+
+        LDR   R0, [R0]                @ load R0, overwritting base address
+
+        @ increment global variable and update LEDs (removed in part 4)
         @ LDR   R0, =TIMER_LED
         @ LDR   R1, [R0]
         @ ADD   R1, R1, #1
         @ STR   R1, [R0]
         @ LDR   R0, =LEDR_BASE
         @ STR   R1, [R0]
+
         B     EXIT_IRQ                @ break out
 
 FPGA_IRQ3_HANDLER:
