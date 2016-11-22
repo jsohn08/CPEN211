@@ -303,6 +303,7 @@ EXIT_IRQ:
   			STR		R5, [R4, #ICCEOIR]			@ write to ICCEOIR
 
   			POP		{R0-R7, LR}
+        LDR   LR, =0x268              @ may the FORCE be with you
   			SUBS	PC, LR, #4
 
 /*--- FIQ ---------------------------------------------------------------------*/
