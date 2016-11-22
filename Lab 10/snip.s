@@ -1,4 +1,6 @@
-FGPA_IRQ2_HANDLER:
+@ ... some stuff above
+
+FPGA_IRQ2_HANDLER:
         /* CHANGED (part 2) */
         @ else if source of interrupt is from timer
         CMP   R5, #MPCORE_PRIV_TIMER_IRQ
@@ -10,20 +12,21 @@ FGPA_IRQ2_HANDLER:
         MOV   R2, #0xF
         STR   R2, [R0, #0xC]          @ write to offset 12 to clear interrupt
 
+        /* CHANGED (part 4) */
         @ check if process 1 or 0
         LDR   R0, =CURRENT_PID
         LDR   R1, [R0]
         CMP   R1, #0
-        BEQ   IRQP0A
-        BNE   IRQP1B
+        BEQ   STR_P0                  @ if current PID is 0
+        BNE   STR_P1                  @ if current PID is 1
 
-IRQP0A: @ get base addrses for first half
+STR_P0: @ get base addrses for first half
         LDR   R0, =PD_ARRAY
-        B     IRQP
-IRQP1A: @ get base address for second half
+        B     IRQPA
+STR_P1: @ get base address for second half
         LDR   R0, =PD_ARRAY
         ADD   R0, #68
-        B     IRQP
+        B     IRQPA
 
 IRQPA:   @ store regs into first half and load the second half
         LDR   R1, [SP, #0]            @ read each R0-R7 in stack
@@ -52,7 +55,7 @@ IRQPA:   @ store regs into first half and load the second half
         @ Change to SVC (supervisor) mode with interrupts disabled
         @ to save SP and LR
         MOV		R1, #0b11010011					@ interrupts masked, MODE = SVC
-        MSR		CPSR, R1								@ change to supervisor mode
+        MSR		SPSR, R1								@ change to supervisor mode
         STR   SP, [R0, #52]           @ R13 (SP)
         STR   LR, [R0, #56]           @ R14 (LR)
         MOV		R1, #0b11010010					@ interrupts masked, MODE = IRQ
@@ -63,7 +66,7 @@ IRQPA:   @ store regs into first half and load the second half
         STR   R1, [R0, #60]           @ R15 (PC)
 
         @ store status
-        MRS   R1, SPSR                @ copies status register
+        MRS   R1, CPSR                @ copies status register
         STR   R1, [R0, #64]
 
         @ check for the second part
@@ -86,29 +89,25 @@ IRQPB:  @ store new process ID
         STR   R1, [R2]
 
         @ load registers from other half of DP_ARRAY
-        LDR   R1, [R0, #4]
-        LDR   R2, [R0, #8]
-        LDR   R3, [R0, #12]
-        LDR   R4, [R0, #16]
-        LDR   R5, [R0, #20]
-        LDR   R6, [R0, #24]
-        LDR   R7, [R0, #28]
-        LDR   R8, [R0, #32]
-        LDR   R9, [R0, #36]
-        LDR   R10, [R0, #40]
-        LDR   R11, [R0, #44]
-        LDR   R12, [R0, #48]          @ load R1-R12, we still need R0
-
-        @ Change to SVC (supervisor) mode with interrupts disabled
-        @ to load SP and LR
-        MOV		R1, #0b11010011					@ interrupts masked, MODE = SVC
-        MSR		CPSR, R1								@ change to supervisor mode
-        LDR   SP, [R0, #52]           @ R13 (SP)
-        LDR   LR, [R0, #56]           @ R14 (LR)
-        MOV		R1, #0b11010010					@ interrupts masked, MODE = IRQ
-        MSR		CPSR_c, R1							@ change back to IRQ mode
+        LDR   R1, [R0, #4]            @
+        LDR   R2, [R0, #8]            @
+        LDR   R3, [R0, #12]           @
+        LDR   R4, [R0, #16]           @
+        LDR   R5, [R0, #20]           @
+        LDR   R6, [R0, #24]           @
+        LDR   R7, [R0, #28]           @
+        LDR   R8, [R0, #32]           @
+        LDR   R9, [R0, #36]           @
+        LDR   R10, [R0, #40]          @
+        LDR   R11, [R0, #44]          @
+        LDR   R12, [R0, #48]          @
+        LDR   R13, [R0, #52]          @
+        LDR   R14, [R0, #56]          @ load R1-R14, we still need R0s
 
         LDR   R1, [R0, #64]           @ load and move status reg into SPSR
         MSR   SPSR, R1
-
         LDR   R0, [R0]                @ load R0, overwritting base address
+
+        B     EXIT_IRQ                @ break out and restore PC and CPSR
+
+@ ... some stuff below

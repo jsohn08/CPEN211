@@ -172,17 +172,18 @@ FPGA_IRQ2_HANDLER:
         MOV   R2, #0xF
         STR   R2, [R0, #0xC]          @ write to offset 12 to clear interrupt
 
+        /* CHANGED (part 4) */
         @ check if process 1 or 0
         LDR   R0, =CURRENT_PID
         LDR   R1, [R0]
         CMP   R1, #0
-        BEQ   IRQP0A
-        BNE   IRQP1B
+        BEQ   STR_P0                  @ if current PID is 0
+        BNE   STR_P1                  @ if current PID is 1
 
-IRQP0A: @ get base addrses for first half
+STR_P0: @ get base addrses for first half
         LDR   R0, =PD_ARRAY
         B     IRQPA
-IRQP1A: @ get base address for second half
+STR_P1: @ get base address for second half
         LDR   R0, =PD_ARRAY
         ADD   R0, #68
         B     IRQPA
@@ -248,36 +249,27 @@ IRQPB:  @ store new process ID
         STR   R1, [R2]
 
         @ load registers from other half of DP_ARRAY
-        LDR   R1, [R0, #4]
-        LDR   R2, [R0, #8]
-        LDR   R3, [R0, #12]
-        LDR   R4, [R0, #16]
-        LDR   R5, [R0, #20]
-        LDR   R6, [R0, #24]
-        LDR   R7, [R0, #28]
-        LDR   R8, [R0, #32]
-        LDR   R9, [R0, #36]
-        LDR   R10, [R0, #40]
-        LDR   R11, [R0, #44]
-        LDR   R12, [R0, #48]
+        LDR   R2, [R0, #8]            @
+        LDR   R3, [R0, #12]           @
+        LDR   R4, [R0, #16]           @
+        LDR   R5, [R0, #20]           @
+        LDR   R6, [R0, #24]           @
+        LDR   R7, [R0, #28]           @
+        LDR   R8, [R0, #32]           @
+        LDR   R9, [R0, #36]           @
+        LDR   R10, [R0, #40]          @
+        LDR   R11, [R0, #44]          @
+        LDR   R12, [R0, #48]          @
         LDR   R13, [R0, #52]          @ load R1-R13, we still need R0s
-
-        SUBS  PC, LR, #4              @ restore R15 and R16
+        LDR   R14, [R0, #60]          @ load PC into LR
 
         LDR   R1, [R0, #64]           @ load and move status reg into SPSR
         MSR   SPSR, R1
 
+        LDR   R1, [R0, #4]            @ load R1
         LDR   R0, [R0]                @ load R0, overwritting base address
 
-        @ increment global variable and update LEDs (removed in part 4)
-        @ LDR   R0, =TIMER_LED
-        @ LDR   R1, [R0]
-        @ ADD   R1, R1, #1
-        @ STR   R1, [R0]
-        @ LDR   R0, =LEDR_BASE
-        @ STR   R1, [R0]
-
-        B     EXIT_IRQ                @ break out
+        B     EXIT_IRQ                @ break out and restore PC and CPSR
 
 FPGA_IRQ3_HANDLER:
         /* CHANGED (part 3) */
@@ -300,6 +292,8 @@ UNEXPECTED:
 
 EXIT_IRQ:
   			/* Write to the End of Interrupt Register (ICCEOIR) */
+        LDR		R4, =MPCORE_GIC_CPUIF
+  			MOV		R5, #29
   			STR		R5, [R4, #ICCEOIR]			@ write to ICCEOIR
 
   			POP		{R0-R7, LR}
