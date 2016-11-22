@@ -55,6 +55,25 @@
 
 - Last two register (pc & lr) should be restored using `SUBS PC, LR, #4`
 
+Pseudo Code for step 7:
+
+```
+check which process it is (0 or 1)
+
+if process 0:
+store process 0 regs in first half
+switch to process 1
+load process 1 regs from second half
+
+else process 1:
+store process 1 regs in second half
+switch to process 0
+load process 0 regs from first half
+
+get out IRQ
+
+```
+
 ## LAB 9 - RECURSIVE FUNCTION
 
 [X] TODO: Modify main function to test all three cases
