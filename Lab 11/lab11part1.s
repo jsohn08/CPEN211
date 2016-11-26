@@ -6,11 +6,18 @@
 _start:
         BL CONFIG_VIRTUAL_MEMORY
 
+        /* CPU cycle counter */
         @ Step 1-3: configure PMN0 to count cycles
         MOV R0, #0                  @ Write 0 into R0 then PMSELR
         MCR P15, 0, R0, C9, C12, 5  @ Write 0 into PMSELR selects PMN0
-        MOV R1, #0X11               @ Event 0x11 is CPU cycles
+        MOV R1, #0x11               @ Event 0x11 is CPU cycles
         MCR P15, 0, R1, C9, C13, 1  @ Write 0x11 into PMXEVTYPER (PMN0 measure CPU cycles)
+
+        /* L1 cache miss counter */
+        @ MOV R0, #1
+        @ MCR P15, 0, R0, C9, C12, 5  @ Write 1 into PMSEL selects PMN1
+        @ MOV R1, #0x3                @ Even 0x3 is for L1 cache misses
+        @ MCR P15, 0, R1, C9, C13, 1  @ PWN1 measures L1 cache misses
 
         @ Step 4: enable PMN0
         MOV R0, #1                  @ PMN0 is bit 0 of PMCNTENSET
