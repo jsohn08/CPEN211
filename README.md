@@ -2,6 +2,21 @@
 
 ## LAB 11 - Performance
 
+### Part 1
+
+**Without cache enabled:**
+
+| R3 (CPU Cycle)     | R4 (Cache Miss)     | R5 (Load Count)
+| :------------- | :------------- | :--- |
+| 57729       | 0       | 513 |
+
+**With cache enabled**
+
+| R3 (CPU Cycle)     | R4 (Cache Miss)     | R5 (Load Count)
+| :------------- | :------------- | :--- |
+| 4180       | 73       | 514 | Trial 1
+| 1502       | 4        | 513 | Trial 2
+| 1097       | 0        | 513 | Trial 3
 
 
 ## LAB 10 - I/O INTERRUPT

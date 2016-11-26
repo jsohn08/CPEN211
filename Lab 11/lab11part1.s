@@ -4,7 +4,7 @@
         .global _start
 
 _start:
-        @ BL CONFIG_VIRTUAL_MEMORY
+        BL CONFIG_VIRTUAL_MEMORY
 
         @ Step 1-3: configure PMNx to count cycles
         /* CPU cycle counter */
