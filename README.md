@@ -6,18 +6,33 @@
 
 **Without cache enabled:**
 
-| R3 (CPU Cycle)     | R4 (Cache Miss)     | R5 (Load Count)
-| :------------- | :------------- | :--- |
-| 57729       | 0       | 513 |
+| R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- |
+| 57729 | 0 | 513 |
 
 **With cache enabled**
 
-| R3 (CPU Cycle)     | R4 (Cache Miss)     | R5 (Load Count)
-| :------------- | :------------- | :--- |
-| 4180       | 73       | 514 | Trial 1
-| 1502       | 4        | 513 | Trial 2
-| 1097       | 0        | 513 | Trial 3
+| R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- |
+| 4180 | 73 | 514 | Trial 1 |
+| 1502 | 4 | 513 | Trial 2 |
+| 1097 | 0 | 513 | Trial 3 |
 
+**Without cache enabled, with LDR modified**
+
+| R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- |
+| 55207 | 0 | 513 |
+
+**With cache enabled, with LDR modified**
+
+| R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- |
+| 7825 | 158 | 513 | Trial 1 |
+| 1290 | 4 | 513 | Trial 2 |
+| 1077 | 0 | 514 | Trial 3 |
+
+$$\text{Cycle time} = \frac{1}{800\text{MHz}}$$
 
 ## LAB 10 - I/O INTERRUPT
 [DONE]: PART 1
