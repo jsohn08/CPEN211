@@ -14,7 +14,7 @@
 
 | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
 | :--- | :--- | :--- |
-| 4180 | 73 | 514 | Trial 1 |
+| 4176 | 73 | 514 | Trial 1 |
 | 1502 | 4 | 513 | Trial 2 |
 | 1097 | 0 | 513 | Trial 3 |
 
@@ -28,11 +28,17 @@
 
 | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
 | :--- | :--- | :--- |
-| 7825 | 158 | 513 | Trial 1 |
+| 7538 | 98 | 513 | Trial 1 |
 | 1290 | 4 | 513 | Trial 2 |
 | 1077 | 0 | 514 | Trial 3 |
 
-$$\text{Cycle time} = \frac{1}{800\text{MHz}}$$
+Calculated instruction count: $4 + 2(1 + 256(4) + 3) = 2060$
+
+Calculated cycle time: $\frac{1}{800\text{MHz}} = 1.25\text{ns}$
+
+Calculated average CPI: $\frac{4176}{2060}\approx 2.02 \text{CPI}$
+
+Execution Time: $\text{Instruction Count} \times \text{CPI} \times \text{Cycle Time} = 2060\times 2.02 \times 1.25\times10^{-9}=5.2\mu\text{s}$
 
 ## LAB 10 - I/O INTERRUPT
 [DONE]: PART 1
