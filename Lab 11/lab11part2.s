@@ -63,10 +63,11 @@ JLOOP:  CMP   R5, R0                  @ check if j < N
         ADD   R5, #1                  @ j++
         BGE   ILOOP
         LDR   R7, =zero@FIXME
-        @ FSTD  D3, [R7]
+        @ FLDD  D3, [R7]
         @ 1110_1101_0001_0111_0011_1011_0000_0000
         .word 0xED173B00              @ set D3 (sum) to 0
 KLOOP:  CMP   R6, R0                  @ check if k < N
+        BGE   JLOOP
         MOV   R6, #1                  @ k++
         MUL   R8, R0, R4              @
         ADD   R8, R8, R6              @
@@ -92,9 +93,7 @@ KLOOP:  CMP   R6, R0                  @ check if k < N
         @ FSTD D3 [R8]
         @ 1110_1101_0001_1000_0011_1011_0000_0000
         .word 0xED183B00              @ C[i][j] = sum
-
-        @ TODO continue here
-
+        B     KLOOP
 EXIT:
         @ Step 7: stop counters
         MOV   R0, #0
