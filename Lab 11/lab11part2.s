@@ -57,16 +57,17 @@ _start:
         MOV   R5, #0                  @ setting j to 0
         MOV   R6, #0                  @ setting k to 0
 ILOOP:  CMP   R4, R0                  @ check if i < N
-        ADD   R4, #1                  @ i++
+        ADD   R4, R4, #1              @ i++
         BGE   EXIT
 JLOOP:  CMP   R5, R0                  @ check if j < N
-        ADD   R5, #1                  @ j++
+        ADD   R5, R5, #1              @ j++
         BGE   ILOOP
-        LDR   R7, =zero@FIXME
+        LDR   R7, =zero
         @ FLDD  D3, [R7]
         @ 1110_1101_0001_0111_0011_1011_0000_0000
         .word 0xED173B00              @ set D3 (sum) to 0
 KLOOP:  CMP   R6, R0                  @ check if k < N
+        ADD   R6, R6, #1
         BGE   JLOOP
         MOV   R6, #1                  @ k++
         MUL   R8, R0, R4              @
