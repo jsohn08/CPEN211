@@ -19,7 +19,7 @@
         .global _start
 
 _start:
-        BL CONFIG_VIRTUAL_MEMORY
+        @ BL CONFIG_VIRTUAL_MEMORY
 
         @ Step 1-3: configure PMNx to count cycles
         /* CPU cycle counter */
@@ -53,18 +53,18 @@ _start:
         LDR   R1, =small_mat_a        @ [editable] base address for matrix A
         LDR   R2, =small_mat_b        @ [editable] base address for matrix B
         LDR   R3, =small_mat_c        @ [editable] base address for matrix C
+        LDR   R7, =zero
         MOV   R4, #0                  @ setting i to 0
-        MOV   R5, #0                  @ setting j to 0
-        MOV   R6, #0                  @ setting k to 0
 ILOOP:  CMP   R4, R0                  @ check if i < N
         BGE   EXIT
+        MOV   R5, #0                  @ setting j to 0
 JLOOP:  CMP   R5, R0                  @ check if j < N
         ADDGE R4, R4, #1              @ i++
         BGE   ILOOP
-        LDR   R7, =zero
+        MOV   R6, #0                  @ setting k to 0
         @ FLDD  D3, [R7]
         @ 1110_1101_0001_0111_0011_1011_0000_0000
-        .word 0xED173B00              @ set D3 (sum) to 0
+        .word 0xED973B00              @ set D3 (sum) to 0
 KLOOP:  CMP   R6, R0                  @ check if k < N
         BGE   KEND
         MUL   R8, R0, R4              @ i * n
@@ -72,13 +72,13 @@ KLOOP:  CMP   R6, R0                  @ check if k < N
         ADD   R8, R1, R8, LSL #3      @ R8 = addr of A[i][k] (LSL 3 for multiplying 8 for double)
         @ FLDD D0, [R8]               @ D0 = A[i][k]
         @ 1110_1101_0001_1000_0000_1011_0000_0000
-        .word 0xED180B00
+        .word 0xED980B00
         MUL   R8, R0, R6              @ k * n
         ADD   R8, R8, R5              @ (k * n) + j
         ADD   R8, R2, R8, LSL #3      @ R8 = addr of B[k][j] (LSL 3 for multiplying 8 for double)
         @ FLDD D1, [R8]               @ D1 = B[k][j]
         @ 1110_1101_0001_1000_0001_1011_0000_0000
-        .word 0xED181B00
+        .word 0xED981B00
         @ FMULD D2, D0, D1
         @ 1110_1110_0010_0000_0010_1011_0000_0001
         .word 0xEE202B01              @ D2 = D0 * D1
@@ -90,9 +90,9 @@ KLOOP:  CMP   R6, R0                  @ check if k < N
 KEND:   MUL   R8, R0, R4              @ i * n
         ADD   R8, R8, R5              @ (i * n) + j
         ADD   R8, R3, R8, LSL #3      @ R8 = addr of C[i][j]
-        @ FSTD D3 [R8]
+        @ FSTD D3, [R8]
         @ 1110_1101_0001_1000_0011_1011_0000_0000
-        .word 0xED183B00              @ C[i][j] = sum
+        .word 0xED883B00              @ C[i][j] = sum
         ADD   R5, R5, #1              @ j++
         B     JLOOP
 EXIT:
