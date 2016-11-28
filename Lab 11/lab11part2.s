@@ -118,19 +118,26 @@ EXIT:
 END:    B     END
 
 /* Matrices */
+        @ sizes
+        .equ small_n,      2
+        .equ med_n,        3
+        .equ large_n,      32
+        .equ very_large_n, 128
+
+        @ zero value
 zero:   .double   0.0
 
-        .equ small_n, 2
+        @ arrays
 small_mat_a:
-        .double   1.2               @ Will make the matrix
-        .double   3.4               @ | 1.2   3.4 |
-        .double   0.9               @ | 0.9   9.1 |
-        .double   9.1               @
+        .double   1.2               @ Will make the matrix    @ 0x3FF3333333333333
+        .double   3.4               @ | 1.2   3.4 |           @ 0x400B333333333333
+        .double   0.9               @ | 0.9   9.1 |           @ 0x3FECCCCCCCCCCCCD
+        .double   9.1               @                         @ 0x4022333333333333
 small_mat_b:
-        .double   4.2               @ Will make the matrix
-        .double   6.9               @ | 4.2   6.9 |
-        .double   7.1               @ | 7.1   0.5 |
-        .double   0.5               @
+        .double   4.2               @ Will make the matrix    @ 0x4010CCCCCCCCCCCD
+        .double   6.9               @ | 4.2   6.9 |           @ 0x401B99999999999A
+        .double   7.1               @ | 7.1   0.5 |           @ 0x401c666666666666
+        .double   0.5               @                         @ 0x3fe0000000000000
 small_mat_c:
         .double   0                 @ Should expect
         .double   0                 @ | 29.18   8.98  |
