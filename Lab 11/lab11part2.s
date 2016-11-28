@@ -66,8 +66,7 @@ JLOOP:  CMP   R5, R0                  @ check if j < N
         @ 1110_1101_0001_0111_0011_1011_0000_0000
         .word 0xED173B00              @ set D3 (sum) to 0
 KLOOP:  CMP   R6, R0                  @ check if k < N
-        ADDGE R5, R5, #1              @ j++
-        BGE   JLOOP
+        BGE   KEND
         MUL   R8, R0, R4              @ i * n
         ADD   R8, R8, R6              @ (i * n) + k
         ADD   R8, R1, R8, LSL #3      @ R8 = addr of A[i][k] (LSL 3 for multiplying 8 for double)
@@ -86,14 +85,16 @@ KLOOP:  CMP   R6, R0                  @ check if k < N
         @ FADDD D3, D3, D2
         @ 1110_1110_0011_0011_0011_1011_0000_0010
         .word 0xEE333B02              @ D3 (sum) += D2
-        MUL   R8, R0, R4              @ i * n
+        ADD   R6, R6, #1              @ k++
+        B     KLOOP
+KEND:   MUL   R8, R0, R4              @ i * n
         ADD   R8, R8, R5              @ (i * n) + j
         ADD   R8, R3, R8, LSL #3      @ R8 = addr of C[i][j]
         @ FSTD D3 [R8]
         @ 1110_1101_0001_1000_0011_1011_0000_0000
         .word 0xED183B00              @ C[i][j] = sum
-        ADD   R6, R6, #1              @ k++
-        B     KLOOP
+        ADD   R5, R5, #1              @ j++
+        B     JLOOP
 EXIT:
         @ Step 7: stop counters
         MOV   R0, #0
