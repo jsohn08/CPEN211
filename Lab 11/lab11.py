@@ -6,14 +6,23 @@ while True:
     N = int(input("Enter an integer (1-128): "))
 
     if (N in range(1, 129)):
-        # file IO
-        f = open("matrix.s", "w")
         # generate random matrix
         for i in range(N**2):
-            A.append(random.randint(-1000, 1000) / random.randrange(1, 500))
-            B.append(random.randint(-1000, 1000) / random.randrange(1, 500))
+            # A.append(random.randint(-1000, 1000) / random.randrange(1, 500))
+            # B.append(random.randint(-1000, 1000) / random.randrange(1, 500))
+            A.append(random.randint(0, 100) / 10.0)
+            B.append(random.randint(0, 100) / 10.0)
 
-        # print code
+        # write N
+        f = open("matrix_n.s", "w")
+        f.write("        .equ matN, " + str(N) + "\n")
+        f.close()
+
+        # write code
+        f = open("matrix.s", "w")
+        f.write("        .global matA\n")
+        f.write("        .global matB\n")
+        f.write("        .global matC\n")
         f.write("matA:\n")
         for ai in A:
             f.write("        .double   " + str(ai) + "\n")
@@ -25,6 +34,7 @@ while True:
         f.write("matC:\n")
         for i in range(N**2):
             f.write("        .double   " + str(0) + "\n")
+        f.close()
 
         # calculate product
         print("Matrix product:")
@@ -36,6 +46,5 @@ while True:
                     sum += A[i * N + k] * B[k * N + j]
                 C.append(sum)
             print(C)
-        f.close()
     else:
         print("Try some other N")

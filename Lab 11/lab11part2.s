@@ -1,6 +1,7 @@
 /* Based off of Lab 11 instructions */
+/* Written by: Muchen He */
 /* Matrix multiplication - measure performance */
-
+        .include "matrix_n.s"
         .text
         .global _start
 
@@ -35,10 +36,13 @@ _start:
         MCR   P15, 0, R0, C9, C12, 0  @ Setting PMCR to 3
 
         @ Step 6: code we wish to profile using hardware counters
-        LDR   R0, =med_n              @ [editable] define N 2
-        LDR   R1, =mat_N3_a        @ [editable] base address for matrix A
-        LDR   R2, =mat_N3_b        @ [editable] base address for matrix B
-        LDR   R3, =mat_N3_c        @ [editable] base address for matrix C
+        LDR   R0, =matN            @ define N
+        @ LDR   R1, =mat_N3_a        @ [editable] base address for matrix A
+        @ LDR   R2, =mat_N3_b        @ [editable] base address for matrix B
+        @ LDR   R3, =mat_N3_c        @ [editable] base address for matrix C
+        LDR   R1, =matA               @ base address for matrix A
+        LDR   R2, =matB               @ base address for matrix B
+        LDR   R3, =matC               @ base address for matrix C
         LDR   R7, =zero
         MOV   R4, #0                  @ setting i to 0
 ILOOP:  CMP   R4, R0                  @ check if i < N
@@ -105,10 +109,7 @@ END:    B     END
 
 /* Matrices */
         @ sizes
-        .equ small_n,      2
-        .equ med_n,        3
-        .equ large_n,      16
-        .equ very_large_n, 128
+        .equ smallMatN, 2
 
         @ zero value
 zero:   .double   0.0
