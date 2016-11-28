@@ -1,20 +1,6 @@
 /* Based off of Lab 11 instructions */
+/* Matrix multiplication - measure performance */
 
-/* C program to implement:
- * #define N 128
- * double A[N][N], B[N][N], C[N][N];
- * void matrix_multiply(void) {
- *   int i, j, k;
- *   for (i=0; i<N; i++) {
- *     for (j=0; j<N; j++) {
- *       double sum=0.0;
- *       for( k=0; k<N; k++ )
- *         sum += A[i][k] * B[k][j];
- *       C[i][j] = sum;
- *     }
- *   }
- * }
- */
         .text
         .global _start
 
@@ -49,10 +35,10 @@ _start:
         MCR   P15, 0, R0, C9, C12, 0  @ Setting PMCR to 3
 
         @ Step 6: code we wish to profile using hardware counters
-        LDR   R0, =small_n            @ [editable] define N 2
-        LDR   R1, =small_mat_a        @ [editable] base address for matrix A
-        LDR   R2, =small_mat_b        @ [editable] base address for matrix B
-        LDR   R3, =small_mat_c        @ [editable] base address for matrix C
+        LDR   R0, =med_n              @ [editable] define N 2
+        LDR   R1, =mat_N3_a        @ [editable] base address for matrix A
+        LDR   R2, =mat_N3_b        @ [editable] base address for matrix B
+        LDR   R3, =mat_N3_c        @ [editable] base address for matrix C
         LDR   R7, =zero
         MOV   R4, #0                  @ setting i to 0
 ILOOP:  CMP   R4, R0                  @ check if i < N
@@ -121,7 +107,7 @@ END:    B     END
         @ sizes
         .equ small_n,      2
         .equ med_n,        3
-        .equ large_n,      32
+        .equ large_n,      16
         .equ very_large_n, 128
 
         @ zero value
@@ -140,6 +126,6 @@ small_mat_b:
         .double   0.5               @                         @ 0x3fe0000000000000
 small_mat_c:
         .double   0                 @ Should expect
-        .double   0                 @ | 29.18   8.98  |
+        .double   0                 @ | 29.18    9.98 |
         .double   0                 @ | 68.39   10.76 |
         .double   0                 @

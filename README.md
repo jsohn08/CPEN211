@@ -40,6 +40,36 @@ Calculated average CPI: $\frac{4176}{2060}\approx 2.02 \text{CPI}$
 
 Execution Time: $\text{Instruction Count} \times \text{CPI} \times \text{Cycle Time} = 2060\times 2.02 \times 1.25\times10^{-9}=5.2\mu\text{s}$
 
+### Part 2
+
+#### N = 2 (small)
+
+| Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- | :--- |
+| No | 3142 | 0 | 26 |
+| Yes | 661 | 21 | 27 |
+
+#### N = 3 (medium)
+
+| Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- | :--- |
+| No | xx | 0 | xx |
+| Yes | xx | xx | xx |
+
+#### N = 16 (large)
+
+| Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- | :--- |
+| No | xx | 0 | xx |
+| Yes | xx | xx | xx |
+
+#### N = 128 (very large)
+
+| Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
+| :--- | :--- | :--- | :--- |
+| No | xx | 0 | xx |
+| Yes | xx | xx | xx |
+
 ## LAB 10 - I/O INTERRUPT
 [DONE]: PART 1
 
