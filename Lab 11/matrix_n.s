@@ -1,1 +1,1 @@
-        .equ matN, 16
+        .equ matN, 6
