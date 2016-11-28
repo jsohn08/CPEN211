@@ -40,7 +40,13 @@ Calculated average CPI: $\frac{4176}{2060}\approx 2.02 \text{CPI}$
 
 Execution Time: $\text{Instruction Count} \times \text{CPI} \times \text{Cycle Time} = 2060\times 2.02 \times 1.25\times10^{-9}=5.2\mu\text{s}$
 
+Execution Time: $5.22\mu\text{s}$
+
 ### Part 2
+
+Program is most likely execute number of instructions from the formula:
+
+$$6+N(3+N(5+N(14)+6))$$
 
 #### N = 2 (small)
 
@@ -49,12 +55,26 @@ Execution Time: $\text{Instruction Count} \times \text{CPI} \times \text{Cycle 
 | No | 3142 | 0 | 26 |
 | Yes | 661 | 21 | 27 |
 
+Calculated instruction count: $6+(2)(3+(2)(5+(2)(14)+6)) = 168$
+
+Calculated cycle time: $1.25\text{ns}$
+
+Calculated average CPI: $\frac{3142}{168}\approx 3.93 \text{CPI}$
+
+Execution Time: $0.826\mu\text{s}$
+
 #### N = 3 (medium)
 
 | Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
 | :--- | :--- | :--- | :--- |
 | No | 9559 | 0 | 67 |
 | Yes | 1247 | 26 | 70 |
+
+Calculated instruction count: $6+(3)(3+(3)(5+(3)(14)+6)) = 492$
+
+Calculated average CPI: $\frac{1247}{492}\approx 2.53 \text{CPI}$
+
+Execution Time: $1.58\mu\text{s}$
 
 #### N = 16 (large)
 
@@ -63,12 +83,24 @@ Execution Time: $\text{Instruction Count} \times \text{CPI} \times \text{Cycle 
 | No | 1046777 | 0 | 8221 |
 | Yes | 69688 | 212 | 8468 |
 
+Calculated instruction count: $6+(16)(3+(16)(5+(16)(14)+6)) = 60214$
+
+Calculated average CPI: $\frac{69688}{60214}\approx 1.16 \text{CPI}$
+
+Execution Time: $87.11\mu\text{s}$
+
 #### N = 128 (very large)
 
 | Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
 | :--- | :--- | :--- | :--- |
 | No | 527954669 | 0 | 4210692 |
 | Yes | 137569913 | 2110834 | 4210823 |
+
+Calculated instruction count: $6+(128)(3+(128)(5+(128)(14)+6)) = 29540742$
+
+Calculated average CPI: $\frac{137569913}{29540742}\approx 4.66 \text{CPI}$
+
+Execution Time: $0.172\text{s}$
 
 ## LAB 10 - I/O INTERRUPT
 [DONE]: PART 1

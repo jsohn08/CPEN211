@@ -8,10 +8,8 @@ while True:
     if (N in range(1, 129)):
         # generate random matrix
         for i in range(N**2):
-            # A.append(random.randint(-1000, 1000) / random.randrange(1, 500))
-            # B.append(random.randint(-1000, 1000) / random.randrange(1, 500))
-            A.append(random.randint(0, 100) / 10.0)
-            B.append(random.randint(0, 100) / 10.0)
+            A.append(random.randint(0, 1000) / random.uniform(0.1, 1000))
+            B.append(random.randint(0, 1000) / random.uniform(0.1, 1000))
 
         # write N
         f = open("matrix_n.s", "w")
