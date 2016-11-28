@@ -53,22 +53,22 @@ Execution Time: $\text{Instruction Count} \times \text{CPI} \times \text{Cycle 
 
 | Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
 | :--- | :--- | :--- | :--- |
-| No | xx | 0 | xx |
-| Yes | xx | xx | xx |
+| No | 9559 | 0 | 67 |
+| Yes | 1247 | 26 | 70 |
 
 #### N = 16 (large)
 
 | Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
 | :--- | :--- | :--- | :--- |
-| No | xx | 0 | xx |
-| Yes | xx | xx | xx |
+| No | 1046777 | 0 | 8221 |
+| Yes | 69688 | 212 | 8468 |
 
 #### N = 128 (very large)
 
 | Cached? | R3 (CPU Cycle) | R4 (Cache Miss) | R5 (Load Count) |
 | :--- | :--- | :--- | :--- |
-| No | xx | 0 | xx |
-| Yes | xx | xx | xx |
+| No | 527954669 | 0 | 4210692 |
+| Yes | 137569913 | 2110834 | 4210823 |
 
 ## LAB 10 - I/O INTERRUPT
 [DONE]: PART 1
