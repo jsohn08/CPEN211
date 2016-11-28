@@ -3,8 +3,10 @@ import random
 while True:
     A = []
     B = []
-    N = int(input("Enter an integer (1-128): "))
+    N = int(input("Enter an integer (1-128), (-1) to quit: "))
 
+    if (N == -1):
+        break
     if (N in range(1, 129)):
         # generate random matrix
         for i in range(N**2):
@@ -18,9 +20,10 @@ while True:
 
         # write code
         f = open("matrix.s", "w")
-        f.write("        .global matA\n")
-        f.write("        .global matB\n")
-        f.write("        .global matC\n")
+        f.write("        .global   matA\n")
+        f.write("        .global   matB\n")
+        f.write("        .global   matC\n")
+        f.write("        .org      0x01000000\n")
         f.write("matA:\n")
         for ai in A:
             f.write("        .double   " + str(ai) + "\n")
@@ -29,9 +32,7 @@ while True:
         for bi in B:
             f.write("        .double   " + str(bi) + "\n")
 
-        f.write("matC:\n")
-        for i in range(N**2):
-            f.write("        .double   " + str(0) + "\n")
+        f.write("matC:\n" + ("        .double   0\n") * N**2)
         f.close()
 
         # calculate product
