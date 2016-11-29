@@ -1,3 +1,0 @@
-Traceback (most recent call last):
-  File "lab11.py", line 6, in <module>
-EOFError: EOF when reading a line
