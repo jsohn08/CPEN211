@@ -21,6 +21,7 @@
 *.objdump
 *.amp
 *.srec
+matrix.s
 db/
 incremental_db/
 output_files/

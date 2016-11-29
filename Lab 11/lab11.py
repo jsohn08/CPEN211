@@ -1,9 +1,9 @@
 import random
 
 while True:
-    A = []
-    B = []
-    N = int(input("Enter an integer (1-128), (-1) to quit: "))
+    A  = []
+    B  = []
+    N  = int(input("Enter an integer (1-128), (-1) to quit: "))
     BS = int(input("Enter BLOCKSIZE (2-32): "))
 
     if (N == -1):
@@ -25,7 +25,6 @@ while True:
         f.write("        .global   matA\n")
         f.write("        .global   matB\n")
         f.write("        .global   matC\n")
-        # f.write("        .org      0x01000000\n")
         f.write("matA:\n")
         for ai in A:
             f.write("        .double   " + str(ai) + "\n")
