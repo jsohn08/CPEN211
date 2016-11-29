@@ -1,3 +1,7 @@
+# !! IMPORTANT !!
+# THIS FILE IS USELESS
+# DO NOT USE
+
 count = 0
 
 N = int(input("N: "))

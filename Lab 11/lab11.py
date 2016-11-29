@@ -1,13 +1,13 @@
 import random
 
 while True:
-    A  = []
-    B  = []
-    N  = int(input("Enter an integer (1-128), (-1) to quit: "))
-    BS = int(input("Enter BLOCKSIZE (2-32): "))
-
+    A = []
+    B = []
+    N = int(input("Enter an integer (1-128), (-1) to quit: "))
     if (N == -1):
         break
+    BS = int(input("Enter BLOCKSIZE (2-32): "))
+
     if (N in range(1, 129) and BS in range(2, 33) and BS <= N and N % BS == 0):
         # generate random matrix
         for i in range(N**2):

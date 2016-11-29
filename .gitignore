@@ -27,7 +27,6 @@ incremental_db/
 output_files/
 simulation/
 work/
-dist/
 build/
 
 

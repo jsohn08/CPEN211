@@ -1,2 +1,2 @@
-        .equ matN, 16
-        .equ blocksize, 16
+        .equ matN, 3
+        .equ blocksize, 3

@@ -5,6 +5,6 @@ sys.argv.append('py2exe')
 
 setup(
     options = {'py2exe': {'bundle_files': 1, 'compressed': True}},
-    windows = [{'script': "lab11.py"}],
-    zipfile = None,
+    console = [{'script': "lab11.py"}],
+    zipfile = None
 )
