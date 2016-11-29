@@ -6,7 +6,7 @@
         .global _start
 
 _start:
-        BL CONFIG_VIRTUAL_MEMORY
+        @ BL CONFIG_VIRTUAL_MEMORY
 
         @ Step 1-3: configure PMNx to count cycles
         /* CPU cycle counter */
@@ -120,27 +120,3 @@ EXIT:
         MCR   P15, 0, R0, C9, C12, 5  @ write 2 to PMSELR
         MRC   P15, 0, R5, C9, C13, 2  @ read PMXEVCNTR into R5
 END:    B     END
-
-/* Matrices */
-        @ sizes
-        .equ small_matN, 2
-
-        @ zero value
-zero:   .double   0.0
-
-        @ arrays
-small_matA:
-        .double   1.2               @ Will make the matrix    @ 0x3FF3333333333333
-        .double   3.4               @ | 1.2   3.4 |           @ 0x400B333333333333
-        .double   0.9               @ | 0.9   9.1 |           @ 0x3FECCCCCCCCCCCCD
-        .double   9.1               @                         @ 0x4022333333333333
-small_matB:
-        .double   4.2               @ Will make the matrix    @ 0x4010CCCCCCCCCCCD
-        .double   6.9               @ | 4.2   6.9 |           @ 0x401B99999999999A
-        .double   7.1               @ | 7.1   0.5 |           @ 0x401c666666666666
-        .double   0.5               @                         @ 0x3fe0000000000000
-small_matC:
-        .double   0                 @ Should expect
-        .double   0                 @ | 29.18    9.98 |
-        .double   0                 @ | 68.39   10.76 |
-        .double   0                 @
