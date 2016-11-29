@@ -36,40 +36,69 @@ _start:
         MCR   P15, 0, R0, C9, C12, 0  @ Setting PMCR to 3
 
         @ Step 6: code we wish to profile using hardware counters
-@         LDR   R0, =matN               @ define N
-@         LDR   R1, =matA               @ base address for matrix A
-@         LDR   R2, =matB               @ base address for matrix B
-@         LDR   R3, =matC               @ base address for matrix C
-@         LDR   R7, =zero
-@         MOV   R4, #0                  @ i = 0
-@ ILOOP:  CMP   R4, R0                  @ check if i < N
-@         BGE   EXIT
-@         MOV   R5, #0                  @ j = 0
-@ JLOOP:  CMP   R5, R0                  @ check if j < N
-@         ADDGE R4, R4, #1              @ i++
-@         BGE   ILOOP
-@         MOV   R6, #0                  @ k = 0
-@         .word 0xED973B00              @ set D3 (sum) to 0
-@ KLOOP:  CMP   R6, R0                  @ check if k < N
-@         BGE   KEND
-@         MUL   R8, R0, R4              @ i * n
-@         ADD   R8, R8, R6              @ (i * n) + k
-@         ADD   R8, R1, R8, LSL #3      @ R8 = addr of A[i][k] (LSL 3 for multiplying 8 for double)
-@         .word 0xED980B00              @ D0 = A[i][k]
-@         MUL   R8, R0, R6              @ k * n
-@         ADD   R8, R8, R5              @ (k * n) + j
-@         ADD   R8, R2, R8, LSL #3      @ R8 = addr of B[k][j] (LSL 3 for multiplying 8 for double)
-@         .word 0xED981B00              @ D1 = B[k][j]
-@         .word 0xEE202B01              @ D2 = D0 * D1
-@         .word 0xEE333B02              @ D3 (sum) += D2
-@         ADD   R6, R6, #1              @ k++
-@         B     KLOOP
-@ KEND:   MUL   R8, R0, R4              @ i * n
-@         ADD   R8, R8, R5              @ (i * n) + j
-@         ADD   R8, R3, R8, LSL #3      @ R8 = addr of C[i][j]
-@         .word 0xED883B00              @ C[i][j] = sum
-@         ADD   R5, R5, #1              @ j++
-@         B     JLOOP
+        LDR   R0, =matN
+        LDR   R1, =matA
+        LDR   R2, =matB
+        LDR   R3, =matC
+        LDR   R8, =blocksize
+
+        MOV   R5, #0                  @ j = 0
+JLOOPO: CMP   R5, R0                  @ check if j < n
+        BGE   EXIT
+        MOV   R4, #0                  @ i = 0
+ILOOPO: CMP   R4, R0                  @ check if i < n
+        ADDGE R5, R5, R8              @ j += BLOCKSIZE
+        BGE   JLOOPO
+        MOV   R6, #0                  @ k = 0
+KLOOPO: CMP   R6, R0                  @ check if k < n
+        ADDGE R4, R4, R8              @ i += BLOCKSIZE
+        BGE   ILOOPO
+        MOV   R9, R4                  @ i_inner = i
+ILOOPI: ADD   R7, R4, R8              @ i + BLOCKSIZE
+        CMP   R9, R7                  @ check if i_inner < i + BLOCKSIZE
+        ADDGE R6, R6, R8              @ k += BLOCKSIZE
+        BGE   KLOOPO
+        MOV   R10, R5                 @ j_inner = j
+JLOOPI: ADD   R7, R5, R8
+        CMP   R10, R7                 @ check if j_inner < j + BLOCKSIZE
+        ADDGE R9, R9, #1              @ i_innner++
+        BGE   ILOOPI
+
+        /* int cij = C[(jn * n) + in] */
+        MUL   R7, R0, R9              @ in * n
+        ADD   R7, R7, R10             @ (in * n) + jn
+        ADD   R7, R3, R7, LSL #3      @ addr of C[in][jn]
+        .word 0xED973B00              @ set D3 (cij) = C[in][jn]
+
+        MOV   R11, R6                 @ kn = k
+KLOOPI: ADD   R7, R6, R8
+        CMP   R11, R7                 @ check if k_inner < k + BLOCKSIZE
+        BGE   KEND
+
+        /* cij += A[(in * n) + kn] * B[(kn * n) + jn] */
+        MUL   R7, R0, R9              @ in * n
+        ADD   R7, R7, R11             @ (in * n) + kn
+        ADD   R7, R1, R7, LSL #3      @ addr of A[in][kn]
+        .word 0xED970B00              @ set D0 = A[in][kn]
+        MUL   R7, R0, R11             @ kn * n
+        ADD   R7, R7, R10             @ (kn * n) + jn
+        ADD   R7, R2, R7, LSL #3      @ addr of B[kn][jn]
+        .word 0xED971B00              @ set D1 = B[kn][jn]
+        .word 0xEE202B01              @ set D2 = D0 * D1
+        .word 0xEE333B02              @ D3 (cij) += D2
+
+        ADD   R11, R11, #1            @ k_inner++
+        B     KLOOPI
+
+        /* C[(in * n) + jn] = cij; */
+KEND:   MUL   R7, R0, R9              @ in * n
+        ADD   R7, R7, R10             @ (in * n) + jn
+        ADD   R7, R3, R7, LSL #3      @ addr of C[i][j]
+        .word 0xED873B00              @ C[i][j] = D3 (cji)
+
+        ADD   R10, R10, #1            @ j_inner++
+        B     JLOOPI
+
 EXIT:
         @ Step 7: stop counters
         MOV   R0, #0

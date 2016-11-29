@@ -48,8 +48,8 @@ ILOOP:  CMP   R4, R0                  @ check if i < N
 JLOOP:  CMP   R5, R0                  @ check if j < N
         ADDGE R4, R4, #1              @ i++
         BGE   ILOOP
-        MOV   R6, #0                  @ k = 0
         .word 0xED973B00              @ set D3 (sum) to 0
+        MOV   R6, #0                  @ k = 0
 KLOOP:  CMP   R6, R0                  @ check if k < N
         BGE   KEND
         MUL   R8, R0, R4              @ i * n

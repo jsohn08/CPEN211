@@ -1,4 +1,4 @@
-#define BLOCKSIZE 32
+#define BLOCKSIZE 16
 void do_block(
   int n,
   int si, int sj, int sk,
@@ -36,11 +36,12 @@ void matrixMultiply(int n, double *A, double *B, double *C) {
   for (int j = 0; j < n; j += BLOCKSIZE)
     for (int i = 0; i < n; i += BLOCKSIZE)
       for (int k = 0; k < n; k += BLOCKSIZE)
+
         for (int in = i; in < i + BLOCKSIZE; in++)
-          for (int jn = j; jn < j ++ BLOCKSIZE; jn++) {
-            int cij = C[(j * n) + i]
+          for (int jn = j; jn < j + BLOCKSIZE; jn++) {
+            double cij = C[(in * n) + jn]
             for (kn = k; kn < kn + BLOCKSIZE; kn++)
-              cij += A[(k * n) + i] * B[(j * n) + k]
-            C[(j * n) + i] = cij;
+              cij += A[(in * n) + kn] * B[(kn * n) + jn]
+            C[(in * n) + jn] = cij;
           }
 }
